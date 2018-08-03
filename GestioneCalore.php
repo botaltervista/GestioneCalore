@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . '../appoggioGestioneCalore/token.php');
+require_once(dirname(__FILE__) . '/../appoggioGestioneCalore/token.php');
 require_once(dirname(__FILE__) . '/curl-lib.php');
 
 if(!isset($token)) {
