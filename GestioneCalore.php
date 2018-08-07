@@ -23,3 +23,12 @@ if(isset($dati->result[0])) {
     // Memorizziamo il nuovo ID nel file
     file_put_contents($last_update_filename, $update_id);
 }
+//////////////*****************aggiunto successivamente  1
+$fp = fopen("last-update-id.txt", "r+");
+if(!$fp) die ("Errore nella operazione con il file in lettura");
+
+$data = fread($fp, 1000);
+echo $data;
+
+fclose($fp);
+//////////////************************---------------
