@@ -1,0 +1,24 @@
+{
+  "name": "GestioneCalore",
+  "description": "review creata",
+  "scripts": {
+  },
+  "env": {
+    "BOTTOKEN": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
