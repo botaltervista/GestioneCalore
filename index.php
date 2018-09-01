@@ -2,6 +2,8 @@
 
 // pdgt-esercitazione-heroku
 
+echo "hola, estoy aquì..\n";
+
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
 
