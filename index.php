@@ -25,23 +25,7 @@ $content = file_get_contents("php://input");
 	//il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 	$token = getenv("BOTTOKEN");
 
-////////////////////////
 
-//aggiunto da controllare funzionamento
-
-$name = $dati->result[0]->message->from->first_name;
-
-
-	$ora = date('H:i');
-	$giorno = date('d/m/Y');
-	
-	
-$message = "\nBenvenuto ".$name."!".", sono le: $ora, del giorno: $giorno"; 
-
-echo $message; 
- 
-
-///////////////////////////////
 
 	
 	$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("\nMi hai scritto questo: {$text}");
