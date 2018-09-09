@@ -1,6 +1,7 @@
 <?php
 
 // pdgt-esercitazione-heroku
+//echo "hola, estoy aquì hoy, all'inizio del file..\n";
 
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
