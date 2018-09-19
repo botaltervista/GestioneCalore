@@ -1,6 +1,5 @@
 <?php
 // pdgt-esercitazione-heroku
-error_log("hola, estoy aquì hoy, all'inizio del file..\n");
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
