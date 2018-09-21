@@ -33,8 +33,7 @@ $token = getenv("BOTTOKEN");
 //aggiunto da controllare funzionamento
 	$ora = date('H:i');
 	$giorno = date('d/m/Y');	
-$message = "\nBenvenuto!, sono le: $ora, del giorno: $giorno"; 
-echo $message; 
+$message = "\nBenvenuto!, sono le: $ora, del giorno: $giorno";  
 
 ///////////////////////////////
 
