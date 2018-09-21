@@ -30,6 +30,27 @@ $token = getenv("BOTTOKEN");
 $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("\nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
+
+////////////////////////
+
+//aggiunto da controllare funzionamento
+
+$name = $dati->result[0]->message->from->first_name;
+
+
+	$ora = date('H:i');
+	$giorno = date('d/m/Y');
+	
+	
+$message = "\nBenvenuto ".$name."!".", sono le: $ora, del giorno: $giorno"; 
+
+echo $message; 
+ 
+
+///////////////////////////////
+
+
+
 error_log("URL: " . $url);
 
 $handle = curl_init($url);
