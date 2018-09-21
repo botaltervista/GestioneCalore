@@ -18,6 +18,7 @@ $message = $update->message; //update è tutto il blocco, message il pezzo
 $message_id = $message->message_id;
 $text = $message->text;
 $chat_id = $message->chat->id;
+$name = $message->from->first_name;
 
 			//graffe, dollaro e variabile, variabili php dentro stringa
 error_log("Message ID {$message_id} from {$chat_id}: {$text}\n");  //usa php per logare errori di sistema
@@ -33,7 +34,7 @@ $token = getenv("BOTTOKEN");
 //aggiunto da controllare funzionamento
 	$ora = date('H:i');
 	$giorno = date('d/m/Y');	
-$message = "\nBenvenuto!, sono le: $ora, del giorno: $giorno";  
+$message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";  
 
 ///////////////////////////////
 
