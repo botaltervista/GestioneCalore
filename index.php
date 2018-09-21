@@ -31,7 +31,7 @@ $token = getenv("BOTTOKEN");
 ////////////////////////
 
 //aggiunto da controllare funzionamento
-	$ora = date('H:i');
+	$ora = date('(H+2):i');
 	$giorno = date('d/m/Y');	
 $message = "\nBenvenuto!, sono le: $ora, del giorno: $giorno";  
 
