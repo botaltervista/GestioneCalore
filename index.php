@@ -1,6 +1,27 @@
 <?php
 // pdgt-esercitazione-heroku
 
+
+
+////////////////////////
+
+//aggiunto da controllare funzionamento
+
+$name = $dati->result[0]->message->from->first_name;
+
+
+	$ora = date('H:i');
+	$giorno = date('d/m/Y');
+	
+	
+$message = "\nBenvenuto ".$name."!".", sono le: $ora, del giorno: $giorno"; 
+
+echo $message; 
+ 
+
+///////////////////////////////
+
+
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
 
@@ -29,25 +50,6 @@ $token = getenv("BOTTOKEN");
 
 $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("\nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
-
-
-////////////////////////
-
-//aggiunto da controllare funzionamento
-
-$name = $dati->result[0]->message->from->first_name;
-
-
-	$ora = date('H:i');
-	$giorno = date('d/m/Y');
-	
-	
-$message = "\nBenvenuto ".$name."!".", sono le: $ora, del giorno: $giorno"; 
-
-echo $message; 
- 
-
-///////////////////////////////
 
 
 
