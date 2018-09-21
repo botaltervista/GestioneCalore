@@ -7,14 +7,12 @@
 
 //aggiunto da controllare funzionamento
 
-$name = $dati->result[0]->message->from->first_name;
-
 
 	$ora = date('H:i');
 	$giorno = date('d/m/Y');
 	
 	
-$message = "\nBenvenuto ".$name."!".", sono le: $ora, del giorno: $giorno"; 
+$message = "\nBenvenuto!, sono le: $ora, del giorno: $giorno"; 
 
 echo $message; 
  
