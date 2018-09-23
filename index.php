@@ -45,13 +45,9 @@ $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";
 
 ///////////////////////////////
 
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}\n$tastiera");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
-$msg = "Benvenuto $GLOBALS[name], io sono un bot tutorial.";
-
-    $url = $GLOBALS[website]."sendMessage?chat_id=".$chat_id."&text=".urlencode($msg);
-    file_get_contents($url);
 
 
 error_log("URL: " . $url);
