@@ -1,6 +1,8 @@
 <?php
 // pdgt-esercitazione-heroku
 
+     $website = "https://api.telegram.org/bot";
+
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
 
@@ -45,6 +47,11 @@ $tastiera = '&reply_markup={"keyboard":[["Tastiera%20inline"],["Nascondi%20Tasti
 
 $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}\n$tastiera");
 //stringa convertita per inserire nell'url per essere compattibile
+
+$msg = "Benvenuto $GLOBALS[name], io sono un bot tutorial.";
+
+    $url = $GLOBALS[website]."sendMessage?chat_id=".$chat_id."&text=".urlencode($msg);
+    file_get_contents($url);
 
 
 error_log("URL: " . $url);
