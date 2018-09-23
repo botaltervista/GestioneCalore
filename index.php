@@ -37,8 +37,7 @@ $token = getenv("BOTTOKEN");
 	$giorno = date('d/m/Y');	
 $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";  
 
-
-$inline_keyboard = array('inline_keyboard' => array(array('text' => 'Risposta A', 'callback_data' => 'A'),array('text' => "Risposta B",'callback_data' => 'B')));
+$inline_keyboard = ['inline_keyboard' => [['text' => 'Tasto1', 'callback_data' => 'pressed_btn1']]];
 
 ///////////////////////////////
 
