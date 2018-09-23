@@ -25,7 +25,7 @@ $name = $message->from->first_name;
 error_log("Message ID {$message_id} from {$chat_id}: {$text}\n");  //usa php per logare errori di sistema
 //il bot invia mess, viene decodificato e scompattato
 
-//$token = "qui si metterebbe il token telegram ma non è sicuro";
+//$token = "qui si metterebbe il token telegram ma non è sicuro";$tastiera
 //il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 $token = getenv("BOTTOKEN");
 
@@ -45,7 +45,7 @@ $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";
 
 
  $tastiera = '&reply_markup={"keyboard":[["Tastiera%20inline"],["Nascondi%20Tastiera","Rimuovi%20Tastiera"]]"one_time_keyboard":true}';
- $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .urlencode($tastiera);
+ $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .urlencode($text.$tastiera);
  
  //$url = $GLOBALS[website]."sendMessage?chat_id="{$chat_id}"&text=".urlencode($text).$tastiera;
  //file_get_contents($url);
