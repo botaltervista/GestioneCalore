@@ -37,19 +37,11 @@ $token = getenv("BOTTOKEN");
 	$giorno = date('d/m/Y');	
 $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";  
 
-$inline_keyboard = ['inline_keyboard' => [['text' => 'Tasto1', 'callback_data' => 'pressed_btn1']]];
-
-$inline_keyboard = json_encode($inline_keyboard);
-
 
 
 ///////////////////////////////
 
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
-//stringa convertita per inserire nell'url per essere compattibile
-
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&reply_markup= . urlcode("$inline_keyboard"));
-
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
 error_log("URL: " . $url);
