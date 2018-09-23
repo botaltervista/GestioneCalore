@@ -48,7 +48,7 @@ $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";
  $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .urlencode($text).$tastiera;
  
  //$url = $GLOBALS[website]."sendMessage?chat_id="{$chat_id}"&text=".urlencode($text).$tastiera;
- file_get_contents($url);
+ //file_get_contents($url);
 
 
 
