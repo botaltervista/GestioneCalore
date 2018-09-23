@@ -1,7 +1,6 @@
 <?php
 // pdgt-esercitazione-heroku
 
-     $website = "https://api.telegram.org/bot";
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
