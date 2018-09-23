@@ -41,6 +41,13 @@ $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";
 $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
+	$ora = date('H:i');
+	$giorno = date('d/m/Y');	
+$message1 = "\nCiao,".$name." sono le: $ora, del giorno: $giorno"; 
+
+
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 \nAggiungi due ore non sò perchè");
+//stringa convertita per inserire nell'url per essere compattibile
 
 
 error_log("URL: " . $url);
