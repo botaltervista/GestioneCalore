@@ -41,10 +41,10 @@ $inline_keyboard = ['inline_keyboard' => [['text' => 'Tasto1', 'callback_data' =
 
 ///////////////////////////////
 
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$inline_keyboard");
+//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$inline_keyboard");
 //stringa convertita per inserire nell'url per essere compattibile
 
 
