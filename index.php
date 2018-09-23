@@ -45,7 +45,7 @@ $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";
 
 
  $tastiera = '&reply_markup={"keyboard":[["Tastiera%20inline"],["Nascondi%20Tastiera","Rimuovi%20Tastiera"]]"one_time_keyboard":true}';
- $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .urlencode($text).$tastiera;
+ $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .urlencode($tastiera);
  
  //$url = $GLOBALS[website]."sendMessage?chat_id="{$chat_id}"&text=".urlencode($text).$tastiera;
  //file_get_contents($url);
