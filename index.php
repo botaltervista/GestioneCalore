@@ -38,14 +38,20 @@ $token = getenv("BOTTOKEN");
 $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";  
 
 
+$inline_keyboard = array('inline_keyboard' => array(array('text' => 'Risposta A', 'callback_data' => 'A'),array('text' => "Risposta B",'callback_data' => 'B')));
+
 ///////////////////////////////
 
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$inline_keyboard");
+//stringa convertita per inserire nell'url per essere compattibile
 
- $tastiera = '&reply_markup={"keyboard":[["Tastiera%20inline"],["Nascondi%20Tastiera","Rimuovi%20Tastiera"]]"one_time_keyboard":true}';
- $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .urlencode($text.$tastiera);
+
+
+ //$tastiera = '&reply_markup={"keyboard":[["Tastiera%20inline"],["Nascondi%20Tastiera","Rimuovi%20Tastiera"]]"one_time_keyboard":true}';
+ //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .urlencode($text.$tastiera);
  
  //$url = $GLOBALS[website]."sendMessage?chat_id="{$chat_id}"&text=".urlencode($text).$tastiera;
  //file_get_contents($url);
