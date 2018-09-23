@@ -47,7 +47,7 @@ $inline_keyboard = json_encode($inline_keyboard);
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?"&reply_markup=".$inline_keyboardchat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text"&reply_markup=".$inline_keyboard"});
 //stringa convertita per inserire nell'url per essere compattibile
 
 
