@@ -39,12 +39,15 @@ $message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";
 
 $inline_keyboard = ['inline_keyboard' => [['text' => 'Tasto1', 'callback_data' => 'pressed_btn1']]];
 
+$inline_keyboard = json_encode($inline_keyboard);
+
+ 
 ///////////////////////////////
 
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message\n$inline_keyboard");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?"&reply_markup=".$inline_keyboardchat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
 
