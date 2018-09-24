@@ -29,6 +29,28 @@ error_log("Message ID {$message_id} from {$chat_id}: {$text}\n");  //usa php per
 //il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 $token = getenv("BOTTOKEN");
 
+//////////
+$sito = getenv("SITO");
+$password = getenv("ENTRATA");
+
+mysql_connect('localhost','sito','password');
+my_sql_select_db('my_tayrona');
+
+//*************
+
+$Search = mysql_qery("SELECT * FROM `collegamentotelegram` WHERE `NomeCMD` LIKE '%message%'");
+
+while($Riga=mysql_fetch_assoc($Search))
+{
+	$Text = $Riga["Messaggio"];
+	$CMD = $Riga["NomeCMD"];
+	$ID = $Riga["ID"];
+}
+
+//*************
+
+
+//////////
 
 ////////////////////////
 
