@@ -29,6 +29,8 @@ error_log("Message ID {$message_id} from {$chat_id}: {$text}\n");  //usa php per
 //il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 $token = getenv("BOTTOKEN");
 
+
+/*
 //////////
 $sito = getenv("SITO");
 $password = getenv("ENTRATA");
@@ -48,7 +50,7 @@ while($Riga=mysql_fetch_assoc($Search))
 }
 
 //*************
-
+*/
 
 //////////
 
