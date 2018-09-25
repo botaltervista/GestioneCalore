@@ -86,7 +86,7 @@ function db_open_connection($quick = false) {
         }
 
         // Open up a new connection
-        $connection = mysqli_connect(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME);
+        $connection = mysqli_connect(ftp.tayrona.altervista.org, tayrona, kpp2ztqRBFZD, my_tairona);
 
         if(!$connection) {
             $errno = mysqli_connect_errno();
