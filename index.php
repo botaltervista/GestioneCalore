@@ -125,19 +125,19 @@ switch ($ore)
 {
 //Tra le 12 e le 17
 case ($ore >= 12 && $ore <= 17):
-    $messsage1 = "Buon Pomeriggio";
+    $message1 = "Buon Pomeriggio";
 break;
 
 case ($ore >= 17 && $ore <= 24):
-    $messsage1 = "Buona sera";
+    $message1 = "Buona sera";
 break;
 
 case ($ore >= 0 && $ore <= 5):
-    $messsage1 = "Buon notte";
+    $message1 = "Buon notte";
 break;
 
 default:
-    $messsage1 = "Buon mattino";
+    $message1 = "Buon mattino";
 break;
 
 }
