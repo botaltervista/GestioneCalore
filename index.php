@@ -117,13 +117,34 @@ function db_open_connection($quick = false) {
 //aggiunto da controllare funzionamento
 	$ora = date('H:i');
 	$giorno = date('d/m/Y');	
-$message = "\nCiao,".$name." sono le: $ora, del giorno: $giorno";  
+$message = "".$name." sono le: $ora, del giorno: $giorno";  
 
+$ore = date("G");
 
+switch ($ore)
+{
+//Tra le 12 e le 17
+case ($ore >= 12 && $ore <= 17):
+    $messsage1 = "Buon Pomeriggio";
+break;
+
+case ($ore >= 17 && $ore <= 24):
+    $messsage1 = "Buona sera";
+break;
+
+case ($ore >= 0 && $ore <= 5):
+    $messsage1 = "Buon notte";
+break;
+
+default:
+    $messsage1 = "Buon mattino";
+break;
+
+}
 
 ///////////////////////////////
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message \nMi hai scritto questo: {$text}");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message \nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
 error_log("URL: " . $url);
