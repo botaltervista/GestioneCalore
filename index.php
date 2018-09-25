@@ -119,7 +119,7 @@ function db_open_connection($quick = false) {
 	$giorno = date('d/m/Y');	
 $message = "".$name." sono le: $ora, del giorno: $giorno";  
 
-$ore = date("G");
+$ore = date('H:i');
 
 switch ($ore)
 {
@@ -144,7 +144,7 @@ break;
 
 ///////////////////////////////
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 \nMi hai scritto questo: {$text}");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nMi hai scritto questo: {$text}");
 //stringa convertita per inserire nell'url per essere compattibile
 
 error_log("URL: " . $url);
