@@ -116,7 +116,10 @@ function db_open_connection($quick = false) {
 
 //aggiunto da controllare funzionamento
 	$ora = date('H:i');
-	$giorno = date('d/m/Y');	
+	$giorno = date('d/m/Y');
+
+        $ora = $ora+2;
+
 $message = "".$name." sono le: $ora, del giorno: $giorno";  
 
 $ore = date('H:i');
