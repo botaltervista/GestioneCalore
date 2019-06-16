@@ -30,17 +30,6 @@ error_log("Message ID {$message_id} from {$chat_id}: {$text}\n");  //usa php per
 $token = getenv("BOTTOKEN");
 
 
-
-echo "\n--------------------------------------\n";
-echo "|   Progetto PDGT  A.A. 2017/2018     |\n";
-echo "|   Studente: Pedro Antonio Basto     |\n";
-echo "|         Matricola: 243735           |\n";
-echo "--------------------------------------\n\n";
-
-
-
-
-
 //aggiunto da controllare funzionamento
 	$ora = date('H:i');
 	$giorno = date('d/m/Y');
@@ -86,6 +75,16 @@ error_log("sendMessage: " . $response);
 
 
 //-------------------------------------------------------------
+
+
+
+
+echo "\n--------------------------------------\n";
+echo "|   Progetto PDGT  A.A. 2017/2018     |\n";
+echo "|   Studente: Pedro Antonio Basto     |\n";
+echo "|         Matricola: 243735           |\n";
+echo "--------------------------------------\n\n";
+
 
 
 
