@@ -77,7 +77,7 @@ error_log("sendMessage: " . $response);
 //-------------------------------------------------------------
 
 
-
+/*
 
 echo "\n--------------------------------------\n";
 echo "|   Progetto PDGT  A.A. 2017/2018     |\n";
@@ -295,6 +295,6 @@ do {
 } while ($close_client !== 0);    //end do-while
 //chiusura della sessione CURL
 curl_close($handle);
-
+*/
 
 //---------------------------------------------------------------
