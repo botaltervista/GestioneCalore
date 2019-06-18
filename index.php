@@ -61,7 +61,76 @@ break;
 
 ///////////////////////////////
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+		
+/////////////////////////////////////////////////////////
+		
+    //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+		
+ $data = json_decode($response, true);
+     
+     foreach ($data as $info) {
+       
+        /*
+        
+        //stampa il codice dell'impianto
+        printf("Codice Impianto:%s\n", $info['cod_impianto']);
+       
+        //stampa il nome dell'impianto
+        printf("Nome Impianto:%s\n", $info['Id_Descrizione']);
+       
+        // stampa data contratto
+        printf("Data Contratto:%s\n", $info['Contratto']);
+       
+        echo "\n-----------------------------------------------------\n";	
+        
+        */
+        
+        //stampa il codice dell'impianto
+        //printf("Codice Impianto:%s\n", $info['cod_impianto']);
+        
+        $info1=$info['cod_impianto'];
+        
+	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=Codice Impianto:".$info1);
+
+       
+        //stampa il nome dell'impianto
+        $info2=$info['Id_Descrizione'];
+	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info2);
+       
+        // stampa data contratto
+        $info3=$info['Contratto'];
+        
+	
+        $info4="--------------------------------------------------------";
+	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info4);        
+        
+        
+        
+        $mensaje="\tCodice impianto:\t".$info1.$info2."\tContratto:".$info3.$info4;
+	       
+	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$mensaje);
+	
+
+        
+        
+        	
+	}
+//////////////////////////////////////////////////////////
+	
+
+
+///////////////////////////////
+
+//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
 //stringa convertita per inserire nell'url per essere compattibile
 
 error_log("URL: " . $url);
