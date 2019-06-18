@@ -63,7 +63,7 @@ break;
 
 		
 /////////////////////////////////////////////////////////
-		
+ /*		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     //richiesta della risposta HTTP come stringa
@@ -77,20 +77,10 @@ break;
      
      foreach ($data as $info) {
        
-        /*
+       
+	
         
-        //stampa il codice dell'impianto
-        printf("Codice Impianto:%s\n", $info['cod_impianto']);
-       
-        //stampa il nome dell'impianto
-        printf("Nome Impianto:%s\n", $info['Id_Descrizione']);
-       
-        // stampa data contratto
-        printf("Data Contratto:%s\n", $info['Contratto']);
-       
-        echo "\n-----------------------------------------------------\n";	
-        
-        */
+    
         
         //stampa il codice dell'impianto
         //printf("Codice Impianto:%s\n", $info['cod_impianto']);
@@ -122,6 +112,9 @@ break;
         
         	
 	}
+	
+	    */
+	
 //////////////////////////////////////////////////////////
 	
 
@@ -130,7 +123,7 @@ break;
 
 $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
+//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
 //stringa convertita per inserire nell'url per essere compattibile
 
 error_log("URL: " . $url);
