@@ -63,7 +63,7 @@ break;
 
 		
 /////////////////////////////////////////////////////////
- /*		
+		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     //richiesta della risposta HTTP come stringa
@@ -74,7 +74,7 @@ break;
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 		
  $data = json_decode($response, true);
-     
+ /*     
      foreach ($data as $info) {
        
        
