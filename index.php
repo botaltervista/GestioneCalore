@@ -50,7 +50,7 @@ case ($ore >= 17 && $ore <= 24):
 break;
 
 case ($ore >= 0 && $ore <= 5):
-    $message1 = "Buon notte";
+    $message1 = "Buona notte";
 break;
 
 default:
@@ -128,7 +128,7 @@ break;
 
 ///////////////////////////////
 
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
 $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
 //stringa convertita per inserire nell'url per essere compattibile
