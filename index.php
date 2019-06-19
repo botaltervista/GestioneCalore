@@ -1,6 +1,7 @@
 <?php
 // pdgt-esercitazione-heroku
 require 'functions.php';  //inclusione delle funzioni
+require 'curl-lib.php.php';  //inclusione di curl
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
@@ -74,7 +75,7 @@ break;
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 		
  $data = json_decode($response, true);
- /*     
+     
      foreach ($data as $info) {
        
        
@@ -108,20 +109,17 @@ break;
 	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$mensaje);
 	
 
-        
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message\n");        
         
         	
 	}
 	
-	    */
+	  /*   */
 	
 //////////////////////////////////////////////////////////
-	
 
-
-///////////////////////////////
-
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+//commento $url 
+//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
 //stringa convertita per inserire nell'url per essere compattibile
@@ -140,16 +138,6 @@ error_log("sendMessage: " . $response);
 
 
 /*
-
-echo "\n--------------------------------------\n";
-echo "|   Progetto PDGT  A.A. 2017/2018     |\n";
-echo "|   Studente: Pedro Antonio Basto     |\n";
-echo "|         Matricola: 243735           |\n";
-echo "--------------------------------------\n\n";
-
-
-
-
 
 
 $close_client = 1;    //variabile di controllo ciclo do-while del menù
