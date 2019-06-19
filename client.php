@@ -4,13 +4,6 @@
 //includiamo file contenente le funzioni usate dal client
 require 'functions.php';
 
-//stampa info programmatore e client
-echo "\n--------------------------------------\n";
-echo "|   Progetto PDGT  A.A. 2017/2018     |\n";
-echo "|   Studente: Pedro Antonio Basto     |\n";
-echo "|         Matricola: 243735           |\n";
-echo "--------------------------------------\n\n";
-
 $close_client = 1;    //impostiamo variabile di controllo ciclo do-while del menù
 
 $impianto = null;     //inizializziamo la variabile
