@@ -60,10 +60,10 @@ break;
 
 }
 
-///////////////////////////////
-
 		
 /////////////////////////////////////////////////////////
+/*  
+
 		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
@@ -114,12 +114,12 @@ break;
         	
 	}
 	
-	  /*   */
+*/
 	
 //////////////////////////////////////////////////////////
 
 //commento $url 
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
 //stringa convertita per inserire nell'url per essere compattibile
