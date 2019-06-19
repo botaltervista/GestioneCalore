@@ -1,7 +1,7 @@
 <?php
 // pdgt-esercitazione-heroku
 require 'functions.php';  //inclusione delle funzioni
-require 'curl-lib.php.php';  //inclusione di curl
+
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
