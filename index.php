@@ -76,40 +76,23 @@ break;
 		
  $data = json_decode($response, true);
      
-     foreach ($data as $info) {
-       
-       
-	
-          
-    
-        
+     foreach ($data as $info) { 
         //stampa il codice dell'impianto
         //printf("Codice Impianto:%s\n", $info['cod_impianto']);
-        
+	     
+        //salva il codice dell'impianto        
         $info1=$info['cod_impianto'];
-        
-	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=Codice Impianto:".$info1);
-
-       
-        //stampa il nome dell'impianto
+	     
+	//salva la descrizione dell'impianto
         $info2=$info['Id_Descrizione'];
-	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info2);
        
-        // stampa data contratto
+        //salva la data contratto
         $info3=$info['Contratto'];
-        
-	
-        $info4="--------------------------------------------------------";
-	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info4);        
-        
         
         
         $mensaje="\tCodice impianto:\t".$info1.$info2."\tContratto:".$info3.$info4;
 	       
-	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$mensaje);
-	
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");        
+	$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");        
         
         	
 	}
