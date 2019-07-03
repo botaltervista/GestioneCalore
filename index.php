@@ -1,7 +1,7 @@
 <?php
 // pdgt-esercitazione-heroku
 require 'functions.php';  //inclusione delle funzioni
-
+require 'curl-lib.php'
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
@@ -62,7 +62,7 @@ break;
 
 		
 /////////////////////////////////////////////////////////
-/*  
+
 
 		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
@@ -80,7 +80,7 @@ break;
        
        
 	
-        
+          
     
         
         //stampa il codice dell'impianto
@@ -113,13 +113,13 @@ break;
         
         	
 	}
-	
+/*	
 */
 	
 //////////////////////////////////////////////////////////
 
 //commento $url 
-$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
 //stringa convertita per inserire nell'url per essere compattibile
