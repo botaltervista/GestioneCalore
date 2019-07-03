@@ -1,7 +1,7 @@
 <?php
 // pdgt-esercitazione-heroku
 require 'functions.php';  //inclusione delle funzioni
-require 'curl-lib.php'
+require 'curl-lib.php';
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
@@ -62,7 +62,7 @@ break;
 
 		
 /////////////////////////////////////////////////////////
-/*
+
 
 		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
@@ -113,7 +113,7 @@ break;
         
         	
 	}
-	
+/*	
 */
 	
 //////////////////////////////////////////////////////////
