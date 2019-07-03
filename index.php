@@ -109,7 +109,7 @@ break;
 	//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$mensaje);
 	
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
-  $url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");        
+  //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");        
         
         	
 	}
@@ -119,7 +119,7 @@ break;
 //////////////////////////////////////////////////////////
 
 //commento $url 
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
 //stringa convertita per inserire nell'url per essere compattibile
