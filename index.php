@@ -62,7 +62,7 @@ break;
 
 		
 /////////////////////////////////////////////////////////
-
+/*
 
 		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
@@ -113,7 +113,7 @@ break;
         
         	
 	}
-/*	
+	
 */
 	
 //////////////////////////////////////////////////////////
