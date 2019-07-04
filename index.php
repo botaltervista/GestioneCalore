@@ -91,14 +91,16 @@ break;
         
         
         $mensaje="\tCodice impianto:\t".$info1.$info2."\tContratto:".$info3;
+	     
+	$first_ch = readline();     
 	       
-      
+	$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");      
         
         	
 	}
 /*	
 */
-	$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");  	
+  	
 //////////////////////////////////////////////////////////
 
 //commento $url 
