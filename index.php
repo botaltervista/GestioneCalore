@@ -65,7 +65,7 @@ $message2 = $message1." ".$name."!".$message;
 	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
 
 
-  if ($text === "1") {		
+		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     //richiesta della risposta HTTP come stringa
@@ -104,12 +104,10 @@ $message2 = $message1." ".$name."!".$message;
 	}	  
 	  
 	  
-  }//fine if
 
-  else{
   	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."cosa vuoi???"."!");
   
-      }
+
 	  
 
     	
