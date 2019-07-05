@@ -92,12 +92,12 @@ break;
         $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
         
         $controllo = $controllo + 1;   
-	   
+	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$xx][$xx][$xx]);   
 	       
 	//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 	}
     for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
-	   http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$xx][$xx][$xx]);
+	   
 	}
     	
 //////////////////////////////////////////////////////////
