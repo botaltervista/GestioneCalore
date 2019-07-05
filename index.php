@@ -63,7 +63,7 @@ break;
 		
 /////////////////////////////////////////////////////////
 
-
+$controllo = 0;
 		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
@@ -81,7 +81,7 @@ break;
         //printf("Codice Impianto:%s\n", $info['cod_impianto']);
 	     
         //salva il codice dell'impianto        
-        $info1=$info['cod_impianto'];
+        $info1="/".$info['cod_impianto'];
 	     
 	//salva la descrizione dell'impianto
         $info2=$info['Id_Descrizione'];
@@ -89,18 +89,17 @@ break;
         //salva la data contratto
         $info3=$info['Contratto'];
         
+        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
         
-        $mensaje="\tCodice impianto:\t".$info1.$info2."\tContratto:".$info3;
-	     
+        $controllo = $controllo + 1    
 	   
 	       
-	$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");      
-        $first_ch = readline();  
-        	
+	//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 	}
-/*	
-*/
-  	
+	for($xx = 0; $xx = $xx + 1; $xx <= $controllo){
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$xx][$xx][$xx]);
+	}
+    	
 //////////////////////////////////////////////////////////
 
 //commento $url 
