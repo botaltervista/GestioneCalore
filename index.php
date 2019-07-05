@@ -62,7 +62,7 @@ break;
 
 $message = $message1." ".$name."!".", sono le: $ora, del giorno: $data";     
 
-	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".urlencode($message)."!");		
+	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message."!");		
 /////////////////////////////////////////////////////////
 
 
