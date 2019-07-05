@@ -91,7 +91,7 @@ $controllo = 0;
         
         $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
         
-        $controllo = $controllo + 1    
+        $controllo = $controllo + 1;   
 	   
 	       
 	//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
