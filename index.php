@@ -103,12 +103,29 @@ $message2 = $message1." ".$name."!".$message;
 
   $first_ch = readline();    //acquisizione scelta dell'utente
 
+
+			$message4 =		
+			"\n\nSelezionare la richiesta da eseguire al database: \n
+			\t[1] stampa i dettagli delle caldaie esistenti.\n
+			\t[2] stampa gli interventi effettuati negli impianti.\n
+			\t[4] stampa le ore ordinarie di funzionamento.\n
+			\t[5] stampa il tipo di impianto e la denominazione.\n
+			\t[6] stampa ultima lettura effettuata del contatore gas.\n
+			\t[7] stampa i consumi degli impianti.\n
+			\t[8] stampa elenco degli impianti in servizio.\n
+			\t[9] stampa pronto intervento.\n
+			\t[10] stampa dettagli di un determinato impianto.\n
+			\t[11] stampa tutti gli impianti.\n
+			\t[12] stampa impianto dettagliato.\n";
+
+    http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message4);
+    
 //////////////////////////////////////////////////////////
 
 //commento $url 
 //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
-//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" .$mensaje);
+//
 //stringa convertita per inserire nell'url per essere compattibile
 
 error_log("URL: " . $url);
