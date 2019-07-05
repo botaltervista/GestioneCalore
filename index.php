@@ -65,23 +65,6 @@ $message2 = $message1." ".$name."!".$message;
 	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
 
 
-			$message4 =		
-			"Selezionare la richiesta da eseguire al database:
-			1 stampa i dettagli delle caldaie esistenti.
-			2 stampa gli interventi effettuati negli impianti.
-			4 stampa le ore ordinarie di funzionamento.
-			5 stampa il tipo di impianto e la denominazione.
-			6 stampa ultima lettura effettuata del contatore gas.
-			7 stampa i consumi degli impianti.
-			8 stampa elenco degli impianti in servizio.
-			9 stampa pronto intervento.
-			10 stampa dettagli di un determinato impianto.
-			11 stampa tutti gli impianti.
-			12 stampa impianto dettagliato.";
-
-    http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message4);
-
-
   if ($text === "1") {		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
