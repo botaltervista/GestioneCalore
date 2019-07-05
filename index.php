@@ -66,18 +66,18 @@ $message2 = $message1." ".$name."!".$message;
 
 
 			$message4 =		
-			"\n\nSelezionare la richiesta da eseguire al database: \n
-			\1 stampa i dettagli delle caldaie esistenti.\n
-			\2 stampa gli interventi effettuati negli impianti.\n
-			\4 stampa le ore ordinarie di funzionamento.\n
-			\5 stampa il tipo di impianto e la denominazione.\n
-			\6 stampa ultima lettura effettuata del contatore gas.\n
-			\7 stampa i consumi degli impianti.\n
-			\8 stampa elenco degli impianti in servizio.\n
-			\9 stampa pronto intervento.\n
-			\10 stampa dettagli di un determinato impianto.\n
-			\11 stampa tutti gli impianti.\n
-			\12 stampa impianto dettagliato.\n";
+			"Selezionare la richiesta da eseguire al database:
+			\1 stampa i dettagli delle caldaie esistenti.
+			\2 stampa gli interventi effettuati negli impianti.
+			\4 stampa le ore ordinarie di funzionamento.
+			\5 stampa il tipo di impianto e la denominazione.
+			\6 stampa ultima lettura effettuata del contatore gas.
+			\7 stampa i consumi degli impianti.
+			\8 stampa elenco degli impianti in servizio.
+			\9 stampa pronto intervento.
+			\10 stampa dettagli di un determinato impianto.
+			\11 stampa tutti gli impianti.
+			\12 stampa impianto dettagliato.";
 
     http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message4);
 
