@@ -65,7 +65,26 @@ $message2 = $message1." ".$name."!".$message;
 	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
 
 
-		
+			$message4 =		
+			"\n\nSelezionare la richiesta da eseguire al database: \n
+			\1 stampa i dettagli delle caldaie esistenti.\n
+			\2 stampa gli interventi effettuati negli impianti.\n
+			\4 stampa le ore ordinarie di funzionamento.\n
+			\5 stampa il tipo di impianto e la denominazione.\n
+			\6 stampa ultima lettura effettuata del contatore gas.\n
+			\7 stampa i consumi degli impianti.\n
+			\8 stampa elenco degli impianti in servizio.\n
+			\9 stampa pronto intervento.\n
+			\10 stampa dettagli di un determinato impianto.\n
+			\11 stampa tutti gli impianti.\n
+			\12 stampa impianto dettagliato.\n";
+
+    http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message4);
+
+  $first_ch = readline();    //acquisizione scelta dell'utente
+  $first_ch = intval($first_ch);
+
+  if ($first_ch === "/1") {		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     //richiesta della risposta HTTP come stringa
@@ -75,7 +94,7 @@ $message2 = $message1." ".$name."!".$message;
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 		
- $data = json_decode($response, true);
+   $data = json_decode($response, true);
      
      foreach ($data as $info) { 
         //stampa il codice dell'impianto
@@ -96,29 +115,23 @@ $message2 = $message1." ".$name."!".$message;
 	       
 	//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 	}
+	  
     for($xx = 0; $xx <= $controllo;){
 	    $indice = $xx + 1;
 	   http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice."-".$datos[$xx][$xx][$xx]);
 	    $xx = $xx + 1;
-	}
+	}	  
+	  
+	  
+  }//fine if
+
+  else{
+  	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."cosa vuoi???"."!");
+  
+      }
+	  
+
     	
-			$message4 =		
-			"\n\nSelezionare la richiesta da eseguire al database: \n
-			\t[1] stampa i dettagli delle caldaie esistenti.\n
-			\t[2] stampa gli interventi effettuati negli impianti.\n
-			\t[4] stampa le ore ordinarie di funzionamento.\n
-			\t[5] stampa il tipo di impianto e la denominazione.\n
-			\t[6] stampa ultima lettura effettuata del contatore gas.\n
-			\t[7] stampa i consumi degli impianti.\n
-			\t[8] stampa elenco degli impianti in servizio.\n
-			\t[9] stampa pronto intervento.\n
-			\t[10] stampa dettagli di un determinato impianto.\n
-			\t[11] stampa tutti gli impianti.\n
-			\t[12] stampa impianto dettagliato.\n";
-
-    http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message4);
-    
-
   //$first_ch = readline();    //acquisizione scelta dell'utente
 //////////////////////////////////////////////////////////
 
