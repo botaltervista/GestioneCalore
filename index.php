@@ -96,8 +96,8 @@ break;
 	       
 	//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 	}
-	for($xx = 0; $xx = $xx + 1; $xx <= $controllo){
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$xx][$xx][$xx]);
+    for($xx = 0; $xx = $xx + 1; $xx <= $controllo){
+	   //http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$xx][$xx][$xx]);
 	}
     	
 //////////////////////////////////////////////////////////
