@@ -100,10 +100,6 @@ $message2 = $message1." ".$name."!".$message;
 	   http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$xx][$xx][$xx]);
 	}
     	
-
-  $first_ch = readline();    //acquisizione scelta dell'utente
-
-
 			$message4 =		
 			"\n\nSelezionare la richiesta da eseguire al database: \n
 			\t[1] stampa i dettagli delle caldaie esistenti.\n
@@ -120,6 +116,8 @@ $message2 = $message1." ".$name."!".$message;
 
     http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message4);
     
+
+  $first_ch = readline();    //acquisizione scelta dell'utente
 //////////////////////////////////////////////////////////
 
 //commento $url 
