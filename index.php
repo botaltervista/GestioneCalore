@@ -84,7 +84,7 @@ $message2 = $message1." ".$name."!".$message;
   $first_ch = readline();    //acquisizione scelta dell'utente
   $first_ch = intval($first_ch);
 
-  if ($first_ch === "/1") {		
+  if ($first_ch === 1) {		
     //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     //richiesta della risposta HTTP come stringa
