@@ -60,7 +60,7 @@ break;
 
 }
 
-$message = $message1." ".$name."!".", sono le: $ora, del giorno: $data";     
+$message = $message1." ".$name."!".", sono le: $ora, del giorno: $giorno";     
 
 	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message."!");		
 /////////////////////////////////////////////////////////
