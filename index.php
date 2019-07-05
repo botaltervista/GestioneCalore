@@ -60,10 +60,9 @@ break;
 
 }
 
-$message = $message1." ".$name."!".", sono le: $ora, del giorno: $giorno";     
+$message2 = $message1." ".$name."!".$message;     
 
-	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message."!");		
-/////////////////////////////////////////////////////////
+	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
 
 
 		
@@ -80,7 +79,6 @@ $message = $message1." ".$name."!".", sono le: $ora, del giorno: $giorno";
      
      foreach ($data as $info) { 
         //stampa il codice dell'impianto
-        //printf("Codice Impianto:%s\n", $info['cod_impianto']);
 	     
         //salva il codice dell'impianto        
         $info1="/".$info['cod_impianto'];
