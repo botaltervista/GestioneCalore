@@ -80,6 +80,25 @@ else{
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $indice + 1;
 		}
+		
+				//$first_ch = readline();    //acquisizione scelta dell'utente
+		//commento $url 
+		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+
+		//stringa convertita per inserire nell'url per essere compattibile
+
+		error_log("URL: " . $url);
+
+		$handle = curl_init($url);
+		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($handle, CURLOPT_POST, true);
+		$response = curl_exec($handle);
+
+		error_log("sendMessage: " . $response);
+		
+		
+		}//fine if /impianti
+		
 	else if($text === '/menu'){
 		
 		$messaggio1 = "/1  stampa i dettagli delle caldaie esistenti.\n";
@@ -111,24 +130,7 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio13);
 	
 	
-	}		
-		//$first_ch = readline();    //acquisizione scelta dell'utente
-		//commento $url 
-		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
-
-		//stringa convertita per inserire nell'url per essere compattibile
-
-		error_log("URL: " . $url);
-
-		$handle = curl_init($url);
-		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($handle, CURLOPT_POST, true);
-		$response = curl_exec($handle);
-
-		error_log("sendMessage: " . $response);
-		
-	}//fine if /impianti
-	
+	}	
 	else{
 	     	//aggiunto da controllare funzionamento
 		$ora = date('H:i');
