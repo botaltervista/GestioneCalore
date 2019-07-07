@@ -34,9 +34,9 @@ else{
 
 	//se viene inserita la parola /impianti
 	if($text === '/impianti'){
-		$avviso = 'hola, soy impianti';
+		$avviso = 'Elenco degli impianti in servizio attualmente:';
 		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso."!");
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 
 		
@@ -69,9 +69,9 @@ else{
 		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 		}
 	  	$controllo = $controllo - 1;
-		$indice = 0;
+		$indice = 1;
    		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice."-".$datos[$xx][$xx][$xx]);
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $xx + 1;
 			$text = " ";
 		}	  
@@ -102,7 +102,7 @@ else{
 		$ora = date('H:i');
 		$giorno = date('d/m/Y');
 
-		$message = "".$name." sono le: $ora, del giorno: $giorno";  
+		$message = " Sono le: $ora del giorno: $giorno";  
 
 		$ore = date('H:i');
 
@@ -126,7 +126,7 @@ else{
 
 		}//fine switch
 
-		$message2 = $message1." ".$name."!".$message;     
+		$message2 = $message1." ".$name.".".$message;     
 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
 		$message2 = " ";
