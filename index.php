@@ -57,25 +57,28 @@ else{
         		//salva il codice dell'impianto        
         		$info1="/".$info['cod_impianto'];
 	     
-		//salva la descrizione dell'impianto
-       		$info2=$info['Id_Descrizione'];
+			//salva la descrizione dell'impianto
+       			$info2=$info['Id_Descrizione'];
        
-       		//salva la data contratto
-      	        $info3=$info['Contratto'];
+       			//salva la data contratto
+      	      	        $info3=$info['Contratto'];
         
-      	        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
+      	      	        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
         
 			$controllo = $controllo + 1;
-		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
+			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 		}
 	  	$controllo = $controllo - 1;
 		$indice = 1;
    		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
-			$indice = $xx + 1;
+			$indice = $indice + 1;
 			$text = " ";
 		}	 
-		
+		if ($text === " "){
+			$message5 = "Aspetto indicazioni.";
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message5");
+		}
 			  //$first_ch = readline();    //acquisizione scelta dell'utente
 			//commento $url 
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
