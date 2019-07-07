@@ -80,10 +80,6 @@ else{
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $indice + 1;
 			$text = " ";
-		}	 
-		if ($text === " "){
-			$message5 = "Aspetto indicazioni.";
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message5");
 		}
 		
 			  //$first_ch = readline();    //acquisizione scelta dell'utente
