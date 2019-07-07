@@ -86,7 +86,7 @@ else{
 		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
 		//stringa convertita per inserire nell'url per essere compattibile
-
+		/*
 		error_log("URL: " . $url);
 
 		$handle = curl_init($url);
@@ -95,24 +95,24 @@ else{
 		$response = curl_exec($handle);
 
 		error_log("sendMessage: " . $response);
-		
+		*/
 		
 		}//fine if /impianti
 		
 	else if($text === '/menu'){
 		
-		$messaggio1 = "/1  stampa i dettagli delle caldaie esistenti.\n";
-  		$messaggio2 = "/2  stampa gli interventi effettuati negli impianti.\n";
-  		$messaggio3 = "/3  stampa la matricola dei contatori gas.\n";
-  		$messaggio4 = "/4  stampa le ore ordinarie di funzionamento.\n";
-  		$messaggio5 = "/5  stampa il tipo di impianto e la denominazione.\n";
-	  	$messaggio6 = "/6  stampa l'ultima lettura effettuata del contatore gas.\n";
-  		$messaggio7 = "/7  stampa i consumi degli impianti.\n";
-  		$messaggio8 = "/8  stampa l'elenco degli impianti in servizio.\n";
-  		$messaggio9 = "/9  stampa pronto intervento.\n";
-  		$messaggio10 = "/10  stampa dettagli di un determinato impianto.\n";
-  		$messaggio11 = "/11  stampa tutti gli impianti.\n";
-  		$messaggio12 = "/12  stampa impianto dettagliato.\n";
+		$messaggio1 = "/1  stampa i dettagli delle caldaie esistenti.";
+  		$messaggio2 = "/2  stampa gli interventi effettuati negli impianti.";
+  		$messaggio3 = "/3  stampa la matricola dei contatori gas.";
+  		$messaggio4 = "/4  stampa le ore ordinarie di funzionamento.";
+  		$messaggio5 = "/5  stampa il tipo di impianto e la denominazione.";
+	  	$messaggio6 = "/6  stampa l'ultima lettura effettuata del contatore gas.";
+  		$messaggio7 = "/7  stampa i consumi degli impianti.";
+  		$messaggio8 = "/8  stampa l'elenco degli impianti in servizio.";
+  		$messaggio9 = "/9  stampa pronto intervento.";
+  		$messaggio10 = "/10  stampa dettagli di un determinato impianto.";
+  		$messaggio11 = "/11  stampa tutti gli impianti.";
+  		$messaggio12 = "/12  stampa impianto dettagliato.";
 		
 		$messaggio13 = $messaggio1
 			       .$messaggio2
