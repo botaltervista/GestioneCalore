@@ -130,7 +130,7 @@ else{
 		$message2 = $message1." ".$name."!".$message;     
 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
-		curl_close($handle);
+		$message2 = " ";
 
 	}//fine else info ora
 	
