@@ -39,7 +39,7 @@ else{
 	}
 	
 	//se viene inserita la parola /impianti
-	elseif($text === '/impianti'){
+	else if($text === '/impianti'){
 		$avviso = 'Elenco degli impianti in servizio attualmente:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -81,10 +81,11 @@ else{
 			$indice = $indice + 1;
 			$text = " ";
 		}	 
-		if ($text === " "){
+		/*if ($text === " "){
 			$message5 = "Aspetto indicazioni.";
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message5");
 		}
+		*/
 			  //$first_ch = readline();    //acquisizione scelta dell'utente
 			//commento $url 
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
