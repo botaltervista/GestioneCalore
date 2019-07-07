@@ -74,12 +74,8 @@ else{
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $xx + 1;
 			$text = " ";
-		}	  
-	  
-	  
-
-  		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."cosa vuoi???"."!");
-
+		}	 
+		
 			  //$first_ch = readline();    //acquisizione scelta dell'utente
 			//commento $url 
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
