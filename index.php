@@ -80,9 +80,35 @@ else{
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $indice + 1;
 		}
-	else if($text === '/messaggio'){
-			$messaggio6 = $text;
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio6);
+	else if($text === '/menu'){
+		
+		$messaggio1 = "/1  stampa i dettagli delle caldaie esistenti.\n";
+  		$messaggio2 = "/2  stampa gli interventi effettuati negli impianti.\n";
+  		$messaggio3 = "/3  stampa la matricola dei contatori gas.\n";
+  		$messaggio4 = "/4  stampa le ore ordinarie di funzionamento.\n";
+  		$messaggio5 = "/5  stampa il tipo di impianto e la denominazione.\n";
+	  	$messaggio6 = "/6  stampa l'ultima lettura effettuata del contatore gas.\n";
+  		$messaggio7 = "/7  stampa i consumi degli impianti.\n";
+  		$messaggio8 = "/8  stampa l'elenco degli impianti in servizio.\n";
+  		$messaggio9 = "/9  stampa pronto intervento.\n";
+  		$messaggio10 = "/10  stampa dettagli di un determinato impianto.\n";
+  		$messaggio11 = "/11  stampa tutti gli impianti.\n";
+  		$messaggio12 = "/12  stampa impianto dettagliato.\n";
+		
+		$messaggio13 = $messaggio1
+			       .$messaggio2
+			       .$messaggio3
+			       .$messaggio4
+			       .$messaggio5
+			       .$messaggio6
+			       .$messaggio7
+			       .$messaggio8
+			       .$messaggio9
+			       .$messaggio10
+			       .$messaggio11
+			       .$messaggio12;
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio13);
 	
 	
 	}		
