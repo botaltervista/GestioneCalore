@@ -375,50 +375,6 @@ function Impianto_Scelto($http_code,$response,$impianto) {
 
 //----
 
-/* da controllare il funzionamento*/
-/* funzione per la stampa dell'impianto scelto */
-function stampa_imp($http_code, $response) {
-  if ($http_code == 200) {
-     //risposta HTTP ok
-     $data = json_decode($response, true);
-
-     //stampa info bus
-     echo "\n\n-------------------------------------------------------------------------------------------\n";
-     echo "|    Id bus\t|\t\t\tPercorso bus\t\t\t| Id percorso bus |\n";
-     echo "-------------------------------------------------------------------------------------------\n";
-     foreach ($data as $info) {
-       // stampa 'idBus'
-       printf("|\t%s\t|", $info['idBus']);
-
-       //stampa 'percorsoBus'
-       if ((strlen($info['percorsoBus']) <= 53) && (strlen($info['percorsoBus']) > 45)) {
-           printf(" %s\t|", $info['percorsoBus']);
-       } elseif ((strlen($info['percorsoBus']) <= 45) && (strlen($info['percorsoBus']) > 37)) {
-           printf(" %s\t\t|", $info['percorsoBus']);
-       } elseif ((strlen($info['percorsoBus']) <= 37) && (strlen($info['percorsoBus']) > 29)) {
-           printf(" %s\t\t\t|", $info['percorsoBus']);
-       } elseif ((strlen($info['percorsoBus']) <= 29) && (strlen($info['percorsoBus']) > 21)) {
-           printf(" %s\t\t\t\t|", $info['percorsoBus']);
-       } elseif (((strlen($info['percorsoBus']) <= 21) && (strlen($info['percorsoBus']) > 13))) {
-           printf(" %s\t\t\t\t\t|", $info['percorsoBus']);
-       } elseif ((strlen($info['percorsoBus']) <= 13)) {
-           printf(" %s\t\t\t\t\t\t|", $info['percorsoBus']);
-       } else {
-         printf(" %s |", $info['percorsoBus']);
-       }
-
-       //stampa 'idPercorsoBus'
-       printf("\t%s\t  |", $info['idPercorsoBus']);
-       echo "\n-------------------------------------------------------------------------------------------\n";
-     }    //end foreach
-  } else {
-      //se ritorna un codice di errore dalla richiesta HTTP
-      echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
-  }    //end if-else
-}    //end function
-
-
-
 
 
 ?>
