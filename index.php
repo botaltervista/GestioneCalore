@@ -24,6 +24,7 @@ else{
 	$chat_id = $message->chat->id;
 	$name = $message->from->first_name;
 
+	
 			//graffe, dollaro e variabile, variabili php dentro stringa
 	error_log("Message ID {$message_id} from {$chat_id}: {$text}\n");  //usa php per logare errori di sistema
 	//il bot invia mess, viene decodificato e scompattato
