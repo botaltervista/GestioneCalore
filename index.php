@@ -32,63 +32,30 @@ else{
 	//il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 	$token = getenv("BOTTOKEN");
 
-	
+	//se viene inserita la parola /impianti
 	if($text === '/impianti'){
 		$avviso = 'hola, soy impianti';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso."!");
-		}
-	//aggiunto da controllare funzionamento
-	$ora = date('H:i');
-	$giorno = date('d/m/Y');
-
-	$message = "".$name." sono le: $ora, del giorno: $giorno";  
-
-	$ore = date('H:i');
-
-	switch ($ore)
-		{
-		//Tra le 12 e le 17
-		case ($ore >= 12 && $ore <= 17):
-   		 $message1 = "Buon Pomeriggio";
-		break;
-
-		case ($ore >= 17 && $ore <= 24):
-		    $message1 = "Buona sera";
-		break;
-
-		case ($ore >= 0 && $ore <= 5):
- 		   $message1 = "Buona notte";
-		break;
-
-		default:
- 		   $message1 = "Buon mattino";
-		break;
-
-		}
-
-	$message2 = $message1." ".$name."!".$message;     
-
-	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
-
+		
 
 		
-    	//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
-    	$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
-    	//richiesta della risposta HTTP come stringa
-    	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    	//esecuzione della richiesta HTTP
-    	$response = curl_exec($handle);
-    	//estrazione del codice di risposta (HTTP status)
-    	$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+    		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 		
-   	$data = json_decode($response, true);
+   		$data = json_decode($response, true);
      
-     	foreach ($data as $info) { 
-        	//stampa il codice dell'impianto
+    	 	foreach ($data as $info) { 
+        		//stampa il codice dell'impianto
 	     
-        	//salva il codice dell'impianto        
-        	$info1="/".$info['cod_impianto'];
+        		//salva il codice dell'impianto        
+        		$info1="/".$info['cod_impianto'];
 	     
 		//salva la descrizione dell'impianto
        		$info2=$info['Id_Descrizione'];
@@ -104,38 +71,70 @@ else{
 		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 		}
 	  
-   	 for($xx = 0; $xx <= $controllo;){
-		    $indice = $xx + 1;
-		   http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice."-".$datos[$xx][$xx][$xx]);
-		    $xx = $xx + 1;
-		}	  
+   		 for($xx = 0; $xx <= $controllo;){
+			    $indice = $xx + 1;
+			   http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice."-".$datos[$xx][$xx][$xx]);
+			    $xx = $xx + 1;
+			}	  
 	  
 	  
 
-  	http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."cosa vuoi???"."!");
-  
+  		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."cosa vuoi???"."!");
 
-	  
+			  //$first_ch = readline();    //acquisizione scelta dell'utente
+			//commento $url 
+			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
-    	
-		  //$first_ch = readline();    //acquisizione scelta dell'utente
-		//////////////////////////////////////////////////////////
+			//stringa convertita per inserire nell'url per essere compattibile
 
-		//commento $url 
-		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+		error_log("URL: " . $url);
 
-		//
-		//stringa convertita per inserire nell'url per essere compattibile
+		$handle = curl_init($url);
+		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($handle, CURLOPT_POST, true);
+		$response = curl_exec($handle);
 
-	error_log("URL: " . $url);
+		error_log("sendMessage: " . $response);
+		
+	}//fine if /impianti
+	
+	else{
+	     	//aggiunto da controllare funzionamento
+		$ora = date('H:i');
+		$giorno = date('d/m/Y');
 
-	$handle = curl_init($url);
-	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($handle, CURLOPT_POST, true);
-	$response = curl_exec($handle);
+		$message = "".$name." sono le: $ora, del giorno: $giorno";  
 
-	error_log("sendMessage: " . $response);
+		$ore = date('H:i');
 
+		switch ($ore){
+			//Tra le 12 e le 17
+			case ($ore >= 12 && $ore <= 17):
+   			 $message1 = "Buon Pomeriggio";
+			break;
+
+			case ($ore >= 17 && $ore <= 24):
+			    $message1 = "Buona sera";
+			break;
+
+			case ($ore >= 0 && $ore <= 5):
+ 			   $message1 = "Buona notte";
+			break;
+
+			default:
+ 			   $message1 = "Buon mattino";
+			break;
+
+		}//fine switch
+
+		$message2 = $message1." ".$name."!".$message;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2."!");	
+		curl_close($handle);
+
+	}//fine else info ora
+	
+	
 }//fine else principale
 
 //-------------------------------------------------------------
@@ -164,7 +163,10 @@ do {
   echo "\t[12] stampa impianto dettagliato.\n";
   $first_ch = readline();    //acquisizione scelta dell'utente
   $first_ch = intval($first_ch);
-  if ($first_ch === 1) {
+  if ($first_ch === 1) 
+
+
+{
     
     $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     
