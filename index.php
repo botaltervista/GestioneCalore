@@ -79,7 +79,7 @@ else{
    		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $indice + 1;
-			$text = " ";
+			$text = "";
 		}
 		
 			  //$first_ch = readline();    //acquisizione scelta dell'utente
