@@ -79,14 +79,18 @@ else{
    		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $indice + 1;
-			$content = " ";
 		}
-		
-			  //$first_ch = readline();    //acquisizione scelta dell'utente
-			//commento $url 
-			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
+	else if($text === '/messaggio'){
+			$messaggio6 = $text;
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio6);
+	
+	
+	}		
+		//$first_ch = readline();    //acquisizione scelta dell'utente
+		//commento $url 
+		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
 
-			//stringa convertita per inserire nell'url per essere compattibile
+		//stringa convertita per inserire nell'url per essere compattibile
 
 		error_log("URL: " . $url);
 
