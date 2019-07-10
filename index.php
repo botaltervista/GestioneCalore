@@ -3,6 +3,7 @@
 require 'functions.php';  //inclusione delle funzioni
 require 'curl-lib.php';
 $controllo = 0;
+$impianto = 'K001';
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
 
@@ -40,6 +41,13 @@ else{
 	}
 	
 	//se viene inserita la parola /impianti
+	else if($text === '/7'){
+		Stampa_Impianti($impianto);
+	
+	}
+	
+	
+	//se viene inserita la scelta /8
 	else if($text === '/8'){
 		$avviso = 'Elenco degli impianti in servizio attualmente:';
 		
