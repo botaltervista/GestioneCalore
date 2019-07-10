@@ -6,10 +6,14 @@
 
 /* funzione per la stampa di tutti gli impianti*/
 function Stampa_Impianti($impianto){
+	if($impianto === "K001"){
+		$avviso = 'Elenco degli impianti in servizio attualmente:';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+	}
 	
-       $avviso = 'Elenco degli impianti in servizio attualmente:';
+       
 		
-       http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+       
 		
        //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
        $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
