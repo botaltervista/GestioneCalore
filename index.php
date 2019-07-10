@@ -3,7 +3,7 @@
 require 'functions.php';  //inclusione delle funzioni
 require 'curl-lib.php';
 $controllo = 0;
-$impianto = 'K001';
+$impianto = "K001";
 //per gestire corpo richiesta, si legge il contenuto della richiesta
 $content = file_get_contents("php://input");
 
