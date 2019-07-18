@@ -120,8 +120,13 @@ else{
 	
 }//fine else principale
 
+
+?>
 ////////////////////////////////////////////////////////
 
+
+
+<?php
 function impianti(){
 		$avviso = 'Elenco degli impianti in servizio attualmente:';
 		
