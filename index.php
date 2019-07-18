@@ -49,63 +49,7 @@ else{
 	
 	//se viene inserita la scelta /8
 	else if($text === '/8'){
-		$avviso = 'Elenco degli impianti in servizio attualmente:';
-		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		
-
-		
-    		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
-    		//richiesta della risposta HTTP come stringa
-    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    		//esecuzione della richiesta HTTP
-    		$response = curl_exec($handle);
-    		//estrazione del codice di risposta (HTTP status)
-    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
-		
-   		$data = json_decode($response, true);
-     
-    	 	foreach ($data as $info) { 
-        		//stampa il codice dell'impianto
-	     
-        		//salva il codice dell'impianto        
-        		$info1="/".$info['cod_impianto'];
-	     
-			//salva la descrizione dell'impianto
-       			$info2=$info['Id_Descrizione'];
-       
-       			//salva la data contratto
-      	      	        $info3=$info['Contratto'];
-        
-      	      	        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
-        
-			$controllo = $controllo + 1;
-			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
-		}
-	  	$controllo = $controllo - 1;
-		$indice = 1;
-   		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
-			$indice = $indice + 1;
-		}
-		
-				//$first_ch = readline();    //acquisizione scelta dell'utente
-		//commento $url 
-		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
-
-		//stringa convertita per inserire nell'url per essere compattibile
-		/*
-		error_log("URL: " . $url);
-
-		$handle = curl_init($url);
-		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($handle, CURLOPT_POST, true);
-		$response = curl_exec($handle);
-
-		error_log("sendMessage: " . $response);
-		*/
-		
+		impianti();
 		}//fine if /impianti
 		
 	else if($text === '/menu'){
@@ -176,7 +120,56 @@ else{
 	
 }//fine else principale
 
-//-------------------------------------------------------------
+////////////////////////////////////////////////////////
+
+function impianti(){
+		$avviso = 'Elenco degli impianti in servizio attualmente:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+
+		
+    		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+		
+   		$data = json_decode($response, true);
+     
+    	 	foreach ($data as $info) { 
+        		//stampa il codice dell'impianto
+	     
+        		//salva il codice dell'impianto        
+        		$info1="/".$info['cod_impianto'];
+	     
+			//salva la descrizione dell'impianto
+       			$info2=$info['Id_Descrizione'];
+       
+       			//salva la data contratto
+      	      	        $info3=$info['Contratto'];
+        
+      	      	        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
+        
+			$controllo = $controllo + 1;
+			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
+		}
+	  	$controllo = $controllo - 1;
+		$indice = 1;
+   		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
+			$indice = $indice + 1;
+		}
+
+}//fine funzione impianti
+
+
+
+
+/////////////////////////////////////////////////////////
 ?>
 
 
