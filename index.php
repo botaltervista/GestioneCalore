@@ -85,10 +85,7 @@ else{
 	}
 	
 	//se viene inserita la parola /impianti
-	else if($text === '/7'){
-		$avviso = 'Elenco degli impianti in servizio attualmente:';
-		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);		
+	else if($text === '/7'){		
 		impianti();
 	
 	}
