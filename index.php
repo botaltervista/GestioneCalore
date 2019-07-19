@@ -44,14 +44,16 @@ else{
 	
 	//se viene inserita la parola /impianti
 	else if($text === '/7'){		
-		impianti();
+		$avviso = 'scelta del numero sette:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);		
 	
 	}
 	
 	
 	//se viene inserita la scelta /8
 	else if($text === '/8'){
-		//impianti();
+		
 		$avviso = 'Elenco degli impianti in servizio attualmente:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -158,10 +160,10 @@ else{
 		$message2 = " ";
 
 	}//fine else info ora
-?>	
+	
 	
 }//fine else principale
-
+?>
 
 
 //---------------------------------------------------------------------
