@@ -158,11 +158,15 @@ else{
 		$message2 = " ";
 
 	}//fine else info ora
-	
+?>	
 	
 }//fine else principale
 
-/* funzione per la stampa delle caldaie di un determinato impianto*/
+
+
+//---------------------------------------------------------------------
+/* 
+//funzione per la stampa delle caldaie di un determinato impianto
 function Caldaie($http_code, $response, $impianto) {
   if ($http_code == 200) {
 
@@ -227,8 +231,14 @@ function Caldaie($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function caldaie
+
+*/
+
+
 //---------------------------------------------------------------------
-/* funzione per la stampa denominazione impianto*/
+
+/* 
+//funzione per la stampa denominazione impianto
 function Impianti($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -272,9 +282,15 @@ function Impianti($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+
+*/
+
+
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
-/* funzione per la stampa del pronto intervento*/
+
+/* 
+//funzione per la stampa del pronto intervento
 function Pronto_Intervento($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -312,8 +328,14 @@ function Pronto_Intervento($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+
+*/
+
+
 //---------------------------------------------------------------------
-/* funzione per la stampa del pronto intervento*/
+
+/* 
+//funzione per la stampa del pronto intervento
 function Interventi($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -342,9 +364,14 @@ function Interventi($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+*/
+
+
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
-/* funzione per la stampa del pronto intervento*/
+
+/* 
+//funzione per la stampa del pronto intervento
 function Matricola_Contatore($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -367,9 +394,14 @@ function Matricola_Contatore($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+*/
+
+
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
-/* funzione per stampa delle ore ordinarie di funzionamento*/
+
+/* 
+//funzione per stampa delle ore ordinarie di funzionamento
 function Ore_Funzionamento($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -389,9 +421,15 @@ function Ore_Funzionamento($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+
+*/
+
 //---------------------------------------------------------------------
-//---------------------------------------------------------------------
-/* funzione per la stampa dei tipi di impianti*/
+
+/* 
+
+
+//funzione per la stampa dei tipi di impianti
 function Tipo_Impianti($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -415,9 +453,14 @@ function Tipo_Impianti($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+*/
+
 //---------------------------------------------------------------------
+
+/*
+
 //---------------------------------------------------------------------
-/* funzione per la stampa delle ultime letture dei cointatori*/
+//funzione per la stampa delle ultime letture dei cointatori
 function Ultima_Lettura($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -441,8 +484,12 @@ function Ultima_Lettura($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+
+*/
+
 //---------------------------------------------------------------------
-/* funzione per la stampa del consumo degli impianti*/
+/*
+//funzione per la stampa del consumo degli impianti
 function Consumi($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
@@ -466,8 +513,12 @@ function Consumi($http_code, $response, $impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
+*/
+
 //----
-/* funzione per la stampa dell'impianto scelto*/
+/*
+
+// funzione per la stampa dell'impianto scelto
 function Impianto_Scelto($http_code,$response,$impianto) {
   if ($http_code == 200) {
 	  //--------------------------------------
@@ -483,7 +534,7 @@ function Impianto_Scelto($http_code,$response,$impianto) {
 	 //richiama la funzione passando l'impiando desiderato
      Impianti($http_code,$response,$impianto);
      
-     /*
+     
 	 //****************************************** 
      //risposta HTTP ok
      $data = json_decode($response, true);
@@ -504,7 +555,7 @@ function Impianto_Scelto($http_code,$response,$impianto) {
      
      //*******************************************
      
-     */
+    
      
   } else {
       //se ritorna un codice di errore dalla richiesta HTTP
@@ -513,9 +564,9 @@ function Impianto_Scelto($http_code,$response,$impianto) {
 }    //end function
 //----
 
+ */
 
 
-?>
 
 
 
