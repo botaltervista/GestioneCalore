@@ -55,10 +55,67 @@ else{
 		$avviso = '/K092    /K093    /K094    /K095    /K096    /K097    /K098    /K099    /K100    /K101    /K102    /K105    /K274    /K280    /K284    /K285    /K287    /K293    /K301    /K310    /K311    /K312    /K313    /K314    /K315';	      
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/K316    /K317    /K318    /K324';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);	   
-			      		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);	  
+		
+		
+                //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+		
+   		$data = json_decode($response, true);
+     		
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        		
+		//Anno installazione della caldaia
+      		 $info1="/".$info['Anno_Installazione'];
+		
+      		 //Anno di costruzione della caldaia
+      		 $info2="/".$info['Anno_Targa'];
+       
+      		 //Marca della caldaia
+      		 $info3="/".$info['Marca_Caldaia'];
+       
+      		 //Matricola nella targhetta
+      		 $info4="/".$info['Matricola_Bruciatore'];
+       
+     		  //Matricola della caldaia
+      		 $info5="/".$info['Matricola_Caldaia'];
+       
+      		 //Modello della caldaia
+      		 $info6="/".$info['Modello'];
+       
+      		 //Numero della chiamata
+      		 $info7="/".$info['Pot_Focolare'];
+       
+       
+      		 //Potenza utile presente nella targhetta
+      		 $info8="/".$info['Pot_Utile'];
+		
+      		 //Numero della caldaia in questione
+      		 $info9="/".$info['caldaia_numero'];
+       
+      		 //codice dell'impianto
+      		 $info10="/".$info['cod_impianto'];
+			
+		if($text === '/K003'){
+		    //salva i dati delle variabili dentro il array
+      		    $datos[0][0][0][0][0][0][0][0][0][0] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5"." ". "$info6"." "."$info7"." "."$info8"." "."$info9"." "."$info10";
+       
+		}
+       		 
+		 
+		}//fine foreach		      		
 	
-	}
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
+			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
+		
+	}//fine elseif /7
 	
 	
 	//se viene inserita la scelta /8
@@ -81,7 +138,6 @@ else{
    		$data = json_decode($response, true);
      
     	 	foreach ($data as $info) { 
-        		//stampa il codice dell'impianto
 	     
         		//salva il codice dell'impianto        
         		$info1="/".$info['cod_impianto'];
@@ -91,12 +147,17 @@ else{
        
        			//salva la data contratto
       	      	        $info3=$info['Contratto'];
-        
+        		
+			//salva i dati delle variabili nel array
       	      	        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
-        
+        		
+			//variabile di controllo per il indice del array
 			$controllo = $controllo + 1;
+			
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
-		}
+			
+		}//fine foreach
+		
 	  	$controllo = $controllo - 1;
 		$indice = 1;
    		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
@@ -179,9 +240,6 @@ else{
 //---------------------------------------------------------------------
 /* 
 
-
-
-
 '/K001   /K002   /K003   /K004   /K005   
 /K006   /K007   /K008   /K009   /K010
 /K011   /K012   /K014   /K015
@@ -205,9 +263,6 @@ else{
 /K315   /K316   /K317   /K318   /K324';
 
 
-
-
-
 //funzione per la stampa delle caldaie di un determinato impianto
 function Caldaie($http_code, $response, $impianto) {
   if ($http_code == 200) {
@@ -221,7 +276,7 @@ function Caldaie($http_code, $response, $impianto) {
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 	   
-	   
+	   $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
 	   
        //Anno installazione della caldaia
        $info1="/".$info['Anno_Installazione'];
@@ -604,11 +659,188 @@ function Impianto_Scelto($http_code,$response,$impianto) {
       echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
   }    //end if-else
 }    //end function
-//----
+//------------------------------------------------------------------------------------------------------------------------
 
  */
 
-
+if ($first_ch === 1) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Caldaie($http_code,$response,$impianto);
+    //fine scelta 1
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 2) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Interventi.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Interventi($http_code,$response,$impianto);
+    //fine scelta 2
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 3) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Matricola_Contatore($http_code,$response,$impianto);
+    //fine scelta 3
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 4) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ore_Funzionamento.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Ore_Funzionamento($http_code,$response,$impianto);
+    //fine scelta 4
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 5) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Tipo_Impianti($http_code,$response,$impianto);
+    //fine scelta 5
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 6) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ultima_Lettura.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Ultima_Lettura($http_code,$response,$impianto);
+    //fine scelta 6
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 7) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/consumi_2000_2012.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Consumi($http_code,$response,$impianto);
+    //fine scelta 7
+  //----------------------------------------------
+  }
+    elseif ($first_ch === 8) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Impianti($http_code,$response,$impianto);
+    //fine scelta 8
+  //----------------------------------------------
+  } 
+  //----------------------------------------------
+  
+    elseif ($first_ch === 9) {
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Pronto_Intervento.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per stampare la descrizione dei pronti intervento
+    Pronto_Intervento($http_code,$response,$impianto);
+    //fine scelta 9
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 10) {      
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Impianto_Scelto($http_code,$response,$impianto);    
+    
+    
+    //fine scelta 10
+  //----------------------------------------------
+  } 
+    elseif ($first_ch === 11) {      
+    
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
+    
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //funzione per la stampa degli impianti
+    Info_Impianti($http_code,$response,$impianto);    
+    
+    
+    //fine scelta 10
+  //----------------------------------------------
+  } 
+ 
+  
+    elseif ($first_ch === 12) {
+    $close_client = 0;    //chiusura delclient
+    echo "\n\nTerminazione corretta del client, arrivederci !\n\n";
+    exit;    //terminazione del programma
+  } 
 
 
 
