@@ -104,11 +104,11 @@ else{
       		 $info10="/".$info['cod_impianto'];
 			
 		if($text === '/K003'){
-		    //salva i dati delle variabili dentro il array
+		   
+		}
+       		  //salva i dati delle variabili dentro il array
       		    $datos[0][0][0][0][0][0][0][0][0][0] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5"." ". "$info6"." "."$info7"." "."$info8"." "."$info9"." "."$info10";
        
-		}
-       		 
 		 
 		}//fine foreach		      		
 	
