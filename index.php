@@ -2,7 +2,7 @@
 // pdgt-esercitazione-heroku
 //require 'functions.php';  //inclusione delle funzioni
 require 'curl-lib.php';
-$controllo = 0;
+$cn = 0;
 
 
 
@@ -101,14 +101,14 @@ else{
       		 $info9="/".$info['caldaia_numero'];
        
       		 //codice dell'impianto
-      		 $info10="/".$info['cod_impianto'];
-			
-		if($text === '/K003'){
-		   
-		}
-       		  //salva i dati delle variabili dentro il array
-      		    $datos[0][0][0][0][0][0][0][0][0][0] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5"." ". "$info6"." "."$info7"." "."$info8"." "."$info9"." "."$info10";
+      		 $info10="/".$info['cod_impianto'];	
+		
+		 //salva i dati delle variabili dentro il array
+      		 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5"." ". "$info6"." "."$info7"." "."$info8"." "."$info9"." "."$info10";
        
+		
+		 //variabile di controllo per il indice del array
+		 $cn = $cn + 1;
 		 
 		}//fine foreach		      		
 	
@@ -149,18 +149,18 @@ else{
       	      	        $info3=$info['Contratto'];
         		
 			//salva i dati delle variabili nel array
-      	      	        $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
+      	      	        $datos[$cn][$cn][$cn] = "$info1"." ". "$info2"." "."$info3";
         		
 			//variabile di controllo per il indice del array
-			$controllo = $controllo + 1;
+			$cn = $cn + 1;
 			
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
 			
 		}//fine foreach
 		
-	  	$controllo = $controllo - 1;
+	  	$cn = $cn - 1;
 		$indice = 1;
-   		for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
+   		for($xx = 0; $xx <= $cn; $xx = $xx + 1){
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $indice + 1;
 		}
