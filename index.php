@@ -43,30 +43,20 @@ else{
 	}
 	
 	//se viene inserita la parola /impianti
-	else if($text === '/7'){		
-		$avviso = '/K001   /K002   /K003   /K004   /K005   
-			   /K006   /K007   /K008   /K009   /K010
-			   /K011   /K012   /K014   /K015   /K016
-			   /K017   /K018   /K019   /K020   /K021   
-			   /K022   /K023   /K024   /K025   /K026
-			   /K027   /K028   /K029   /K036   /K037   
-			   /K038   /K039   /K040   /K041   /K043   
-			   /K046   /K047   /K049   /K050   /K051   
-			   /K052   /K053   /K054   /K055   /K057   
-			   /K058   /K059   /K060   /K061   /K062   
-			   /K063   /K065   /K066   /K067   /K068   
-			   /K069   /K070   /K071   /K072   /K073   
-			   /K074   /K076   /K078   /K079   /K081   
-			   /K082   /K083   /K084   /K085   /K086   
-			   /K087   /K088   /K089   /K090   /K091   
-			   /K092   /K093   /K094   /K095   /K096   
-			   /K097   /K098   /K099   /K100   /K101   
-			   /K102   /K105   /K274   /K280   /K284   
-			   /K285   /K287   /K293   /K301   /K310   
-			   /K311   /K312   /K313   /K314   /K315   
-			   /K316   /K317   /K318   /K324';
-		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);		
+	else if($text === '/7'){
+		$avviso = 'Selezionare impianto da consultare';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		$avviso = '/K001   /K002   /K003   /K004   /K005   /K006   /K007   /K008   /K009   /K010   /K011   /K012   /K014   /K015   /K016   /K017   /K018   /K019   /K020   /K021   /K022   /K023   /K024   /K025   /K026'; 
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		$avviso = '/K027   /K028   /K029   /K036   /K037   /K038   /K039   /K040   /K041   /K043   /K046   /K047   /K049   /K050   /K051   /K052   /K053   /K054   /K055   /K057   /K058   /K059   /K060   /K061   /K062';	   
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		$avviso = '/K063   /K065   /K066   /K067   /K068   /K069   /K070   /K071   /K072   /K073   /K074   /K076   /K078   /K079   /K081   /K082   /K083   /K084   /K085   /K086   /K087   /K088   /K089   /K090   /K091';   	   
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		$avviso = '/K092   /K093   /K094   /K095   /K096   /K097   /K098   /K099   /K100   /K101   /K102   /K105   /K274   /K280   /K284   /K285   /K287   /K293   /K301   /K310   /K311   /K312   /K313   /K314   /K315';	      
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		$avviso = '/K316   /K317   /K318   /K324';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);	   
+			      		
 	
 	}
 	
