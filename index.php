@@ -102,6 +102,8 @@ else{
        
       		 //codice dell'impianto
       		 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
+			
+		 $info10 = str_replace("/", "", $info10);
 		
 		 //salva i dati delle variabili dentro il array
       		 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
