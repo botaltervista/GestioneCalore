@@ -43,7 +43,7 @@ else{
 	}
 	
 	//se viene inserita la parola /impianti
-	else if($text === '/7' || $controllo === 1){
+	else if(($text === '/7') || ($controllo === 1)){
 	   if($text === '/7'){
 	   	$avviso = 'Selezionare impianto da consultare';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
