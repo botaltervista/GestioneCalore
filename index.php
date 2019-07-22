@@ -47,19 +47,39 @@ else{
 	   if($text === '/7'){
 	   	$avviso = 'Selezionare impianto da consultare';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/K001    /K002    /K003    /K004    /K005    /K006    /K007    /K008    /K009    /K010    /K011    /K012    /K014    /K015    /K016    /K017    /K018    /K019    /K020    /K021    /K022    /K023    /K024    /K025    /K026'; 
+		$avviso = '/7K001    /7K002    /7K003    /7K004    /7K005    /7K006    /7K007    /7K008    /7K009    /7K010    /7K011    /7K012    /7K014    /7K015    /7K016    /7K017    /7K018    /7K019    /7K020    /7K021    /7K022    /7K023    /7K024    /7K025    /7K026'; 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/K027    /K028    /K029    /K036    /K037    /K038    /K039    /K040    /K041    /K043    /K046    /K047    /K049    /K050    /K051    /K052    /K053    /K054    /K055    /K057    /K058    /K059    /K060    /K061    /K062';	   
+		$avviso = '/7K027    /7K028    /7K029    /7K036    /7K037    /7K038    /7K039    /7K040    /7K041    /7K043    /7K046    /7K047    /7K049    /7K050    /7K051    /7K052    /7K053    /7K054    /7K055    /7K057    /7K058    /7K059    /7K060    /7K061    /7K062';	   
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/K063    /K065    /K066    /K067    /K068    /K069    /K070    /K071    /K072    /K073    /K074    /K076    /K078    /K079    /K081    /K082    /K083    /K084    /K085    /K086    /K087    /K088    /K089    /K090    /K091';   	   
+		$avviso = '/7K063    /7K065    /7K066    /7K067    7/K068    /7K069    /7K070    /7K071    /7K072    /7K073    /7K074    /7K076    /7K078    /7K079    /K7081    /7K082    /7K083    /7K084    /7K085    /7K086    /7K087    /7K088    /7K089    /7K090    /7K091';   	   
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/K092    /K093    /K094    /K095    /K096    /K097    /K098    /K099    /K100    /K101    /K102    /K105    /K274    /K280    /K284    /K285    /K287    /K293    /K301    /K310    /K311    /K312    /K313    /K314    /K315';	      
+		$avviso = '/7K092    /7K093    /7K094    /K7095    /7K096    /7K097    /7K098    /7K099    /7K100    /7K101    /7K102    /7K105    /7K274    /7K280    /7K284    /7K285    /7K287    /7K293    /7K301    /7K310    /7K311    /7K312    /7K313    /7K314    /7K315';	      
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/K316    /K317    /K318    /K324';
+		$avviso = '/7K316    /7K317    /7K318    /7K324';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$controllo7 = 1;
-	  	 }
+	  	 
+	   
+	  /* }
+		
+		
 	   elseif($controllo7 === 1){
+	*/	   
+		   
+		   
+		   /*
+		       <?php  
+    $stringa = 'miniscript';  
+      
+    $sub1 = substr($stringa, 3); // otteniamo 'script' (esclude i primi 4)  
+    $sub2 = substr($stringa, 0, 3); // otteniamo 'mini' (parte dal primo fino al 4°)  
+    $sub3 = substr($stringa, 2, -1); // otteniamo 'niscrip' (parte dal 3° ed arriva fino al penultimo)  
+    ?>  
+		   
+		   */
+		   
+		   
+		   
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		//richiesta della risposta HTTP come stringa
@@ -106,7 +126,7 @@ else{
       			 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
 			
 			if($text === $info10){
-				 $info10 = str_replace("/", "", $info10);
+				 $info10 = str_replace("/7", "", $info10);
 				 //salva i dati delle variabili dentro il array
       				 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
        				 $controllo = 0;
