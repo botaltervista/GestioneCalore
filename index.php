@@ -58,7 +58,7 @@ else{
 		$avviso = '/K316    /K317    /K318    /K324';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$controllo7 = 1;
-	   }
+	  	 }
 	   elseif($controllo === 1){
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
@@ -68,59 +68,61 @@ else{
     		$response = curl_exec($handle);
     		//estrazione del codice di risposta (HTTP status)
     		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
-		
+	
    		$data = json_decode($response, true);
      		
 		//salva i dati delle caldaie nelle variabili
     	 	foreach ($data as $info) { 
-        		
-		//Anno installazione della caldaia
-      		 $info1="Anno installazione: ".$info['Anno_Installazione'];
-		
-      		 //Anno di costruzione della caldaia
-      		 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
-       
-      		 //Marca della caldaia
-      		 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
-       
-      		 //Matricola nella targhetta
-      		 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
-       
-     		  //Matricola della caldaia
-      		 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
-       
-      		 //Modello della caldaia
-      		 $info6="  -Modello Caldaia ".$info['Modello'];
-       
-      		 //potenza al focolare
-      		 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
-       
-       
-      		 //Potenza utile presente nella targhetta
-      		 $info8="  _Potenza Utile: ".$info['Pot_Utile'];
-		
-      		 //Numero della caldaia in questione
-      		 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
-       
-      		 //codice dell'impianto
-      		 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
+        			
+			//Anno installazione della caldaia
+      			 $info1="Anno installazione: ".$info['Anno_Installazione'];
 			
-		if($text === $info10){
-			 $info10 = str_replace("/", "", $info10);
-			 //salva i dati delle variabili dentro il array
-      			 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
-       			 $controllo = 0;
-		}//fine if selezione impianto	
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 		$info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  _Potenza Utile: ".$info['Pot_Utile'];
 		
-	   	}//fine if controllo === 1
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
+			
+			if($text === $info10){
+				 $info10 = str_replace("/", "", $info10);
+				 //salva i dati delle variabili dentro il array
+      				 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
+       				 $controllo = 0;
+				}//fine if text == info10	
+		
+	   		}//fine if controllo === 1
+		   
+		  http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
+			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje"); 
 			  
 		}//fine foreach		      		
 	
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
-			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
-	   else{
+		
+	   else{  //$text a 7 per ripettere il ciclo
 		   $text = '/7';	   
-	   }
+	   	}
 	}//fine elseif /7
 	
 	
