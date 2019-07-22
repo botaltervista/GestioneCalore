@@ -3,7 +3,7 @@
 //require 'functions.php';  //inclusione delle funzioni
 require 'curl-lib.php';
 $cn = 0;
-
+$controllo7 = 0;
 
 
 //per gestire corpo richiesta, si legge il contenuto della richiesta
@@ -43,8 +43,9 @@ else{
 	}
 	
 	//se viene inserita la parola /impianti
-	else if($text === '/7'){
-		$avviso = 'Selezionare impianto da consultare';
+	else if($text === '/7' || $controllo === 1){
+	   if($text === '/7'){
+	   	$avviso = 'Selezionare impianto da consultare';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/K001    /K002    /K003    /K004    /K005    /K006    /K007    /K008    /K009    /K010    /K011    /K012    /K014    /K015    /K016    /K017    /K018    /K019    /K020    /K021    /K022    /K023    /K024    /K025    /K026'; 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -55,10 +56,11 @@ else{
 		$avviso = '/K092    /K093    /K094    /K095    /K096    /K097    /K098    /K099    /K100    /K101    /K102    /K105    /K274    /K280    /K284    /K285    /K287    /K293    /K301    /K310    /K311    /K312    /K313    /K314    /K315';	      
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/K316    /K317    /K318    /K324';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);	  
-		
-		
-                //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		$controllo7 = 1;
+	   }
+	   elseif($controllo === 1){
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
@@ -103,20 +105,22 @@ else{
       		 //codice dell'impianto
       		 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
 			
-		 $info10 = str_replace("/", "", $info10);
+		if($text === $info10){
+			 $info10 = str_replace("/", "", $info10);
+			 //salva i dati delle variabili dentro il array
+      			 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
+       			 $controllo = 0;
+		}//fine if selezione impianto	
 		
-		 //salva i dati delle variabili dentro il array
-      		 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
-       
-		
-		 //variabile di controllo per il indice del array
-		 $cn = $cn + 1;
-		 
+	   	}//fine if controllo === 1
+			  
 		}//fine foreach		      		
 	
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
-		
+	   else{
+		   $text = '/7';	   
+	   }
 	}//fine elseif /7
 	
 	
