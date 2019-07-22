@@ -59,7 +59,7 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$controllo7 = 1;
 	  	 }
-	   elseif($controllo === 1){
+	   elseif($controllo7 === 1){
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		//richiesta della risposta HTTP come stringa
