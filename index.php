@@ -73,38 +73,38 @@ else{
     	 	foreach ($data as $info) { 
         		
 		//Anno installazione della caldaia
-      		 $info1="/".$info['Anno_Installazione'];
+      		 $info1="Anno installazione: ".$info['Anno_Installazione'];
 		
       		 //Anno di costruzione della caldaia
-      		 $info2="/".$info['Anno_Targa'];
+      		 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
        
       		 //Marca della caldaia
-      		 $info3="/".$info['Marca_Caldaia'];
+      		 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
        
       		 //Matricola nella targhetta
-      		 $info4="/".$info['Matricola_Bruciatore'];
+      		 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
        
      		  //Matricola della caldaia
-      		 $info5="/".$info['Matricola_Caldaia'];
+      		 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
        
       		 //Modello della caldaia
-      		 $info6="/".$info['Modello'];
+      		 $info6="  -Modello Caldaia ".$info['Modello'];
        
-      		 //Numero della chiamata
-      		 $info7="/".$info['Pot_Focolare'];
+      		 //potenza al focolare
+      		 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
        
        
       		 //Potenza utile presente nella targhetta
-      		 $info8="/".$info['Pot_Utile'];
+      		 $info8="  _Potenza Utile: ".$info['Pot_Utile'];
 		
       		 //Numero della caldaia in questione
-      		 $info9="/".$info['caldaia_numero'];
+      		 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
        
       		 //codice dell'impianto
-      		 $info10="/".$info['cod_impianto'];	
+      		 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
 		
 		 //salva i dati delle variabili dentro il array
-      		 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5"." ". "$info6"." "."$info7"." "."$info8"." "."$info9"." "."$info10";
+      		 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
        
 		
 		 //variabile di controllo per il indice del array
