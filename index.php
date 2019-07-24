@@ -120,6 +120,10 @@ else{
 			
 			 $info10 = str_replace("/7", "", $info10);
 
+			if($scelta === 'K011'){
+				$avviso = 'impianto trovato';
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$scelta);
+			}
 			
 		         //salva i dati delle variabili dentro il array
       			 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
