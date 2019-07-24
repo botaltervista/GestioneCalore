@@ -130,6 +130,9 @@ else{
 			
 	   		}//fine foreach
 		  
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn;
+		
    		for($xx = 0; $xx <= $cn; $xx = $xx + 1){
 				if($scelta === $datos[$xx]){
 					$avviso = 'impianto trovato';
