@@ -68,8 +68,6 @@ else{
     		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 	
    		$data = json_decode($response, true);
-     		
-		   $text = 'K010';
 		   
 		//salva i dati delle caldaie nelle variabili
     	 	foreach ($data as $info) { 
@@ -81,7 +79,7 @@ else{
       			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
        
       			 //Marca della caldaia
-      		 		$info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
        
       			 //Matricola nella targhetta
       			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
@@ -97,7 +95,7 @@ else{
        	
        	
       			 //Potenza utile presente nella targhetta
-      			 $info8="  _Potenza Utile: ".$info['Pot_Utile'];
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
 		
       			 //Numero della caldaia in questione
       			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
@@ -125,6 +123,14 @@ else{
 	   	}
 	}//fine elseif /7 o /7y
 	
+	//se viene inserita la scelta /8
+	else if(($imp = substr($text, 0, 2)) === '/7K'); // otteniamo 'mini' (parte dal primo fino al 4°)  ){ 
+		$avviso = 'selezione del impianto nel sette';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+	
+	}
+		
 	
 	//se viene inserita la scelta /8
 	else if($text === '/8'){
