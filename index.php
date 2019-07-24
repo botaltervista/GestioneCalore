@@ -45,17 +45,22 @@ else{
 	//se viene inserita la scelta /7
 	else if($text === '/7'){
 	   	$avviso = 'Selezionare impianto da consultare';
+		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/7K001    /7K002    /7K003    /7K004    /7K005    /7K006    /7K007    /7K008    /7K009    /7K010    /7K011    /7K012    /7K014    /7K015    /7K016    /7K017    /7K018    /7K019    /7K020    /7K021    /7K022    /7K023    /7K024    /7K025    /7K026'; 
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/7K027    /7K028    /7K029    /7K036    /7K037    /7K038    /7K039    /7K040    /7K041    /7K043    /7K046    /7K047    /7K049    /7K050    /7K051    /7K052    /7K053    /7K054    /7K055    /7K057    /7K058    /7K059    /7K060    /7K061    /7K062';	   
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/7K063    /7K065    /7K066    /7K067    /7K068    /7K069    /7K070    /7K071    /7K072    /7K073    /7K074    /7K076    /7K078    /7K079    /K7081    /7K082    /7K083    /7K084    /7K085    /7K086    /7K087    /7K088    /7K089    /7K090    /7K091';   	   
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/7K092    /7K093    /7K094    /K7095    /7K096    /7K097    /7K098    /7K099    /7K100    /7K101    /7K102    /7K105    /7K274    /7K280    /7K284    /7K285    /7K287    /7K293    /7K301    /7K310    /7K311    /7K312    /7K313    /7K314    /7K315';	      
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/7K316    /7K317    /7K318    /7K324';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = '/7K001    /7K002    /7K003    /7K004    /7K005    /7K006    /7K007    /7K008    /7K009    /7K010    /7K011    /7K012    /7K014    /7K015    /7K016    /7K017    /7K018    /7K019    /7K020    /7K021    /7K022    /7K023    /7K024    /7K025    /7K026'; 
+
+		$avviso2 = '/7K027    /7K028    /7K029    /7K036    /7K037    /7K038    /7K039    /7K040    /7K041    /7K043    /7K046    /7K047    /7K049    /7K050    /7K051    /7K052    /7K053    /7K054    /7K055    /7K057    /7K058    /7K059    /7K060    /7K061    /7K062';	   
+
+		$avviso3 = '/7K063    /7K065    /7K066    /7K067    /7K068    /7K069    /7K070    /7K071    /7K072    /7K073    /7K074    /7K076    /7K078    /7K079    /K7081    /7K082    /7K083    /7K084    /7K085    /7K086    /7K087    /7K088    /7K089    /7K090    /7K091';   	   
+
+		$avviso4 = '/7K092    /7K093    /7K094    /K7095    /7K096    /7K097    /7K098    /7K099    /7K100    /7K101    /7K102    /7K105    /7K274    /7K280    /7K284    /7K285    /7K287    /7K293    /7K301    /7K310    /7K311    /7K312    /7K313    /7K314    /7K315';	      
+
+		$avviso5 = '/7K316    /7K317    /7K318    /7K324';
+		
+		$mavviso6 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2);
 			  
 		}//fine if text === /7	      		
 	
@@ -83,7 +88,7 @@ else{
     	 	foreach ($data as $info) { 
         			
 			//Anno installazione della caldaia
-      			 $info1="Anno installazione: ".$info['Anno_Installazione'];
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
 			
       			 //Anno di costruzione della caldaia
       			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
