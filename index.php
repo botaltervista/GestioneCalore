@@ -120,7 +120,7 @@ else{
 				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso .$scelta);
 			}
 		         //salva i dati delle variabili dentro il array
-      			 $datos[0][0][0][0][0][0][0][0][0][0] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
+      			 $datos[0][0][0][0][0][0][0][0][0][0] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
 	
 		
 	   		}//fine foreach
