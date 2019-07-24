@@ -43,8 +43,7 @@ else{
 	}
 	
 	//se viene inserita la parola /impianti
-	else if(($text === '/7') || ($text === '/7y')){
-	   if($text === '/7'){
+	else if($text === '/7'){
 	   	$avviso = 'Selezionare impianto da consultare';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/7K001    /7K002    /7K003    /7K004    /7K005    /7K006    /7K007    /7K008    /7K009    /7K010    /7K011    /7K012    /7K014    /7K015    /7K016    /7K017    /7K018    /7K019    /7K020    /7K021    /7K022    /7K023    /7K024    /7K025    /7K026'; 
@@ -117,11 +116,7 @@ else{
 			  
 		}//fine if text === /7	      		
 	
-		
-	   else{  //$text a 7 per ripettere il ciclo
-		   $text = '/7';	   
-	   	}
-	}//fine elseif /7 o /7y
+
 	
 	//se viene inserita la scelta /8
 	else if(($imp = substr($text, 0, 2)) === '/7K'); // otteniamo 'mini' (parte dal primo fino al 4°)  ){ 
