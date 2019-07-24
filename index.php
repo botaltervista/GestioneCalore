@@ -60,7 +60,7 @@ else{
 		
 		$avviso6 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5;     
 
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso6);
 			  
 		}//fine if text === /7	      		
 	
