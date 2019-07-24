@@ -58,7 +58,7 @@ else{
 
 		$avviso5 = '/7K316    /7K317    /7K318    /7K324';
 		
-		$mavviso6 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5;     
+		$avviso6 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5;     
 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2);
 			  
