@@ -126,7 +126,7 @@ else{
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;	
 			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+			
 			
 	   		}//fine foreach
 		  
@@ -137,7 +137,7 @@ else{
 				}
 			
 			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
-			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
 		}
 		
 		  //http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
