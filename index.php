@@ -56,6 +56,13 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/7K316    /7K317    /7K318    /7K324';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+			  
+		}//fine if text === /7	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/7K'){
+		$avviso = 'scelta /7K';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		   
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
@@ -111,13 +118,8 @@ else{
 		   
 		  http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje"); 
-			  
-		}//fine if text === /7	      		
-	
-	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/7K'){
-			$avviso = 'scelta /7K';
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
 		}
 	
 	
