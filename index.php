@@ -51,34 +51,12 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/7K027    /7K028    /7K029    /7K036    /7K037    /7K038    /7K039    /7K040    /7K041    /7K043    /7K046    /7K047    /7K049    /7K050    /7K051    /7K052    /7K053    /7K054    /7K055    /7K057    /7K058    /7K059    /7K060    /7K061    /7K062';	   
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$avviso = '/7K063    /7K065    /7K066    /7K067    7/K068    /7K069    /7K070    /7K071    /7K072    /7K073    /7K074    /7K076    /7K078    /7K079    /K7081    /7K082    /7K083    /7K084    /7K085    /7K086    /7K087    /7K088    /7K089    /7K090    /7K091';   	   
+		$avviso = '/7K063    /7K065    /7K066    /7K067    /7K068    /7K069    /7K070    /7K071    /7K072    /7K073    /7K074    /7K076    /7K078    /7K079    /K7081    /7K082    /7K083    /7K084    /7K085    /7K086    /7K087    /7K088    /7K089    /7K090    /7K091';   	   
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/7K092    /7K093    /7K094    /K7095    /7K096    /7K097    /7K098    /7K099    /7K100    /7K101    /7K102    /7K105    /7K274    /7K280    /7K284    /7K285    /7K287    /7K293    /7K301    /7K310    /7K311    /7K312    /7K313    /7K314    /7K315';	      
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		$avviso = '/7K316    /7K317    /7K318    /7K324';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-		$controllo7 = 1;
-	  	 
-	   
-	  /* }
-		
-		
-	   elseif($controllo7 === 1){
-	*/	   
-		   
-		   
-		   /*
-		       <?php  
-    $stringa = 'miniscript';  
-      
-    $sub1 = substr($stringa, 3); // otteniamo 'script' (esclude i primi 4)  
-    $sub2 = substr($stringa, 0, 3); // otteniamo 'mini' (parte dal primo fino al 4°)  
-    $sub3 = substr($stringa, 2, -1); // otteniamo 'niscrip' (parte dal 3° ed arriva fino al penultimo)  
-    ?>  
-		   
-		   */
-		   
-		   
 		   
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
@@ -91,6 +69,8 @@ else{
 	
    		$data = json_decode($response, true);
      		
+		   $text = 'K010';
+		   
 		//salva i dati delle caldaie nelle variabili
     	 	foreach ($data as $info) { 
         			
@@ -132,18 +112,18 @@ else{
        				 $controllo = 0;
 				}//fine if text == info10	
 		
-	   		}//fine if controllo === 1
+	   		}//fine foreach
 		   
 		  http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje"); 
 			  
-		}//fine foreach		      		
+		}//fine if text === /7	      		
 	
 		
 	   else{  //$text a 7 per ripettere il ciclo
 		   $text = '/7';	   
 	   	}
-	}//fine elseif /7
+	}//fine elseif /7 o /7y
 	
 	
 	//se viene inserita la scelta /8
