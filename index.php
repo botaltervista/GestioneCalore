@@ -102,12 +102,10 @@ else{
       			 //codice dell'impianto
       			 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
 			
-			if($text === $info10){
-				 $info10 = str_replace("/7", "", $info10);
-				 //salva i dati delle variabili dentro il array
-      				 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
-       				 $controllo = 0;
-				}//fine if text == info10	
+			 $info10 = str_replace("/7", "", $info10);
+		         //salva i dati delle variabili dentro il array
+      			 $datos[0][0][0][0][0][0][0][0][0][0] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
+	
 		
 	   		}//fine foreach
 		   
@@ -116,16 +114,6 @@ else{
 			  
 		}//fine if text === /7	      		
 	
-
-	
-	//se viene inserita la scelta /8
-	else if(($imp = substr($text, 0, 2)) === '/7K'); // otteniamo 'mini' (parte dal primo fino al 4°)  ){ 
-		$avviso = 'selezione del impianto nel sette';
-		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-	
-	}
-		
 	
 	//se viene inserita la scelta /8
 	else if($text === '/8'){
@@ -174,7 +162,7 @@ else{
 			$indice = $indice + 1;
 		}
 		
-		}//fine if /impianti
+		}//fine if /8
 		
 	else if($text === '/menu'){
 		
