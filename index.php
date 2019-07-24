@@ -42,7 +42,7 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 	}
 	
-	//se viene inserita la parola /impianti
+	//se viene inserita la scelta /7
 	else if($text === '/7'){
 	   	$avviso = 'Selezionare impianto da consultare';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -113,6 +113,12 @@ else{
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje"); 
 			  
 		}//fine if text === /7	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/7K'){
+			$avviso = 'scelta /7K';
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		}
 	
 	
 	//se viene inserita la scelta /8
