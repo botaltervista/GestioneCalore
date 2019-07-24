@@ -65,7 +65,7 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
-		$scelta = substr($text, 2, 1);
+		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
@@ -114,6 +114,11 @@ else{
       			 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
 			
 			 $info10 = str_replace("/7", "", $info10);
+			
+			if($scelta === $info10){
+				$avviso = 'stampa impianto: ';
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso .$scelta);
+			}
 		         //salva i dati delle variabili dentro il array
       			 $datos[0][0][0][0][0][0][0][0][0][0] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9";
 	
