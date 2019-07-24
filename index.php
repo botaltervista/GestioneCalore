@@ -119,18 +119,23 @@ else{
       			 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
 			
 			 $info10 = str_replace("/7", "", $info10);
+
 			
-			if($scelta === $info10){
-				$avviso = 'stampa impianto: ';
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso .$scelta);
-			}
 		         //salva i dati delle variabili dentro il array
-      			 $datos[0][0][0][0][0][0][0][0][0][0] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
-	
+      			 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
+			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
 		
 	   		}//fine foreach
-		   
-		  http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
+		  
+   		for($xx = 0; $xx <= $cn; $xx = $xx + 1){
+			if(($datos[$xx]) === $scelta){
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+			}
+		}
+		
+		  //http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[0][0][0][0][0][0][0][0][0][0]);
 			//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje"); 
 		
 		
