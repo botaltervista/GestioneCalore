@@ -118,10 +118,10 @@ else{
       			 //codice dell'impianto
       			 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
 			
-			 $info10 = str_replace("/7", "", $info10);
+			 $info11 = str_replace("/7", "", $info10);
 			
 		         //salva i dati delle variabili dentro il array
-      			 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info10"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
+      			 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
 			
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;	
@@ -131,7 +131,7 @@ else{
 	   		}//fine foreach
 		  
 		$messaggio = 'numero di caldaie';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn]);
 		
    		for($xx = 0; $xx <= $cn; $xx = $xx + 1){
 				if($scelta === $datos[$xx]){
