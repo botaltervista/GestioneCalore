@@ -36,10 +36,34 @@ else{
 	//il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 	$token = getenv("BOTTOKEN");
 
-	if($text === '/start'){	
-		$avviso = 'Benvenuto nel servizio di messaggistica sulla Gestione Calore';
+	else if($text === '/menu'){
 		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		$messaggio1 = "/1  stampa i dettagli delle caldaie esistenti.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/2  stampa gli interventi effettuati negli impianti.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/3  stampa la matricola dei contatori gas.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/4  stampa le ore ordinarie di funzionamento.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/5  stampa il tipo di impianto e la denominazione.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+	  	$messaggio1 = "/6  stampa l'ultima lettura effettuata del contatore gas.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/7  stampa i consumi degli impianti.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/8  stampa l'elenco degli impianti in servizio.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/9  stampa pronto intervento.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/10  stampa dettagli di un determinato impianto.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/11  stampa tutti gli impianti.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+  		$messaggio1 = "/12  stampa impianto dettagliato.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+
+	
 	}
 	
 	//se viene inserita la scelta /7
@@ -198,36 +222,8 @@ else{
 		
 		}//fine if /8
 		
-	else if($text === '/menu'){
-		
-		$messaggio1 = "/1  stampa i dettagli delle caldaie esistenti.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/2  stampa gli interventi effettuati negli impianti.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/3  stampa la matricola dei contatori gas.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/4  stampa le ore ordinarie di funzionamento.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/5  stampa il tipo di impianto e la denominazione.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-	  	$messaggio1 = "/6  stampa l'ultima lettura effettuata del contatore gas.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/7  stampa i consumi degli impianti.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/8  stampa l'elenco degli impianti in servizio.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/9  stampa pronto intervento.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/10  stampa dettagli di un determinato impianto.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/11  stampa tutti gli impianti.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-  		$messaggio1 = "/12  stampa impianto dettagliato.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
-
 	
-	}	
-	else{
+	elseif($text === '/ora'){
 	     	//aggiunto da controllare funzionamento
 		$ora = date('H:i');
 		$giorno = date('d/m/Y');
@@ -261,8 +257,16 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2);	
 		$message2 = " ";
 
-	}//fine else info ora
-	
+	}//fine elseif info ora
+	else{	
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+	}//fine else	
 	
 }//fine else principale
 ?>
