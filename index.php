@@ -144,8 +144,11 @@ else{
 			
 			 $info11 = str_replace("/7", "", $info10);
 			
+			$info12 = $scelta;
+			
 		         //salva i dati delle variabili dentro il array
-      			 $datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"." ". "$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
+      			 //$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"." ". "$info12"." "."$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
+			$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
 			
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;	
