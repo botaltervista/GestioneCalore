@@ -169,52 +169,18 @@ else{
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
   			$xx = $xx + 1;
 		}//fine confronto impianti con foreach
-				
 		
-		  
-		$messaggio = 'numero di caldaie';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
 		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		/*
-   		for($xx = 0; $xx <= $cn; $xx = $xx + 1){
-				if($scelta == $datos[$xx]){
-					$avviso = 'impianto trovato';
-					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$scelta);
-				}
-			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
-			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
-		}//fine ciclo for stampa dati
-		*/
-
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 		
 		}//fine scelta /7K
 		
-		/*
-		
-		$var = 'prova';
-		$array = array('prova', 'prova1', 'prova', 'prova2', 'prova3');
-
-		foreach($array as $i => $a)
-		{
-  		if($a == $var) { echo "L'elemento {$i} è uguale a {$var}."; }
-  		else { echo "L'elemento {$i} non è uguale a {$var}."; }
-		} 
-		
-		
-		$var = 'prova';
-		$array = array('prova', 'prova1', 'prova', 'prova2', 'prova3');
-
-		if(in_array($var, $array))
-  		echo "L'array contiene un elemento che corrisponde a {$var}.";
-		else
- 		 echo "L'array non contiene elementi che corrispondono a {$var}."; 
-		
-		*/
-	
-	
 	//se viene inserita la scelta /8
 	else if($text === '/8'){
 		
