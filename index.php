@@ -140,15 +140,17 @@ else{
       			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
        	
       			 //codice dell'impianto
-      			 $info10="  -Codice Impianto: ".$info['cod_impianto'];	
+      			 $info10=$info['cod_impianto'];	
 			
 			 $info11 = str_replace("/7", "", $info10);
 			
 			 $info12 = $scelta;
 			
+			 $info13 = $  "-Codice Impianto: ".$info10;
+			
 		         //salva i dati delle variabili dentro il array
       			 //$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"." ". "$info12"." "."$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
-			$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
 			
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;	
