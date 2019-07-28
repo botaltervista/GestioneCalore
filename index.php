@@ -237,13 +237,13 @@ else{
     	 	foreach ($data as $info) { 
 	     
         		//salva il codice dell'impianto        
-        		$info1="/".$info['cod_impianto'];
+        		$info1=" ".$info['cod_impianto'];
 	     
 			//salva la descrizione dell'impianto
-       			$info2=$info['Id_Descrizione'];
+       			$info2=" ".$info['Id_Descrizione'];
        
        			//salva la data contratto
-      	      	        $info3=$info['Contratto'];
+      	      	        $info3=" ".$info['Contratto'];
         		
 			//salva i dati delle variabili nel array
       	      	        $datos[$cn][$cn][$cn] = "$info1"." ". "$info2"." "."$info3";
@@ -265,16 +265,20 @@ else{
 		*/
 		$ct = 0;
 		
+		
 		foreach($datos as $elemento){
 			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$ct][$ct][$ct]);
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$ct][$ct][$ct]);
 			$ct = $ct + 1;
+			if($ct === $cn){
+				$ct = " ";
+			}
 			//endforeach;
 		}//fine foreach datos as elemento
 		//endforeach;
+		
 		}//fine if /8
 		
-	
 	elseif($text === '/ora'){
 	     	//aggiunto da controllare funzionamento
 		$ora = date('H:i');
