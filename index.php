@@ -255,8 +255,8 @@ else{
 			
 		}//fine foreach
 		
-	  	$cn = $cn - 1;
-		$indice = 1;
+	  	//$cn = $cn - 1;
+		//$indice = 1;
 		/*
    		for($xx = 0; $xx <= $cn; $xx = $xx + 1){
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
@@ -264,12 +264,13 @@ else{
 		}//fine for stampa impianti
 		*/
 		$ct = 0;
-		
+		$indice = 1;
 		
 		foreach($datos as $elemento){
 			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$ct][$ct][$ct]);
 			$ct = $ct + 1;
+			$indice = $ct;
 			if($ct === $cn){
 				$ct = " ";
 			}
