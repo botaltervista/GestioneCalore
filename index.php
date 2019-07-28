@@ -162,7 +162,7 @@ else{
 		
 		$xx = 0;
 		foreach($datos as $sequenza){
-  			if($sequenza === $scelta) {
+  			if($datos[$xx] === $scelta) {
 				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
 			
 			}//fine if datos == sequenza
