@@ -153,7 +153,7 @@ else{
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;	
 			
-			if($info11 === $info12){
+			if($info11 == $info12){
 				$messaggio = 'numero di caldaie presenti e numero impianto';
 				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
 		
