@@ -269,7 +269,7 @@ else{
 			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$ct][$ct][$ct]);
 			$ct = $ct + 1;
-			endforeach;
+			//endforeach;
 		}//fine foreach datos as elemento
 		//endforeach;
 		}//fine if /8
