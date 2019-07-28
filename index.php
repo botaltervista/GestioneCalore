@@ -263,8 +263,13 @@ else{
 			$indice = $indice + 1;
 		}//fine for stampa impianti
 		*/
+		$ct = 0;
+		
 		foreach($datos as $elemento){
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$elemento);
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$ct][$ct][$ct]);
+			$ct = $ct + 1;
+		
 		}//fine foreach datos as elemento
 		
 		}//fine if /8
