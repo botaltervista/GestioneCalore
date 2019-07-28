@@ -49,7 +49,8 @@ else{
   		$messaggio1 = "/5  stampa il tipo di impianto e la denominazione.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 	  	$messaggio1 = "/6  stampa l'ultima lettura effettuata del contatore gas.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id
+."&text=".$messaggio1);
   		$messaggio1 = "/7  stampa i consumi degli impianti.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
   		$messaggio1 = "/8  stampa l'elenco degli impianti in servizio.";
@@ -162,10 +163,7 @@ else{
 		
 		$xx = 0;
 		foreach($datos as $sequenza){
-  			if($sequenza[$xx] === $scelta) {
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$sequenza[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
-			
-			}//fine if datos == sequenza
+  			
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$sequenza[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
   			$xx = $xx + 1;
 		}//fine confronto impianti con foreach
