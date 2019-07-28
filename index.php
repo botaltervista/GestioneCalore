@@ -271,7 +271,7 @@ else{
 			$ct = $ct + 1;
 			endforeach;
 		}//fine foreach datos as elemento
-		endforeach;
+		//endforeach;
 		}//fine if /8
 		
 	
