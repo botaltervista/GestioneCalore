@@ -160,6 +160,20 @@ else{
 			}
 				
 	   		}//fine foreach
+		
+		foreach($datos as $i => $a){
+  			if($a === $scelta) {
+				$messaggio = 'numero di caldaie e tipo variabile';
+				$s = gettype($a);
+				$r = gettype($scelta);
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio."  ".$a."  ".$s."  ".$r."  ".$scelta);
+
+			
+			}//fine if a == scelta
+  		
+		}//fine confronto impianti con foreach
+				
+		
 		  
 		$messaggio = 'numero di caldaie';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
@@ -174,18 +188,7 @@ else{
 			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
 		}//fine ciclo for stampa dati
 
-		foreach($datos as $i => $a){
-  			if($a === $scelta) {
-				$messaggio = 'numero di caldaie e tipo variabile';
-				$s = gettype($a);
-				$r = gettype($scelta);
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio."  ".$a."  ".$s."  ".$r."  ".$scelta);
 
-			
-			}//fine if a == scelta
-  		
-		}//fine confronto impianti con foreach
-		
 		
 		
 		}//fine scelta /7K
