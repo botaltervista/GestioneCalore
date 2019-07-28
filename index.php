@@ -132,7 +132,6 @@ else{
       		 	//potenza al focolare
       			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
        	
-       	
       			 //Potenza utile presente nella targhetta
       			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
 		
@@ -144,7 +143,7 @@ else{
 			
 			 $info11 = str_replace("/7", "", $info10);
 			
-			$info12 = $scelta;
+			 $info12 = $scelta;
 			
 		         //salva i dati delle variabili dentro il array
       			 //$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"." ". "$info12"." "."$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
@@ -258,10 +257,15 @@ else{
 		
 	  	$cn = $cn - 1;
 		$indice = 1;
+		/*
    		for($xx = 0; $xx <= $cn; $xx = $xx + 1){
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
 			$indice = $indice + 1;
-		}
+		}//fine for stampa impianti
+		*/
+		foreach($datos as $elemento){
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$elemento);
+		}//fine foreach datos as elemento
 		
 		}//fine if /8
 		
