@@ -146,7 +146,7 @@ else{
 			
 			 $info12 = $scelta;
 			
-			 $info13 = $  "-Codice Impianto: ".$info10;
+			 $info13 = "-Codice Impianto: ".$info10;
 			
 		         //salva i dati delle variabili dentro il array
       			 //$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"." ". "$info12"." "."$info1"." "."$info2"." ". "$info3"." "."$info4"." ". "$info5"." "."$info6"." "."$info7"." "."$info8"." "."$info9"."$scelta";
@@ -155,7 +155,7 @@ else{
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;	
 			
-			if($info11 == $info12){
+			if($info10 == $info12){
 				$messaggio = 'numero di caldaie presenti e numero impianto';
 				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
 		
