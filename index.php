@@ -103,7 +103,8 @@ else{
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;
 			
-
+		
+		}//fine foreach data as info
 		$ct = 0;
 		$indice = 1;
 		
@@ -117,7 +118,7 @@ else{
 			}//fine if ct === cn
 		}//fine foreach datos as elemento
 
-	   }//fine foreach data as info
+	  
 	}//fine if /1
 	
 	//se viene inserita la scelta /2
