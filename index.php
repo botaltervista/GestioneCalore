@@ -66,8 +66,8 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
   		
 	}
-	/*
-	//se viene inserita la scelta /8
+	
+	//se viene inserita la scelta /1
 	else if($text === '/1'){
 		
 		$avviso = 'Elenco e denominazione degli impianti in servizio attualmente:';
@@ -114,12 +114,11 @@ else{
 			$indice = $indice + 1;
 			if($ct === $cn){
 				$ct = " ";
-			}
+			}//fine if ct === cn
 		}//fine foreach datos as elemento
 
-		
-		}//fine if /1
-	*/
+	   }//fine foreach data as info
+	}//fine if /1
 	
 	//se viene inserita la scelta /2
 	else if($text === '/2'){
