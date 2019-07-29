@@ -35,7 +35,8 @@ else{
 	//$token = "qui si metterebbe il token telegram ma non è sicuro";$tastiera
 	//il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 	$token = getenv("BOTTOKEN");
-
+	
+	/*
 	if($text === '/menu'){
 		$messaggio1 = " /1   Visualizza il tipo di impianti e la denominazione.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
@@ -65,9 +66,9 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
   		
 	}
-	
+	*/
 		//se viene inserita la scelta /8
-	else if($text === '/1'){
+	if($text === '/1'){
 		
 		$avviso = 'Elenco e denominazione degli impianti in servizio attualmente:';
 		
