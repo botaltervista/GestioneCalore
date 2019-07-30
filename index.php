@@ -127,23 +127,23 @@ else{
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		$avviso1 = ' /7K001     /7K002     /7K003     /7K004     /7K005     /7K006     /7K007     /7K008     /7K009     /7K010     /7K011     /7K012     /7K014';
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
 		
-		$avviso2 = ' /7K015     /7K016     /7K017     /7K018     /7K019     /7K020     /7K021     /7K022     /7K023     /7K024     /7K025     /7K026';
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
 
-		$avviso3 = ' /7K050     /7K051     /7K052     /7K053     /7K054     /7K055     /7K057     /7K058     /7K059     /7K060     /7K061     /7K062';
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
 		
-		$avviso4 = ' /7K027     /7K028     /7K029     /7K036     /7K037     /7K038     /7K039     /7K040     /7K041     /7K043     /7K046     /7K047     /7K049';
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
 
-		$avviso5 = ' /7K063     /7K065     /7K066     /7K067     /7K068     /7K069     /7K070     /7K071     /7K072     /7K073     /7K074     /7K076     /7K078';
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
 		
-		$avviso6 = ' /7K079     /K7081     /7K082     /7K083     /7K084     /7K085     /7K086     /7K087     /7K088     /7K089     /7K090     /7K091';
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
 
-		$avviso7 = ' /7K092     /7K093     /7K094     /K7095     /7K096     /7K097     /7K098     /7K099     /7K100     /7K101     /7K102     /7K105     /7K274';
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
 		
-		$avviso8 = ' /7K280     /7K284     /7K285     /7K287     /7K293     /7K301     /7K310     /7K311     /7K312     /7K313     /7K314     /7K315';
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
 
-		$avviso9 = ' /7K316     /7K317     /7K318     /7K324';
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
 		
 		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
 
@@ -152,9 +152,647 @@ else{
 		}//fine if text === /2	      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/7K'){
-		$avviso = 'scelta /7K';
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+	
+   		$data = json_decode($response, true);
+		   
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        			
+			//Anno installazione della caldaia
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
+			
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
+		
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10=$info['cod_impianto'];	
+			
+			 $info11 = str_replace("/7", "", $info10);
+			
+			 $info12 = $scelta;
+			
+			 $info13 = "-Codice Impianto: ".$info10;
+			
+			if($info10 == $info12){
+				//$messaggio = 'numero di caldaie presenti e numero impianto';
+				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
+		
+		        	 //salva i dati delle variabili dentro il array
+				//$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			}			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
+			
+
+				
+	   		}//fine foreach
+		
+		$xx = 0;
+		foreach($datos as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
+		}//fine scelta /2K
+		
+
+	
+		//se viene inserita la scelta /2
+	else if($text === '/3'){
+	   	$avviso = 'Selezionare impianto da consultare';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /2	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+	
+   		$data = json_decode($response, true);
+		   
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        			
+			//Anno installazione della caldaia
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
+			
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
+		
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10=$info['cod_impianto'];	
+			
+			 $info11 = str_replace("/7", "", $info10);
+			
+			 $info12 = $scelta;
+			
+			 $info13 = "-Codice Impianto: ".$info10;
+			
+			if($info10 == $info12){
+				//$messaggio = 'numero di caldaie presenti e numero impianto';
+				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
+		
+		        	 //salva i dati delle variabili dentro il array
+				//$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			}			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
+			
+
+				
+	   		}//fine foreach
+		
+		$xx = 0;
+		foreach($datos as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
+		}//fine scelta /3K
+	
+	//////////////////////////////////////////////////////////////////////////
+	
+		//se viene inserita la scelta /2
+	else if($text === '/4'){
+	   	$avviso = 'Selezionare impianto da consultare';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /2	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+	
+   		$data = json_decode($response, true);
+		   
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        			
+			//Anno installazione della caldaia
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
+			
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
+		
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10=$info['cod_impianto'];	
+			
+			 $info11 = str_replace("/7", "", $info10);
+			
+			 $info12 = $scelta;
+			
+			 $info13 = "-Codice Impianto: ".$info10;
+			
+			if($info10 == $info12){
+				//$messaggio = 'numero di caldaie presenti e numero impianto';
+				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
+		
+		        	 //salva i dati delle variabili dentro il array
+				//$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			}			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
+			
+
+				
+	   		}//fine foreach
+		
+		$xx = 0;
+		foreach($datos as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
+		}//fine scelta /4K
+	
+	/////////////////////////////////////////////////////////////////
+	
+	//////////////////////////////////////////////////////////////////////////
+	
+		//se viene inserita la scelta /2
+	else if($text === '/5'){
+	   	$avviso = 'Selezionare impianto da consultare';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /2	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+	
+   		$data = json_decode($response, true);
+		   
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        			
+			//Anno installazione della caldaia
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
+			
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
+		
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10=$info['cod_impianto'];	
+			
+			 $info11 = str_replace("/7", "", $info10);
+			
+			 $info12 = $scelta;
+			
+			 $info13 = "-Codice Impianto: ".$info10;
+			
+			if($info10 == $info12){
+				//$messaggio = 'numero di caldaie presenti e numero impianto';
+				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
+		
+		        	 //salva i dati delle variabili dentro il array
+				//$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			}			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
+			
+
+				
+	   		}//fine foreach
+		
+		$xx = 0;
+		foreach($datos as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
+		}//fine scelta /5K
+	
+	/////////////////////////////////////////////////////////////////
+	
+	//////////////////////////////////////////////////////////////////////////
+	
+		//se viene inserita la scelta /2
+	else if($text === '/6'){
+	   	$avviso = 'Selezionare impianto da consultare';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /2	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+	
+   		$data = json_decode($response, true);
+		   
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        			
+			//Anno installazione della caldaia
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
+			
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
+		
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10=$info['cod_impianto'];	
+			
+			 $info11 = str_replace("/7", "", $info10);
+			
+			 $info12 = $scelta;
+			
+			 $info13 = "-Codice Impianto: ".$info10;
+			
+			if($info10 == $info12){
+				//$messaggio = 'numero di caldaie presenti e numero impianto';
+				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
+		
+		        	 //salva i dati delle variabili dentro il array
+				//$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			}			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
+			
+
+				
+	   		}//fine foreach
+		
+		$xx = 0;
+		foreach($datos as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
+		}//fine scelta /6K
+	
+	/////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////
+	
+		//se viene inserita la scelta /7
+	else if($text === '/7'){
+	   	$avviso = 'Selezionare impianto da consultare';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /2	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
@@ -247,9 +885,269 @@ else{
 		
 		
 		}//fine scelta /7K
+	
+	/////////////////////////////////////////////////////////////////
+	
+	//////////////////////////////////////////////////////////////////////////
+	
+		//se viene inserita la scelta /2
+	else if($text === '/8'){
+	   	$avviso = 'Selezionare impianto da consultare';
 		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
 
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
 		
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /2	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+	
+   		$data = json_decode($response, true);
+		   
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        			
+			//Anno installazione della caldaia
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
+			
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
+		
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10=$info['cod_impianto'];	
+			
+			 $info11 = str_replace("/7", "", $info10);
+			
+			 $info12 = $scelta;
+			
+			 $info13 = "-Codice Impianto: ".$info10;
+			
+			if($info10 == $info12){
+				//$messaggio = 'numero di caldaie presenti e numero impianto';
+				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
+		
+		        	 //salva i dati delle variabili dentro il array
+				//$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			}			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
+			
+
+				
+	   		}//fine foreach
+		
+		$xx = 0;
+		foreach($datos as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
+		}//fine scelta /8K
+	
+	/////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////
+	
+		//se viene inserita la scelta /2
+	else if($text === '/9'){
+	   	$avviso = 'Selezionare impianto da consultare';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		
+		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+
+		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		
+		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /2	      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+	
+   		$data = json_decode($response, true);
+		   
+		//salva i dati delle caldaie nelle variabili
+    	 	foreach ($data as $info) { 
+        			
+			//Anno installazione della caldaia
+      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
+			
+      			 //Anno di costruzione della caldaia
+      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
+       
+      			 //Marca della caldaia
+      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
+       
+      			 //Matricola nella targhetta
+      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
+       	
+     		 	 //Matricola della caldaia
+      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
+       	
+      		 	//Modello della caldaia
+      			 $info6="  -Modello Caldaia ".$info['Modello'];
+       
+      		 	//potenza al focolare
+      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
+       	
+      			 //Potenza utile presente nella targhetta
+      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
+		
+      			 //Numero della caldaia in questione
+      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+       	
+      			 //codice dell'impianto
+      			 $info10=$info['cod_impianto'];	
+			
+			 $info11 = str_replace("/7", "", $info10);
+			
+			 $info12 = $scelta;
+			
+			 $info13 = "-Codice Impianto: ".$info10;
+			
+			if($info10 == $info12){
+				//$messaggio = 'numero di caldaie presenti e numero impianto';
+				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
+		
+		        	 //salva i dati delle variabili dentro il array
+				//$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+			}			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;	
+			
+
+				
+	   		}//fine foreach
+		
+		$xx = 0;
+		foreach($datos as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		$messaggio = 'numero di caldaie';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		
+		}//fine scelta /9K
+	
+	/////////////////////////////////////////////////////////////////
+	
+	
+	
+	
 	elseif($text === '/ora'){
 	     	//aggiunto da controllare funzionamento
 		$ora = date('H:i');
@@ -325,74 +1223,7 @@ else{
 /K315   /K316   /K317   /K318   /K324';
 
 
-//funzione per la stampa delle caldaie di un determinato impianto
-function Caldaie($http_code, $response, $impianto) {
-  if ($http_code == 200) {
-
-
-
-
-	   
-	   
-		$avviso = 'inserisci il codice dell'impiando da interrogare:';
-		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-	   
-	   $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
-	   
-       //Anno installazione della caldaia
-       $info1="/".$info['Anno_Installazione'];
-       
-       
-       //Anno di costruzione della caldaia
-       $info2="/".$info['Anno_Targa'];
-       
-       
-       //Marca della caldaia
-       $info3="/".$info['Marca_Caldaia'];
-       
-       
-       //Matricola nella targhetta
-       $info4="/".$info['Matricola_Bruciatore'];
-       
-       
-       //Matricola della caldaia
-       $info5="/".$info['Matricola_Caldaia'];
-       
-       
-       //Modello della caldaia
-       $info6="/".$info['Modello'];
-       
-       
-       //Numero della chiamata
-       $info7="/".$info['Pot_Focolare'];
-       
-       
-       //Potenza utile presente nella targhetta
-       $info8="/".$info['Pot_Utile'];
-       
-       
-       //Numero della caldaia in questione
-       $info9="/".$info['caldaia_numero'];
-       
-       
-       //codice dell'impianto
-       $info10="/".$info['cod_impianto'];
-       
-       $datos[$controllo][$controllo][$controllo][$controllo][$controllo][$controllo][$controllo][$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5"." ". "$info6"." "."$info7"." "."$info8"." "."$info9"." "."$info10";
-       
-       
-       
-       echo "\n-------------------------------------------------------------------------------------------\n";
-     }    //end foreach
-  } else {
-      //se ritorna un codice di errore dalla richiesta HTTP
-      echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
-  }    //end if-else
-}    //end function caldaie
-
 */
-
 
 //---------------------------------------------------------------------
 
