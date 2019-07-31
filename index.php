@@ -45,24 +45,21 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
   		$messaggio1 = " /3   Visualizza gli interventi effettuati negli impianti.";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);		
-		
-		$messaggio1 = " /4   Visualizza i dettagli delle caldaie esistenti.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
-  		$messaggio1 = " /5   Visualizza le ore ordinarie di funzionamento.";
+  		$messaggio1 = " /4   Visualizza le ore ordinarie di funzionamento.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
-	  	$messaggio1 = " /6   Visualizza l'ultima lettura effettuata del contatore gas.";
+	  	$messaggio1 = " /5   Visualizza l'ultima lettura effettuata del contatore gas.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);  		
 		
-  		$messaggio1 = " /7   Visualizza i consumi degli impianti.";
+  		$messaggio1 = " /6   Visualizza i consumi degli impianti.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);		
 		
-		$messaggio1 = " /8   Visualizza la matricola dei contatori gas.";
+		$messaggio1 = " /7   Visualizza la matricola dei contatori gas.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
-  		$messaggio1 = " /9   Visualizza pronto intervento.";
+  		$messaggio1 = " /8   Visualizza pronto intervento.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
   		
 	}
@@ -123,7 +120,7 @@ else{
 	
 	//se viene inserita la scelta /2
 	else if($text === '/2'){
-	   	$avviso = 'Selezionare impianto da consultare';
+	   	$avviso = 'Selezionare impianto da consultare le caldaie installate:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -250,7 +247,7 @@ else{
 	
 		//se viene inserita la scelta /2
 	else if($text === '/3'){
-	   	$avviso = 'Selezionare impianto da consultare';
+	   	$avviso = 'Selezionare impianto da consultare gli interventi effettuati:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -279,14 +276,14 @@ else{
 		}//fine if text === /2	      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/2K'){
+	else if(($testo = substr($text, 0, 3)) === '/3K'){
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Interventi.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -377,7 +374,7 @@ else{
 	
 		//se viene inserita la scelta /2
 	else if($text === '/4'){
-	   	$avviso = 'Selezionare impianto da consultare';
+	   	$avviso = 'Selezionare impianto da consultare le ore di funzionamento:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -406,14 +403,14 @@ else{
 		}//fine if text === /2	      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/2K'){
+	else if(($testo = substr($text, 0, 3)) === '/4K'){
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ore_Funzionamento.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -506,7 +503,7 @@ else{
 	
 		//se viene inserita la scelta /2
 	else if($text === '/5'){
-	   	$avviso = 'Selezionare impianto da consultare';
+	   	$avviso = 'Selezionare impianto da consultare la ultima lettura del contatore gas:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -535,14 +532,14 @@ else{
 		}//fine if text === /2	      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/2K'){
+	else if(($testo = substr($text, 0, 3)) === '/5K'){
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ultima_Lettura.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -635,7 +632,7 @@ else{
 	
 		//se viene inserita la scelta /2
 	else if($text === '/6'){
-	   	$avviso = 'Selezionare impianto da consultare';
+	   	$avviso = 'Selezionare impianto da consultare il consumo:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -664,14 +661,14 @@ else{
 		}//fine if text === /2	      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/2K'){
+	else if(($testo = substr($text, 0, 3)) === '/6K'){
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Consumi_2000_2012.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -763,7 +760,7 @@ else{
 	
 		//se viene inserita la scelta /7
 	else if($text === '/7'){
-	   	$avviso = 'Selezionare impianto da consultare';
+	   	$avviso = 'Selezionare impianto da consultare la matricola del contatore gas:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -792,14 +789,14 @@ else{
 		}//fine if text === /2	      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/2K'){
+	else if(($testo = substr($text, 0, 3)) === '/7K'){
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -892,27 +889,27 @@ else{
 	
 		//se viene inserita la scelta /2
 	else if($text === '/8'){
-	   	$avviso = 'Selezionare impianto da consultare';
+	   	$avviso = 'Selezionare impianto da consultare le chiamate di pronto intervento:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		$avviso1 = ' /8K001     /8K002     /8K003     /8K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
 		
-		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+		$avviso2 = ' /8K015     /8K016     /8K017     /8K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
 
-		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		$avviso3 = ' /8K050     /8K051     /8K052     /8K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
 		
-		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
-
-		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		$avviso4 = ' /8K027     /8K028     /8K029     /8K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
 		
-		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
-
-		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		$avviso5 = ' /8K063     /8K065     /8K066     /8K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
 		
-		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+		$avviso6 = ' /8K079     /8K081     /8K082     /8K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
 
-		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		$avviso7 = ' /8K092     /8K093     /8K094     /8K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		
+		$avviso8 = ' /8K280     /8K284     /8K285     /8K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+
+		$avviso9 = ' /8K316     /8K317     /8K318     /8K324';
 		
 		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
 
