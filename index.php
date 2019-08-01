@@ -317,7 +317,7 @@ else{
 			
 			 $info8 = "-Codice Impianto: ".$info5;
 			
-			if($info6 == $scelta){
+			if($info5 == $info7){
 		        	 //salva i dati delle variabili dentro il array
 				
 				$datos[$cn][$cn][$cn][$cn][$cn] = "$info5"."$info1"."$info4"."$info2"."$info3";
