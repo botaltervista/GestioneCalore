@@ -310,6 +310,9 @@ else{
        	
      		 	 //codice dell'impianto
       			 $info5="  -Codice del Impianto: ".$info['cod_impianto'];
+       	
+      			 //codice dell'impianto
+      			 $info5=$info['cod_impianto'];			
        
 			 $info6 = str_replace("/3", "", $info5);
 			
@@ -325,8 +328,6 @@ else{
 				$cn = $cn + 1;
 				
 			}			
-	
-			
 
 				
 	   		}//fine foreach
