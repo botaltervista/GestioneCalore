@@ -335,6 +335,10 @@ else{
 				
 	   		}//fine foreach
 		
+		$cn = $cn - 1;
+		$interventi = 'Numero di interventi effettuati nel impianto: ';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$interventi.$cn);
+		
 		$xx = 0;
 		foreach($datos as $sequenza){
   			
