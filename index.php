@@ -205,7 +205,7 @@ else{
 			
 			 $info13 = "-Codice Impianto: ".$info10;
 			
-			if($info10 == $info12){
+			if($info11 == $info12){
 				//$messaggio = 'numero di caldaie presenti e numero impianto';
 				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
 		
@@ -296,32 +296,28 @@ else{
 		//salva i dati degli interventi nelle variabili
     	 	foreach ($data as $info) { 
         			
-			//Anno installazione della caldaia
+			//Cognome del manutentore
       			 $info1="-Cognome Manutentore: ".$info['Cognome_Manutentore'];
 			
-      			 //Anno di costruzione della caldaia
+      			 //Data dell'intervento
       			 $info2=" -Data Intervento: ".$info['Data_Intervento'];
        
-      			 //Marca della caldaia
+      			 //descrizione dell'intervento
       		 	 $info3="  -Descrizione: ".$info['Descrizione_Intervento'];
        
-      			 //Matricola nella targhetta
+      			 //Nome manutentore
       			 $info4="  -Nome Manutentore: ".$info['Nome_Manutentore'];
        	
-     		 	 //Matricola della caldaia
+     		 	 //codice dell'impianto
       			 $info5="  -Codice del Impianto: ".$info['cod_impianto'];
        
-       	
-      			 //codice dell'impianto
-      			 $info5=$info['cod_impianto'];	
-			
-			 $info6 = str_replace("/3", "", $info10);
+			 $info6 = str_replace("/3", "", $info5);
 			
 			 $info7 = $scelta;
 			
 			 $info8 = "-Codice Impianto: ".$info5;
 			
-			if($info5 == $info7){
+			if($info6 == $info7){
 		        	 //salva i dati delle variabili dentro il array
 				
 				$datos[$cn][$cn][$cn][$cn][$cn] = "$info5"."$info1"."$info4"."$info2"."$info3";
