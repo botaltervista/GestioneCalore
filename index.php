@@ -364,29 +364,29 @@ else{
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		$avviso1 = ' /4K001     /4K002     /4K003     /K004      /4K005     /4K006     /4K007     /4K008     /4K009     /4K010     /4K011     /K012     /4K014';
 		
-		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+		$avviso2 = ' /4K015     /4K016     /4K017     /4K018     /4K019     /4K020     /4K021     /4K022     /4K023     /4K024     /4K025     /4K026';
 
-		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		$avviso3 = ' /4K050     /4K051     /4K052     /4K053     /4K054     /4K055     /4K057     /4K058     /4K059     /4K060     /4K061     /4K062';
 		
-		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+		$avviso4 = ' /4K027     /4K028     /4K029     /4K036     /4K037     /4K038     /4K039     /4K040     /4K041     /4K043     /4K046     /4K047     /4K049';
 
-		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		$avviso5 = ' /4K063     /4K065     /4K066     /4K067     /4K068     /4K069     /4K070     /4K071     /4K072     /4K073     /4K074     /4K076     /4K078';
 		
-		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+		$avviso6 = ' /4K079     /4K081     /4K082     /4K083     /4K084     /4K085     /4K086     /4K087     /4K088     /4K089     /4K090     /4K091';
 
-		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		$avviso7 = ' /4K092     /4K093     /4K094     /4K095     /4K096     /4K097     /4K098     /4K099     /4K100     /4K101     /4K102     /4K105     /4K274';
 		
-		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+		$avviso8 = ' /4K280     /4K284     /4K285     /4K287     /4K293     /4K301     /4K310     /4K311     /4K312     /4K313     /4K314     /4K315';
 
-		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		$avviso9 = ' /4K316     /4K317     /4K318     /4K324';
 		
 		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
 			  
-		}//fine if text === /2	      		
+		}//fine if text === /4	      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
 	else if(($testo = substr($text, 0, 3)) === '/4K'){
@@ -410,36 +410,12 @@ else{
     	 	foreach ($data as $info) { 
         			
 			//Anno installazione della caldaia
-      			 $info1="-Anno installazione: ".$info['Anno_Installazione'];
-			
-      			 //Anno di costruzione della caldaia
-      			 $info2=" -Anno costruzione caldaia: ".$info['Anno_Targa'];
-       
-      			 //Marca della caldaia
-      		 	 $info3="  -Marca Caldaia: ".$info['Marca_Caldaia'];
-       
-      			 //Matricola nella targhetta
-      			 $info4="  -Matricola Bruciatore: ".$info['Matricola_Bruciatore'];
-       	
-     		 	 //Matricola della caldaia
-      			 $info5="  -Matricola Caldaia: ".$info['Matricola_Caldaia'];
-       	
-      		 	//Modello della caldaia
-      			 $info6="  -Modello Caldaia ".$info['Modello'];
-       
-      		 	//potenza al focolare
-      			 $info7="  -Potenza al Focolare: ".$info['Pot_Focolare'];
-       	
-      			 //Potenza utile presente nella targhetta
-      			 $info8="  -Potenza Utile: ".$info['Pot_Utile'];
-		
-      			 //Numero della caldaia in questione
-      			 $info9="  -Caldaia numero: ".$info['caldaia_numero'];
+      			 $info1="-Ore di funzionamento: ".$info['Ordinarie'];
        	
       			 //codice dell'impianto
       			 $info10=$info['cod_impianto'];	
 			
-			 $info11 = str_replace("/7", "", $info10);
+			 $info11 = str_replace("/4", "", $info10);
 			
 			 $info12 = $scelta;
 			
