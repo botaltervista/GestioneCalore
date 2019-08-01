@@ -205,7 +205,7 @@ else{
 			
 			 $info13 = "-Codice Impianto: ".$info10;
 			
-			if($info11 == $info12){
+			if($info11 == $scelta){
 				//$messaggio = 'numero di caldaie presenti e numero impianto';
 				//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn."  ".$scelta."  ".$info11);
 		
@@ -251,19 +251,19 @@ else{
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		$avviso1 = ' /3K001     /3K002     /3K003     /3K004     /3K005     /3K006     /3K007     /3K008     /3K009     /3K010     /3K011     /3K012     /2K014';
+		$avviso1 = ' /3K001     /3K002     /3K003     /3K004     /3K005     /3K006     /3K007     /3K008     /3K009     /3K010     /3K011     /3K012     /3K014';
 		
 		$avviso2 = ' /3K015     /3K016     /3K017     /3K018     /3K019     /3K020     /3K021     /3K022     /3K023     /3K024     /3K025     /3K026';
 
 		$avviso3 = ' /3K050     /3K051     /3K052     /3K053     /3K054     /3K055     /3K057     /3K058     /3K059     /3K060     /3K061     /3K062';
 		
-		$avviso4 = ' /3K027     /3K028     /3K029     /3K036     /3K037     /3K038     /3K039     /3K040     /3K041     /3K043     /3K046     /3K047     /2K049';
+		$avviso4 = ' /3K027     /3K028     /3K029     /3K036     /3K037     /3K038     /3K039     /3K040     /3K041     /3K043     /3K046     /3K047     /3K049';
 
-		$avviso5 = ' /3K063     /3K065     /3K066     /3K067     /3K068     /3K069     /3K070     /3K071     /3K072     /3K073     /3K074     /3K076     /2K078';
+		$avviso5 = ' /3K063     /3K065     /3K066     /3K067     /3K068     /3K069     /3K070     /3K071     /3K072     /3K073     /3K074     /3K076     /3K078';
 		
 		$avviso6 = ' /3K079     /3K081     /3K082     /3K083     /3K084     /3K085     /3K086     /3K087     /3K088     /3K089     /3K090     /3K091';
 
-		$avviso7 = ' /3K092     /3K093     /3K094     /3K095     /3K096     /3K097     /3K098     /3K099     /3K100     /3K101     /3K102     /3K105     /2K274';
+		$avviso7 = ' /3K092     /3K093     /3K094     /3K095     /3K096     /3K097     /3K098     /3K099     /3K100     /3K101     /3K102     /3K105     /3K274';
 		
 		$avviso8 = ' /3K280     /3K284     /3K285     /3K287     /3K293     /3K301     /3K310     /3K311     /3K312     /3K313     /3K314     /3K315';
 
@@ -331,7 +331,6 @@ else{
 				
 	   		}//fine foreach
 		
-		$cn = $cn - 1;
 		$interventi = 'Numero di interventi effettuati nel impianto: ';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$interventi.$cn);
 		
