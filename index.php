@@ -72,7 +72,6 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 		
-    		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
@@ -282,7 +281,6 @@ else{
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
-		//$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Caldaie_Bruciatori.json');
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Interventi.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
@@ -332,7 +330,7 @@ else{
 				
 	   		}//fine foreach
 		
-		$interventi = 'Numero di interventi effettuati nel impianto: ';
+		$interventi = 'Intervento effettuato nel impianto: ';
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$interventi.$cn);
 		
 		$xx = 0;
@@ -355,6 +353,67 @@ else{
 		
 		
 		}//fine scelta /3K
+	//////////////////////////////////////////////////////////////////////////
+	
+	/*
+	else if($text === '/1'){
+		
+		$avviso = 'Elenco degli interventi effettuati negli impianti:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Interventi.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+		
+   		$data = json_decode($response, true);
+     
+    	 	foreach ($data as $info) { 
+			//Cognome del manutentore
+      			 $info1="-Cognome Manutentore: ".$info['Cognome_Manutentore'];
+			
+      			 //Data dell'intervento
+      			 $info2=" -Data Intervento: ".$info['Data_Intervento'];
+       
+      			 //descrizione dell'intervento
+      		 	 $info3="  -Descrizione: ".$info['Descrizione_Intervento'];
+       
+      			 //Nome manutentore
+      			 $info4="  -Nome Manutentore: ".$info['Nome_Manutentore'];
+       	
+     		 	 //codice dell'impianto
+      			 $info5="  -Codice del Impianto: ".$info['cod_impianto'];
+			 
+        		
+			//salva i dati delle variabili nel array
+      	      	        $datos[$cn][$cn][$cn][$cn][$cn] = "$info1"." "."$info2"." "."$info3"." ".$info1"." ". "$info2";
+        		
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;
+			
+		
+		}//fine foreach data as info
+		$ct = 0;
+		$indice = 1;
+		
+		foreach($datos as $elemento){
+			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$ct][$ct][$ct]);
+			$ct = $ct + 1;
+			$indice = $indice + 1;
+			if($ct === $cn){
+				$ct = " ";
+			}//fine if ct === cn
+		}//fine foreach datos as elemento
+
+	  
+	}//fine if /1
+
+	*/
 	
 	//////////////////////////////////////////////////////////////////////////
 	
@@ -479,7 +538,7 @@ else{
 
 		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
 		
-		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+		$avviso6 = ' /2K079     /2K081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
 
 		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
 		
