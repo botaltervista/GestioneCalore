@@ -113,7 +113,14 @@ else{
 				$ct = " ";
 			}//fine if ct === cn
 		}//fine foreach datos as elemento
-
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 	  
 	}//fine if /1
 	
@@ -272,7 +279,7 @@ else{
 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
 			  
-		}//fine if text === /2	      		
+		}//fine if text === /3      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
 	else if(($testo = substr($text, 0, 3)) === '/3K'){
@@ -384,7 +391,7 @@ else{
     	 	foreach ($data as $info) { 
 	     		
 			//Cognome del manutentore
-      			 $info1="-Cognome Manutentore: ".$info['Cognome_Manutentore'];
+      			 $info1="-Cognome: ".$info['Cognome_Manutentore'];
 			
       			 //Data dell'intervento
       			 $info2=" -Data Intervento: ".$info['Data_Intervento'];
@@ -393,26 +400,13 @@ else{
       		 	 $info3="  -Descrizione: ".$info['Descrizione_Intervento'];
        
       			 //Nome manutentore
-      			 $info4="  -Nome Manutentore: ".$info['Nome_Manutentore'];
+      			 $info4="  -Nome: ".$info['Nome_Manutentore'];
        	
      		 	 //codice dell'impianto
       			 $info5="  -Codice del Impianto: ".$info['cod_impianto'];
        	
-			
-			/*
-			//salva il codice dell'impianto        
-        		$info1=" ".$info['cod_impianto'];
-	     
-			//salva la descrizione dell'impianto
-       			$info2=" ".$info['Id_Descrizione'];
-       
-       			//salva la data contratto
-      	      	        $info3=" ".$info['Contratto'];
-        		
-			*/
-			
 			//salva i dati delle variabili nel array
-      	      	        $datos[$cn][$cn][$cn][$cn][$cn] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5";
+      	      	        $datos[$cn][$cn][$cn][$cn][$cn] = "$info5"." ". "$info2"." "."$info3"." ". "$info1"." "."$info4";
         		
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;
@@ -433,9 +427,16 @@ else{
 				$ct = " ";
 			}//fine if ct === cn
 		}//fine foreach datos as elemento
-
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 	  
-	}//fine if /1
+	}//fine if /4
 	
 	//////////////////////////////////////////////////////////////////////////
 	
@@ -1052,7 +1053,6 @@ else{
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		
 		}//fine scelta /8K
 	
 	/////////////////////////////////////////////////////////////////
@@ -1221,6 +1221,14 @@ else{
 
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$message2);	
 		$message2 = " ";
+		
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 
 	}//fine elseif info ora
 	else{	
