@@ -44,10 +44,10 @@ else{
 		$messaggio1 = " /2   Visualizza i dettagli di un determinato impianto.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
-  		$messaggio1 = " /3   Visualizza gli interventi effettuati negli impianti.";
+  		$messaggio1 = " /3   Visualizza pronto intervento su un determinato impianto.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
-  		$messaggio1 = " /4   Visualizza le ore ordinarie di funzionamento.";
+  		$messaggio1 = " /4   Visualizza gli interventi effettuati negli impianti.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
 	  	$messaggio1 = " /5   Visualizza l'ultima lettura effettuata del contatore gas.";
@@ -59,7 +59,7 @@ else{
 		$messaggio1 = " /7   Visualizza la matricola dei contatori gas.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
-  		$messaggio1 = " /8   Visualizza pronto intervento.";
+  		$messaggio1 = " /8   Visualizza le ore ordinarie di funzionamento.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
   		
 	}
@@ -245,8 +245,8 @@ else{
 
 	
 		//se viene inserita la scelta /2
-	else if($text === '/11'){
-	   	$avviso = 'Selezionare impianto da consultare gli interventi effettuati:';
+	else if($text === '/3'){
+	   	$avviso = 'Selezionare impianto da consultare gli interventi in pronto intervento:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -281,7 +281,7 @@ else{
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Interventi.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Pronto_Intervento.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -294,34 +294,41 @@ else{
 		//salva i dati degli interventi nelle variabili
     	 	foreach ($data as $info) { 
         			
-			//Cognome del manutentore
-      			 $info1="-Cognome Manutentore: ".$info['Cognome_Manutentore'];
+			//Dati della persona chiamante
+      			 $info1="-Chiamante: ".$info['Chiamante'];
 			
-      			 //Data dell'intervento
-      			 $info2=" -Data Intervento: ".$info['Data_Intervento'];
+      			 //Data di assegnazione della chiamata
+      			 $info2=" -Data assegnazione: ".$info['Data_Assegnazione'];
        
-      			 //descrizione dell'intervento
-      		 	 $info3="  -Descrizione: ".$info['Descrizione_Intervento'];
+      			 //datadell'intervento
+      		 	 $info3="  -Data intervento: ".$info['Data_Intervento'];
        
-      			 //Nome manutentore
-      			 $info4="  -Nome Manutentore: ".$info['Nome_Manutentore'];
-       	
-     		 	 //codice dell'impianto
-      			 $info5="  -Codice del Impianto: ".$info['cod_impianto'];
-       	
+      			 //Descrizione della chiamata
+      			 $info4="  -Descrizione chiamata: ".$info['Descrizione_Chiamata'];
+        
+      			 //Descrizione della chiamata
+      			 $info5="  -Id della chiamata: ".$info['ID_Chiamata'];      	
+	       
+      			 //Descrizione della chiamata
+      			 $info6="  -Numero chiamata: ".$info['Id'];		
+			
+	       
+      			 //Descrizione della chiamata
+      			 $info7="  -Tempo di risposta della chiamata: ".$info['Tempo_Risposta'];		
+	
       			 //codice dell'impianto
-      			 $info5=$info['cod_impianto'];			
+      			 $info8=$info['cod_impianto'];			
        
-			 $info6 = str_replace("/3", "", $info5);
+			 $info9 = str_replace("/3", "", $info8);
 			
-			 $info7 = $scelta;
+			 $info10 = $scelta;
 			
-			 $info8 = "-Codice Impianto: ".$info5;
+			 $info11 = "-Codice Impianto: ".$info8;
 			
-			if($info5 == $info7){
+			if($info8 == $info10){
 		        	 //salva i dati delle variabili dentro il array
 				
-				$datos[$cn][$cn][$cn][$cn][$cn] = "$info5"."$info1"."$info4"."$info2"."$info3";
+				$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn] = "$info9"."$info6"."$info5"."$info2"."$info3"."$info4"."$info7"."$info1";
 				//variabile di controllo per il indice del array
 				$cn = $cn + 1;
 				
@@ -330,16 +337,17 @@ else{
 				
 	   		}//fine foreach
 		
-		$interventi = 'Intervento effettuato nel impianto: ';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$interventi.$cn);
+		//$prontoint variabile per dicitura
+		$prontoint = 'Dettagli delle chiamate in pronto intervento del impianto: ';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$prontoint.$info9);
 		
 		$xx = 0;
 		foreach($datos as $sequenza){
   			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx]);
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
 			//$xx variabile di controllo per il ciclo
 			$xx = $xx + 1;
-		}//fine confronto impianti con foreach$xx][$xx][$xx][$xx][$xx][$xx]);
+		}//fine confronto impianti con foreach$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
   			
 
 		
@@ -356,9 +364,9 @@ else{
 	//////////////////////////////////////////////////////////////////////////
 	
 //se viene inserita la scelta /1
-	else if($text === '/3'){
+	else if($text === '/4'){
 		
-		$avviso = 'Elenco e denominazione degli impianti in servizio attualmente:';
+		$avviso = 'Interventi effettuati negli impianti:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -430,12 +438,12 @@ else{
 	//////////////////////////////////////////////////////////////////////////
 	
 		//se viene inserita la scelta /2
-	else if($text === '/4'){
+	else if($text === '/11'){
 	   	$avviso = 'Selezionare impianto da consultare le ore di funzionamento:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		$avviso1 = ' /4K001     /4K002     /4K003     /K004      /4K005     /4K006     /4K007     /4K008     /4K009     /4K010     /4K011     /K012     /4K014';
+		$avviso1 = ' /4K001     /4K002     /4K003     /4K004     /4K005     /4K006     /4K007     /4K008     /4K009     /4K010     /4K011     /K012     /4K014';
 		
 		$avviso2 = ' /4K015     /4K016     /4K017     /4K018     /4K019     /4K020     /4K021     /4K022     /4K023     /4K024     /4K025     /4K026';
 
