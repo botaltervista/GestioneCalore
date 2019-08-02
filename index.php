@@ -419,6 +419,8 @@ else{
 			
 		
 		}//fine foreach data as info
+		
+		$cn = $cn - 1;
 		$ct = 0;
 		$indice = 1;
 		
