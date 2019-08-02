@@ -245,7 +245,7 @@ else{
 
 	
 		//se viene inserita la scelta /2
-	else if($text === '/3'){
+	else if($text === '/11'){
 	   	$avviso = 'Selezionare impianto da consultare gli interventi effettuati:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -355,12 +355,13 @@ else{
 		}//fine scelta /3K
 	//////////////////////////////////////////////////////////////////////////
 	
-	/*
-	else if($text === '/1'){
+//se viene inserita la scelta /1
+	else if($text === '/3'){
 		
-		$avviso = 'Elenco degli interventi effettuati negli impianti:';
+		$avviso = 'Elenco e denominazione degli impianti in servizio attualmente:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
 		
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Interventi.json');
     		//richiesta della risposta HTTP come stringa
@@ -373,6 +374,7 @@ else{
    		$data = json_decode($response, true);
      
     	 	foreach ($data as $info) { 
+	     		
 			//Cognome del manutentore
       			 $info1="-Cognome Manutentore: ".$info['Cognome_Manutentore'];
 			
@@ -387,10 +389,22 @@ else{
        	
      		 	 //codice dell'impianto
       			 $info5="  -Codice del Impianto: ".$info['cod_impianto'];
-			 
+       	
+			
+			/*
+			//salva il codice dell'impianto        
+        		$info1=" ".$info['cod_impianto'];
+	     
+			//salva la descrizione dell'impianto
+       			$info2=" ".$info['Id_Descrizione'];
+       
+       			//salva la data contratto
+      	      	        $info3=" ".$info['Contratto'];
         		
+			*/
+			
 			//salva i dati delle variabili nel array
-      	      	        $datos[$cn][$cn][$cn][$cn][$cn] = "$info1"." "."$info2"." "."$info3"." ".$info1"." ". "$info2";
+      	      	        $datos[$cn][$cn][$cn][$cn][$cn] = "$info1"." ". "$info2"." "."$info3"." ". "$info4"." "."$info5";
         		
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;
@@ -401,8 +415,8 @@ else{
 		$indice = 1;
 		
 		foreach($datos as $elemento){
-			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$ct][$ct][$ct]);
+			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$ct][$ct][$ct][$ct][$ct]);
 			$ct = $ct + 1;
 			$indice = $indice + 1;
 			if($ct === $cn){
@@ -412,8 +426,6 @@ else{
 
 	  
 	}//fine if /1
-
-	*/
 	
 	//////////////////////////////////////////////////////////////////////////
 	
