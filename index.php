@@ -578,7 +578,7 @@ else{
 			$info4 ="-Codice di servizio: ".$info1;
         		
 			//salva i dati delle variabili nel array lettura
-      	      	        $lettura[$cn][$cn][$cn] = "$info1"."$info4"."$info2"."$info3";
+      	      	        $lettura[$cn][$cn][$cn][$cn] = "$info1"."$info4"."$info2"."$info3";
         		
 			//variabile di controllo per il indice del array
 			$cn = $cn + 1;
@@ -655,11 +655,14 @@ else{
 		$ct = 0;
 		$indice = 1;
 		
+		/*
 		foreach($datos as $elemento){
 		     foreach(as){
 		          foreach(as){
 			  }
 		     }
+		*/
+		     
 			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$ct][$ct][$ct]);
 			$ct = $ct + 1;
