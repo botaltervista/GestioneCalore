@@ -443,7 +443,7 @@ else{
 
 	
 	//////////////////////////////////////////////////////////////////////////
-
+/*
 	//se viene inserita la scelta /5
 	else if($text === '/5'){
 		
@@ -554,13 +554,13 @@ else{
 		$ct = 0;
 		$indice = 1;
 		
-		/*
+	
 		foreach($datos as $elemento){
 		     foreach(as){
 		          foreach(as){
 			  }
 		     }
-		*/
+		
 		     
 			//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="."$info1"." ". "$info2"." "."$info3");
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$ct][$ct][$ct]);
@@ -581,7 +581,9 @@ else{
 	  
 	}//fine if /5
 	/////////////////////////////////////////////////////////////////
-	
+
+
+*/
 	//////////////////////////////////////////////////////////////////////////
 	
 		//se viene inserita la scelta /2
