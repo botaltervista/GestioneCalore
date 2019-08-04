@@ -499,7 +499,7 @@ else{
         		$info5=$info['cod_impianto'];
 	     
 			//salva la descrizione dell'impianto
-       			$info6=$info['Id_Descrizione'];
+       			$info6=" -".$info['Id_Descrizione'];
        
        			//salva la data contratto
       	      	        $info7=$info['Contratto'];
@@ -509,7 +509,7 @@ else{
 			if($info11 == $scelta){
 
 		        //salva i dati delle variabili dentro il array impianti
-			$impianti[0][0][0][0] = "$info11"."$info6"."$info7"."$scelta";
+			$impianti[0][0] = "$info11"."$info6";
 			}	
 			//variabile di controllo per il indice del array
 			$cl = $cl + 1;
@@ -573,13 +573,13 @@ else{
         		$info1=$info['Cod_Servizio'];
 	     
 			//salva la descrizione dell'impianto
-       			$info2="-Lettura: ".$info['Lettura_Consumo'];
+       			$info2=" -Lettura: ".$info['Lettura_Consumo'];
        
        			//salva la data contratto
-      	      	        $info3="-Matricola del contatore gas: ".$info['Matr_Contatore'];
+      	      	        $info3=" -Matricola del contatore gas: ".$info['Matr_Contatore'];
 			
 			//salva i dati nella variabile
-			$info4 ="-Codice di servizio: ".$info1;
+			$info4 =" -Codice di servizio: ".$info1;
         		
 			if($info8 == $info1){
 				//salva i dati delle variabili nel array lettura
@@ -591,6 +591,14 @@ else{
 			$cn = $cn + 1;
 			
 		}//fine foreach data as info ultima lettura
+
+		
+		$xx = 0;
+		foreach($impianti as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$impianti[$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach		
 		
 		
 		$xx = 0;
@@ -609,13 +617,7 @@ else{
 		}//fine confronto impianti con foreach		
 		
 	
-		$xx = 0;
-		foreach($impianti as $sequenza){
-  			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$impianti[$xx][$xx][$xx][$xx]);
-  			$xx = $xx + 1;
-		}//fine confronto impianti con foreach		
-		
+
 		
 	  
 	}//fine if /5
