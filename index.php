@@ -578,12 +578,13 @@ else{
 		$avviso = '/menu   /ora';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+	*/	
 	  
 	}//fine if /5
 	/////////////////////////////////////////////////////////////////
 
 
-*/
+
 	//////////////////////////////////////////////////////////////////////////
 	
 		//se viene inserita la scelta /2
