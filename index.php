@@ -451,6 +451,44 @@ else{
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
+		
+		$avviso = 'Selezionare impianto da consultare gli interventi in pronto intervento:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /5K001     /5K002     /5K003     /5K004     /5K005     /5K006     /5K007     /5K008     /5K009     /5K010     /5K011     /5K012     /5K014';
+		
+		$avviso2 = ' /5K015     /5K016     /5K017     /5K018     /5K019     /5K020     /5K021     /5K022     /5K023     /5K024     /5K025     /5K026';
+
+		$avviso3 = ' /5K050     /5K051     /5K052     /5K053     /5K054     /5K055     /5K057     /5K058     /5K059     /5K060     /5K061     /5K062';
+		
+		$avviso4 = ' /5K027     /5K028     /5K029     /5K036     /5K037     /5K038     /5K039     /5K040     /5K041     /5K043     /5K046     /5K047     /5K049';
+
+		$avviso5 = ' /5K063     /5K065     /5K066     /5K067     /5K068     /5K069     /5K070     /5K071     /5K072     /5K073     /5K074     /5K076     /5K078';
+		
+		$avviso6 = ' /5K079     /5K081     /5K082     /5K083     /5K084     /5K085     /5K086     /5K087     /5K088     /5K089     /5K090     /5K091';
+
+		$avviso7 = ' /5K092     /5K093     /5K094     /5K095     /5K096     /5K097     /5K098     /5K099     /5K100     /5K101     /5K102     /5K105     /5K274';
+		
+		$avviso8 = ' /5K280     /5K284     /5K285     /5K287     /5K293     /5K301     /5K310     /5K311     /5K312     /5K313     /5K314     /5K315';
+
+		$avviso9 = ' /5K316     /5K317     /5K318     /5K324';
+		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+			  
+		}//fine if text === /3      		
+	
+	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
+	else if(($testo = substr($text, 0, 3)) === '/5K'){
+		
+		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
+		$scelta = substr($text, 2, 4);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		
+		
+		
 		//acquisizione lettura nel contatore
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ultima_Lettura.json');
     		//richiesta della risposta HTTP come stringa
