@@ -443,7 +443,7 @@ else{
 
 	
 	//////////////////////////////////////////////////////////////////////////
-/*
+
 	//se viene inserita la scelta /5
 	else if($text === '/5'){
 		
@@ -549,7 +549,7 @@ else{
 		
 		}//fine foreach data as info Matricola_Contatore
 		
-		
+		/*
 		
 		$ct = 0;
 		$indice = 1;
