@@ -487,42 +487,6 @@ else{
 		$scelta = substr($text, 2, 4);
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
-		
-		
-		//acquisizione lettura nel contatore
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ultima_Lettura.json');
-    		//richiesta della risposta HTTP come stringa
-    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    		//esecuzione della richiesta HTTP
-    		$response = curl_exec($handle);
-    		//estrazione del codice di risposta (HTTP status)
-    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
-		
-   		$data = json_decode($response, true);
-     
-    	 	foreach ($data as $info) { 
-	     
-        		//salva il codice dell'impianto        
-        		$info1=$info['Cod_Servizio'];
-	     
-			//salva la descrizione dell'impianto
-       			$info2="-Data lettura: ".$info['data_lettura'];
-       
-       			//salva la data contratto
-      	      	        $info3="-Lettura: ".$info['lettura'];
-			
-			//salva i dati nella variabile
-			$info4 ="-Codice di servizio: ".$info1;
-        		
-			//salva i dati delle variabili nel array lettura
-      	      	        $lettura[$cn][$cn][$cn][$cn] = "$info1"."$info4"."$info2"."$info3";
-        		
-			//variabile di controllo per il indice del array
-			$cn = $cn + 1;
-			
-		}//fine foreach data as info ultima lettura
-		
-		
 		//acquisizione codice impianto
 		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     		//richiesta della risposta HTTP come stringa
@@ -544,10 +508,14 @@ else{
        
        			//salva la data contratto
       	      	        $info7=$info['Contratto'];
-        		
-			//salva i dati delle variabili nel array impianti
-      	      	        $impianti[$cl][$cl][$cl] = "$info5"."$info6"."$info7";
-        		
+			
+			$info11 = str_replace("/7", "", $info5);
+			
+			if($info11 == $scelta){
+
+		        //salva i dati delle variabili dentro il array impianti
+			$impianti[0][0][0][0] = "$info11"."$info6"."$info7"."$scelta";
+			}	
 			//variabile di controllo per il indice del array
 			$cl = $cl + 1;
 			
@@ -578,14 +546,67 @@ else{
        			//salva la data contratto
       	      	        $info10=" ".$info['Matricola_Contatore'];
         		
-			//salva i dati delle variabili nel array
-      	      	        $matricola[$cp][$cp][$cp] = "$info8"."$info9"."$info10";
-        		
+			if($info6 == $info9){
+				//salva i dati delle variabili nel array
+      	      	        	$matricola[0][0][0] = "$info8"."$info9"."$info10";
+			}
+			
 			//variabile di controllo per il indice del array
 			$cp = $cp + 1;
 			
 		
 		}//fine foreach data as info Matricola_Contatore
+		
+		
+		
+		
+		
+		//acquisizione lettura nel contatore
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ultima_Lettura.json');
+    		//richiesta della risposta HTTP come stringa
+    		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    		//esecuzione della richiesta HTTP
+    		$response = curl_exec($handle);
+    		//estrazione del codice di risposta (HTTP status)
+    		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
+		
+   		$data = json_decode($response, true);
+     
+    	 	foreach ($data as $info) { 
+	     
+        		//salva il codice dell'impianto        
+        		$info1=$info['Cod_Servizio'];
+	     
+			//salva la descrizione dell'impianto
+       			$info2="-Data lettura: ".$info['data_lettura'];
+       
+       			//salva la data contratto
+      	      	        $info3="-Lettura: ".$info['lettura'];
+			
+			//salva i dati nella variabile
+			$info4 ="-Codice di servizio: ".$info1;
+        		
+			if($info8 == $info1){
+				//salva i dati delle variabili nel array lettura
+      	      	        	$lettura[0][0][0][0] = "$info1"."$info4"."$info2"."$info3";
+			}
+			
+			
+			//variabile di controllo per il indice del array
+			$cn = $cn + 1;
+			
+		}//fine foreach data as info ultima lettura
+		
+		
+				$xx = 0;
+		foreach($lettura as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$lettura[$xx][$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}//fine confronto impianti con foreach
+		
+		
+		
 		
 		/*
 		
