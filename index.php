@@ -606,7 +606,7 @@ else{
   			
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$lettura[$xx][$xx][$xx]);
   			$xx = $xx + 1;
-		}//fine confronto impianti con foreach
+		}//fine lettura con foreach
 		
 		
 		$xx = 0;
@@ -614,10 +614,16 @@ else{
   			
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$matricola[$xx][$xx][$xx]);
   			$xx = $xx + 1;
-		}//fine confronto impianti con foreach		
+		}// fine matricola contatore con foreach		
 		
 	
-
+		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso = '/menu   /ora';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 	  
 	}//fine if /5
@@ -633,23 +639,23 @@ else{
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		$avviso1 = ' /6K001     /6K002     /6K003     /6K004     /6K005     /6K006     /6K007     /6K008     /6K009     /6K010     /6K011     /6K012     /6K014';
 		
-		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
+		$avviso2 = ' /6K015     /6K016     /6K017     /6K018     /6K019     /6K020     /6K021     /6K022     /6K023     /6K024     /6K025     /6K026';
 
-		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
+		$avviso3 = ' /6K050     /6K051     /6K052     /6K053     /6K054     /6K055     /6K057     /6K058     /6K059     /6K060     /6K061     /6K062';
 		
-		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+		$avviso4 = ' /6K027     /6K028     /6K029     /6K036     /6K037     /6K038     /6K039     /6K040     /6K041     /6K043     /6K046     /6K047     /6K049';
 
-		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		$avviso5 = ' /6K063     /6K065     /6K066     /6K067     /6K068     /6K069     /6K070     /6K071     /6K072     /6K073     /6K074     /6K076     /6K078';
 		
-		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
+		$avviso6 = ' /6K079     /6K081     /6K082     /6K083     /6K084     /6K085     /6K086     /6K087     /6K088     /6K089     /6K090     /6K091';
 
-		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		$avviso7 = ' /6K092     /6K093     /6K094     /6K095     /6K096     /6K097     /6K098     /6K099     /6K100     /6K101     /6K102     /6K105     /6K274';
 		
-		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
+		$avviso8 = ' /6K280     /6K284     /6K285     /6K287     /6K293     /6K301     /6K310     /6K311     /6K312     /6K313     /6K314     /6K315';
 
-		$avviso9 = ' /2K316     /2K317     /2K318     /2K324';
+		$avviso9 = ' /6K316     /6K317     /6K318     /6K324';
 		
 		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
 
