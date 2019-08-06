@@ -511,7 +511,12 @@ else{
 		
 		}//fine foreach data as info K impianti	
 		
-	
+		$avviso = 'Descrizione del impianto scelto:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info6);
+		
+		
+		
 		//scarico i dati dalla tabella Matr_Cont_Cod_Serv.json corrispondenti al ID_Descrizione  per strarre il Cod_Servizio posta su altervista
 		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
     		//richiesta della risposta HTTP come stringa
@@ -545,6 +550,9 @@ else{
 		
 		}//fine foreach
 		
+		$avviso = 'Descrizione impianto per confronto:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info9.$info8;
 		
 		//scarico i dati dalla tabella Ultima_Lettura.json con il Cod_Servizio precedente posti su altervista
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ultima_Lettura.json');
@@ -582,6 +590,10 @@ else{
 			
 		}//fine foreach data as info ultima lettura
 
+			     
+		$avviso = 'Codice di servizio per confronto:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info1);
 		
 		$xx = 0;
 		foreach($impianti as $sequenza){
