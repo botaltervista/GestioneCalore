@@ -543,7 +543,7 @@ else{
        			//salva la data contratto
       	      	        $info10=" ".$info['Matricola_Contatore'];
 			
-			if($info6 === $info9){
+			if($info9 === $info6){
 				//salva i dati delle variabili nel array
       	      	        	$matricola[0][0][0] = "$info8"."$info9"."$info10";
 			}
