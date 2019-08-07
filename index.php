@@ -516,7 +516,7 @@ else{
 		
 		$avviso = 'Descrizione del impianto scelto:  ';
 		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$info6);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$info13);
 		
 		
 		
@@ -558,7 +558,7 @@ else{
 		
 		$avviso = 'Descrizione impianto per confronto:  ';
 		
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$info9.$info8);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$info9.$info13);
 		
 		//scarico i dati dalla tabella Ultima_Lettura.json con il Cod_Servizio precedente posti su altervista
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ultima_Lettura.json');
