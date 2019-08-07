@@ -501,9 +501,12 @@ else{
 			$info12 = " -".$info6;
 			
 			if($info11 === $scelta){
-
-		        //salva i dati delle variabili dentro il array impianti
-			$impianti[0][0] = "$info11"."$info12";
+			
+				//Salvo la denominazione del impianto in una variabile dedicata
+				$info13 = $info6;
+				
+		       		//salva i dati delle variabili dentro il array impianti
+				$impianti[0][0] = "$info11"."$info12";
 			}	
 			//variabile di controllo per il indice del array
 			$cl = $cl + 1;
@@ -539,7 +542,10 @@ else{
        			//salva la data contratto
       	      	        $info10=" ".$info['Matricola_Contatore'];
 			
-			if($info9 === $info6){
+			if($info9 === $info13){
+				//salvo i dati del codice di servizio del impianto scelto
+				$info14 = $info8;
+				
 				//salva i dati delle variabili nel array
       	      	        	$matricola[0][0][0] = "$info8"."$info9"."$info10";
 			}
@@ -579,7 +585,7 @@ else{
 			//salva i dati nella variabile
 			$info4 =" -Codice di servizio: ".$info1;
         		
-			if($info8 === $info1){
+			if($info1 === $info14){
 				//salva i dati delle variabili nel array lettura
       	      	        	$lettura[0][0][0] = "$info4"."$info2"."$info3";
 			}
