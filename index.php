@@ -496,7 +496,7 @@ else{
        			//salva la data contratto
       	      	        $info7=$info['Contratto'];
 			
-			$info11 = str_replace("/7", "", $info5);
+			$info11 = str_replace("/5", "", $info5);
 			
 			$info12 = " -".$info6;
 			
