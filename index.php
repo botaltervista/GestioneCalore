@@ -483,15 +483,15 @@ else{
     	 	foreach ($data as $info) { 
 	     
         		//salva il codice dell'impianto        
-        		$info5=$info['cod_impianto'];
+        		$info5=$info['Contratto'];
 	     
 			//salva la descrizione dell'impianto
        			$info6=$info['Id_Descrizione'];
        
        			//salva la data contratto
-      	      	        $info7=$info['Contratto'];
+      	      	        $info7=$info['cod_impianto'];
 			
-			$info11 = str_replace("/5", "", $info5);
+			$info11 = str_replace("/5", "", $info7);
 			
 			$info12 = " - ".$info6;
 			
@@ -523,17 +523,17 @@ else{
     	 	foreach ($data as $info) { 
 	     
         		//salva il codice dell'impianto        
-        		$info8=$info['Cod_Servizio'];
+        		$info8=$info['Id_Descrizione'];
 	     
 			//salva la descrizione dell'impianto
-       			$info9=$info['Id_Descrizione'];
+       			$info9=$info['Cod_Servizio'];
        
        			//salva la data contratto
       	      	        $info10=" ".$info['Matricola_Contatore'];
 			
-			if($info9 === $info13){
+			if($info8 === $info13){
 				//salvo i dati del codice di servizio del impianto scelto
-				$info14 = $info8;
+				$info14 = $info9;
 				
 				//salva i dati delle variabili nel array
       	      	        	$matricola[0][0][0] = "$info8"."$info9"."$info10";
