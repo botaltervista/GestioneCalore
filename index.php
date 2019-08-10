@@ -63,6 +63,9 @@ else{
 	
 	//se viene inserita la scelta /1
 	else if($text === '/1'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+		
 		///1   Visualizza il tipo di impianti e la denominazione.";
 		$avviso = 'Elenco e denominazione degli impianti in servizio attualmente:';
 		
@@ -123,7 +126,10 @@ else{
 	
 	///2   Visualizza i dettagli di un determinato impianto.";
 	else if($text === '/2'){
-	   	$avviso = 'Selezionare impianto da consultare le caldaie installate:';
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+	   	
+		$avviso = 'Selezionare impianto da consultare le caldaie installate:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -153,6 +159,8 @@ else{
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
 	else if(($testo = substr($text, 0, 3)) === '/2K'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
@@ -244,7 +252,11 @@ else{
 	
 		//3   Visualizza pronto intervento su un determinato impianto.";
 	else if($text === '/3'){
-	   	$avviso = 'Selezionare impianto da consultare gli interventi in pronto intervento:';
+	   	
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+		
+		$avviso = 'Selezionare impianto da consultare gli interventi in pronto intervento:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -274,6 +286,8 @@ else{
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
 	else if(($testo = substr($text, 0, 3)) === '/3K'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
@@ -364,6 +378,8 @@ else{
 	
 	///4   Visualizza gli interventi effettuati negli impianti.";
 	else if($text === '/4'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
 		
 		$avviso = 'Interventi effettuati negli impianti:';
 		
@@ -433,6 +449,8 @@ else{
 
 	///5   Visualizza l'ultima lettura effettuata e la matricola del contatore gas.";
 	else if($text === '/5'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
 		
 		$avviso = 'Ultima lettura dei contatori gas degli impianti:';
 		
@@ -468,7 +486,10 @@ else{
 		}//fine if text === /5      		
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
-	else if(($testo = substr($text, 0, 3)) === '/5K'){		
+	else if(($testo = substr($text, 0, 3)) === '/5K'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+		
 		//scarico i dati dalla tabella Elenco_Impianti.json posta su altervista per strarre ID_Descrizione
 		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     		//richiesta della risposta HTTP come stringa
@@ -547,7 +568,7 @@ else{
 		
 		}//fine foreach
 		
-http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info13.$info8.$info14);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info13.$info8.$info14);
 		
 		
 		//scarico i dati dalla tabella Ultima_Lettura.json con il Cod_Servizio precedente posti su altervista
@@ -626,6 +647,9 @@ http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_i
 	
 	///6   Visualizza i consumi di un determinato impianto
 	else if($text === '/6'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+		
 	   	$avviso = 'Selezionare impianto da consultare il consumo:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -656,6 +680,9 @@ http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_i
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
 	else if(($testo = substr($text, 0, 3)) === '/6K'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+		
 		//scarico i dati dalla tabella Elenco_Impianti.json posta su altervista per strarre ID_Descrizione
 		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
     		//richiesta della risposta HTTP come stringa
@@ -806,6 +833,9 @@ http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_i
 
 	///7   Visualizza le ore ordinarie di funzionamento.";
 	else if($text === '/7'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+		
 	   	$avviso = 'Selezionare impianto da consultare la matricola del contatore gas:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -836,6 +866,8 @@ http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_i
 	
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
 	else if(($testo = substr($text, 0, 3)) === '/7K'){
+		//inizializzo e azzero le variabili
+		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
