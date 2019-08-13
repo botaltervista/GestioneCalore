@@ -770,17 +770,18 @@ else{
         		$info1=$info['Cod_Servizio'];
 	     
 			//salva la descrizione dell'impianto
-       			$info2=" - Lettura: ".$info['data_lettura'];
+       			$info2=" - Data Lettura: ".$info['data_lettura'];
        
        			//salva la data contratto
-      	      	        $info3=" - Matricola del contatore gas: ".$info['lettura'];
+      	      	        $info3=" - Lettura del consumo: ".$info['lettura'];
 			
 			//salva i dati nella variabile
 			$info4 =" - Codice di servizio: ".$info1;
         		
 			if($info1 === $info14){
 				//salva i dati delle variabili nel array lettura
-      	      	        	$consumo[0][0][0] = "$info4"."$info2"."$info3";
+      	      	        	$consumo[$cn][$cn][$cn] = "$info4"."$info2"."$info3";
+				$cn = $cn + 1;
 			}
 			
 			
@@ -834,19 +835,19 @@ else{
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
-		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /2K012     /2K014';
+		$avviso1 = ' /2K001     /2K002     /2K003     /2K004     /2K005     /2K006     /2K007     /2K008     /2K009     /2K010     /2K011     /7K012     /7K014';
 		
 		$avviso2 = ' /2K015     /2K016     /2K017     /2K018     /2K019     /2K020     /2K021     /2K022     /2K023     /2K024     /2K025     /2K026';
 
 		$avviso3 = ' /2K050     /2K051     /2K052     /2K053     /2K054     /2K055     /2K057     /2K058     /2K059     /2K060     /2K061     /2K062';
 		
-		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /2K049';
+		$avviso4 = ' /2K027     /2K028     /2K029     /2K036     /2K037     /2K038     /2K039     /2K040     /2K041     /2K043     /2K046     /2K047     /7K049';
 
-		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /2K078';
+		$avviso5 = ' /2K063     /2K065     /2K066     /2K067     /2K068     /2K069     /2K070     /2K071     /2K072     /2K073     /2K074     /2K076     /7K078';
 		
 		$avviso6 = ' /2K079     /K2081     /2K082     /2K083     /2K084     /2K085     /2K086     /2K087     /2K088     /2K089     /2K090     /2K091';
 
-		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /2K274';
+		$avviso7 = ' /2K092     /2K093     /2K094     /2K095     /2K096     /2K097     /2K098     /2K099     /2K100     /2K101     /2K102     /2K105     /7K274';
 		
 		$avviso8 = ' /2K280     /2K284     /2K285     /2K287     /2K293     /2K301     /2K310     /2K311     /2K312     /2K313     /2K314     /2K315';
 
