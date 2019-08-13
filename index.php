@@ -690,16 +690,16 @@ else{
      
     	 	foreach ($data as $info) { 
 	     
-        		//salva il codice dell'impianto        
+        		//salva il contratto dell'impianto       
         		$info5=$info['Contratto'];
 	     
 			//salva la descrizione dell'impianto
        			$info6=$info['Id_Descrizione'];
        
-       			//salva la data contratto
+       			//salva il codice dell'impianto
       	      	        $info7=$info['cod_impianto'];
 			
-			$info11 = str_replace("/5", "", $info7);
+			$info11 = str_replace("/6", "", $info7);
 			
 			$info12 = " - ".$info6;
 			
@@ -754,7 +754,7 @@ else{
 		}//fine foreach
 		
 		//scarico i dati dalla tabella Ultima_Lettura.json con il Cod_Servizio precedente posti su altervista
-    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/consumi_2000_2012.json');
+    		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/consumi.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -769,13 +769,13 @@ else{
         		//salva il codice dell'impianto        
         		$info1=$info['Cod_Servizio'];
 	     
-			//salva la descrizione dell'impianto
+			//salva la data della lettura
        			$info2=" - Data Lettura: ".$info['data_lettura'];
        
-       			//salva la data contratto
+       			//salva il consumo
       	      	        $info3=" - Lettura del consumo: ".$info['lettura'];
 			
-			//salva i dati nella variabile
+			//salva il codice di servizio
 			$info4 =" - Codice di servizio: ".$info1;
         		
 			if($info1 === $info14){
@@ -801,7 +801,7 @@ else{
 		$xx = 0;
 		foreach($lettura as $sequenza){
   			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$lettura[$xx][$xx][$xx]);
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$matricola[$xx][$xx][$xx]);
   			$xx = $xx + 1;
 		}//fine lettura con foreach
 		
