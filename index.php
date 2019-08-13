@@ -534,7 +534,7 @@ else{
 		}//fine foreach data as info K impianti	
 
 		//scarico i dati dalla tabella Matr_Cont_Cod_Serv.json corrispondenti al ID_Descrizione  per strarre il Cod_Servizio posta su altervista
-		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
+		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matricola.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -553,7 +553,7 @@ else{
        			$info9=$info['Cod_Servizio'];
        
        			//salva la data contratto
-      	      	        $info10=" ".$info['Matricola_Contatore'];
+      	      	        $info10=" ".$info['Matr_Contatore'];
 			
 			if($info8 === $info13){
 				//salvo i dati del codice di servizio del impianto scelto
@@ -717,7 +717,7 @@ else{
 		}//fine foreach data as info K impianti	
 
 		//scarico i dati dalla tabella Matr_Cont_Cod_Serv.json corrispondenti al ID_Descrizione  per strarre il Cod_Servizio posta su altervista
-		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
+		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matricola.json');
     		//richiesta della risposta HTTP come stringa
     		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     		//esecuzione della richiesta HTTP
@@ -736,7 +736,7 @@ else{
        			$info9=$info['Cod_Servizio'];
        
        			//salva la data contratto
-      	      	        $info10=" ".$info['Matricola_Contatore'];
+      	      	        $info10=" ".$info['Matr_Contatore'];
 			
 			if($info8 === $info13){
 				//salvo i dati del codice di servizio del impianto scelto
