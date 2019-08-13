@@ -852,6 +852,8 @@ else{
 		       	//salva i dati delle variabili dentro il array impianti
 			$impianti[$cb][$cb] = "$info3"."$info2";
 			
+			$codice[$cb] = $info3;
+			
 			//variabile di controllo per l'indice dell'array
 			$cb = $cb + 1;
 		
@@ -881,23 +883,35 @@ else{
        			$info2=$info['cod_impianto'];
 			
 		       	//salva i dati delle variabili dentro il array impianti
-			$ordinarie[$ca][$ca] = "$info2"."$info1";
+			$ordinarie[$ca] = "$info1";
+			
+			$codice1[$ca] = $info2;
 			
 			//variabile di controllo per l'indice dell'array
 			$ca = $ca + 1;
 		
 		}//fine foreach ordinarie
 		
-		for($cont = 0; $cont < $cb){
-			for($car = 0; $car < $ca){
-				if($impianti[$cb][] === $orinarie[$car][]){
-					$messaggio = 'trovato: ';
-					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio);
+		foreach($codice as $cod){
+			foreach($codice1 as $cod1){
+				if($codice[$b] === $codice1[$a]){
+					$elenco_ore = "$impianti[$b][$b]"."$ordinarie[$a]";
 				}
-				$car = $car + 1;
-			}//fine for interno
-			$cb = $cb + 1;
-		}//fine for esterno
+				$a = $a + 1;
+			}//fine foreach codice1
+			$b = $b + 1;
+		}//fine foreach codice
+		
+		
+		$xx = 0;
+		foreach($elenco_ore as $sequenza){
+  			
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." ".$elenco_ore[$xx][$xx][$xx]);
+  			$xx = $xx + 1;
+		}// fine matricola contatore con foreach
+		
+		
+		
 		/*
 		foreach($impianti as $risparmio){
 			foreach($ordinarie as $confronto){
