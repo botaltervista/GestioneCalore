@@ -892,13 +892,16 @@ else{
 		
 		}//fine foreach ordinarie
 		
+		//azzero e inizzializo le variabili
+		$a = $b = $c = 0;
+		
 		foreach($codice as $cod){
 			foreach($codice1 as $cod1){
 				if($codice[$b] === $codice1[$a]){
-					$elenco_ore = "$impianti[$b][$b]"."$ordinarie[$a]";
-					$avviso = 'funziona??';
-		
-					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+					$elenco_ore[$c] = "$impianti[$b][$b]"."$ordinarie[$a]";
+					$avviso = 'funziona!!';
+					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." ".$c);
+					$c = $c + 1;
 				}
 				$a = $a + 1;
 			}//fine foreach codice1
