@@ -898,7 +898,7 @@ else{
 		foreach($codice as $cod){
 			foreach($codice1 as $cod1){
 				if($codice[$b] === $codice1[$a]){
-					$elenco_ore[$c] = "$impianti[$b][$b]"."$ordinarie[$a]";
+					$elenco_ore[$c][$c][$c] = "$impianti[$b][$b]"."$ordinarie[$a]";
 					$avviso = 'funziona!!';
 					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." ".$c);
 					$c = $c + 1;
