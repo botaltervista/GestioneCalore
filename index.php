@@ -879,7 +879,15 @@ else{
 	     
 			//salva la descrizione dell'impianto
        			$info2=$info['cod_impianto'];
-
+			
+			foreach($impianti as $confronto){
+				if(in_array($impianti, $info2)){
+					$messaggio = 'trovato: ';
+					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio." - ".$contatore);
+				}
+				$contatore = $contatore + 1;
+			}
+			
 		       	//salva i dati delle variabili dentro il array impianti
 			$ordinarie[$ca][$ca] = "$info2"."$info1";
 			
@@ -888,7 +896,8 @@ else{
 		
 		}//fine foreach ordinarie
 		
-
+		
+		/*
 		foreach($impianti as $risparmio){
 			foreach($ordinarie as $confronto){
 				if (in_array($impianti, $ordinarie))
@@ -901,7 +910,7 @@ else{
 			}			
 		}//fine foreach esterno impianti
 		
-		/*		
+		
 
 		foreach ($arraySearch as $value)
 			{
