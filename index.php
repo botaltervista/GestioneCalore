@@ -890,7 +890,7 @@ else{
 		
 		for($cont = 0; $cont < $cb){
 			for($car = 0; $car < $ca){
-				if($impianti[$cb] === $orinarie[$car]){
+				if($impianti[$cb][] === $orinarie[$car][]){
 					$messaggio = 'trovato: ';
 					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio);
 				}
