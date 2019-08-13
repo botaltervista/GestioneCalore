@@ -887,7 +887,8 @@ else{
 			$ca = $ca + 1;
 		
 		}//fine foreach ordinarie
-
+		
+		/*
 		foreach($impianti as $risparmio){
 			foreach($ordinarie as $ore){
 				if($impianti[$cf][] === $ordinarie[$ck][]){
@@ -898,6 +899,7 @@ else{
 			$cf = $cf + 1;
 		}//fine foreach esterno impianti
 		
+		*/
 		
 		
 		
