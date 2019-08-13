@@ -888,23 +888,34 @@ else{
 		
 		}//fine foreach ordinarie
 		
-		/*
+
 		foreach($impianti as $risparmio){
-			foreach($ordinarie as $ore){
-				if($impianti[$cf][] === $ordinarie[$ck][]){
-					$report = "$impianti[][]"."$ordinarie[][]";
-				}//fine if interno
-				$ck = $ck + 1;
-			}//fine foreach ordinarie
-			$cf = $cf + 1;
+			foreach($ordinarie as $confronto){
+				if (in_array($impianti, $ordinarie))
+			 	  {
+			
+				
+			  	  }
+			}			
 		}//fine foreach esterno impianti
 		
+		/*		
+
+		foreach ($arraySearch as $value)
+			{
+			if (in_array($value, $arrayList))
+			{
+			$arrayList[array_search($value, $arrayList)] .= '*';
+			}
+		}
+
+
 		*/
 		
 		
 		
-		$messaggio = 'numero di caldaie';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio.$cn.$datos[$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn][$cn]);
+		$messaggio = 'uscita /7';
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio);
 		
 		
 		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
