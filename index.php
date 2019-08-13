@@ -702,9 +702,7 @@ else{
 			$info12 = " - ".$info6;
 			
 			if($info11 === $scelta){
-				$avviso = 'Sono dentro cod impianto - descrizione';
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
-				
+
 				//Salvo la denominazione del impianto in una variabile dedicata
 				$info13 = $info6;
 				
@@ -735,17 +733,15 @@ else{
        			$info9=$info['Cod_Servizio'];
        
        			//salva la data contratto
-      	      	        $info10=" ".$info['Matr_Contatore'];
+      	      	        $info10=" -Matricola contatore: ".$info['Matr_Contatore'];
 			
 			if($info8 === $info13){
-				$avviso = 'Sono dentro descrizione - Cod_Servizio';
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$info8." - ".$info9);
-				
+
 				//salvo i dati del codice di servizio del impianto scelto
 				$info14 = $info9;
 				
 				//salva i dati delle variabili nel array
-      	      	        	$matricola[0][0][0] = "$info8"."$info9"."$info10";
+      	      	        	$matricola[0][0] = "$info9"."$info10";
 			}
 				
 		
@@ -777,9 +773,7 @@ else{
 			$info4 =" - Codice di servizio: ".$info1;
         		
 			if($info1 === $info14){
-				$avviso = 'Sono dentro Cod_Servizio - consumo';
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." - ".$info1." - ".$info3);
-			
+
 				//salva i dati delle variabili nel array consumo
       	      	        	$consumo[$cn][$cn][$cn] = "$info4"."$info2"."$info3";
 				//variabile di controllo per l'array
@@ -790,8 +784,9 @@ else{
 		     
 		$xx = 0;
 		foreach($impianti as $sequenza){
-  			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$impianti[$xx][$xx]);
+			
+  			$leggenda = "Impianto: ";
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$leggenda.$impianti[$xx][$xx]);
   			$xx = $xx + 1;
 		}//fine confronto impianti con foreach		
 		
@@ -799,7 +794,8 @@ else{
 		$xx = 0;
 		foreach($matricola as $sequenza){
   			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$matricola[$xx][$xx][$xx]);
+			$leggenda = "Codice di servizio: ";
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$leggenda.$matricola[$xx][$xx]);
   			$xx = $xx + 1;
 		}//fine lettura con foreach
 		
@@ -807,7 +803,7 @@ else{
 		$xx = 0;
 		foreach($consumo as $sequenza){
   			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$consumo[$xx][$xx][$xx]);
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." ".$consumo[$xx][$xx][$xx]);
   			$xx = $xx + 1;
 		}// fine matricola contatore con foreach		
 		
