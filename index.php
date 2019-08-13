@@ -491,7 +491,6 @@ else{
 		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
 		
 		$scelta = substr($text, 2, 4);
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//scarico i dati dalla tabella Elenco_Impianti.json posta su altervista per strarre ID_Descrizione
 		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
@@ -703,15 +702,15 @@ else{
 			$info12 = " - ".$info6;
 			
 			if($info11 === $scelta){
-			
+				$avviso = 'Sono dentro cod impianto - descrizione';
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+				
 				//Salvo la denominazione del impianto in una variabile dedicata
 				$info13 = $info6;
 				
 		       		//salva i dati delle variabili dentro il array impianti
 				$impianti[0][0] = "$info11"."$info12";
 			}	
-			//variabile di controllo per il indice del array
-			$cl = $cl + 1;
 			
 		
 		}//fine foreach data as info K impianti	
@@ -739,16 +738,16 @@ else{
       	      	        $info10=" ".$info['Matr_Contatore'];
 			
 			if($info8 === $info13){
+				$avviso = 'Sono dentro descrizione - Cod_Servizio';
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso.$info8." - ".$info9);
+				
 				//salvo i dati del codice di servizio del impianto scelto
 				$info14 = $info9;
 				
 				//salva i dati delle variabili nel array
       	      	        	$matricola[0][0][0] = "$info8"."$info9"."$info10";
 			}
-			
-			//variabile di controllo per il indice del array
-			$cp = $cp + 1;
-			
+				
 		
 		}//fine foreach
 		
@@ -778,14 +777,14 @@ else{
 			$info4 =" - Codice di servizio: ".$info1;
         		
 			if($info1 === $info14){
-				//salva i dati delle variabili nel array lettura
+				$avviso = 'Sono dentro Cod_Servizio - consumo';
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." - ".$info1." - ".$info3);
+			
+				//salva i dati delle variabili nel array consumo
       	      	        	$consumo[$cn][$cn][$cn] = "$info4"."$info2"."$info3";
+				//variabile di controllo per l'array
 				$cn = $cn + 1;
-			}
-			
-			
-			//variabile di controllo per il indice del array
-			$cn = $cn + 1;
+			}	
 			
 		}//fine foreach data as info ultima lettura
 		     
