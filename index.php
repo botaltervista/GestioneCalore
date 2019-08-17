@@ -900,6 +900,9 @@ else{
 		//azzero e inizzializo le variabili
 		$cn = 0;
 		
+		
+		
+		/*
 		foreach($cod1 as $esterno){
 			for($cod2 as $interno){
 				if($cod1[$cn] === $cod2[$cb]){
@@ -914,7 +917,7 @@ else{
 		}//fine foreach esterno
 		
 		
-		/*
+		
 		
 		$xx = 0;
 		foreach($cod1 as $sequenza){
