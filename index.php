@@ -825,7 +825,7 @@ else{
 		
 		//inizializzo e azzero le variabili
 		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
-		$cb = 0;
+		$ca = 0;
 		
 		//scarico i dati dalla tabella Elenco_Impianti.json posta su altervista per strarre ID_Descrizione
 		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
@@ -850,20 +850,20 @@ else{
        			$info3=$info['cod_impianto'];
 				
 		       	//salva i dati delle variabili dentro il array impianti
-			$impianti[$cb][$cb] = "$info3"."$info2";
+			$impianti[$ca][$ca] = "$info3"."$info2";
 			
 			//salva la descrizione dell'impianto
-       			$cod1[$cb]="$info3";
+       			$cod1[$ca]="$info3";
 			
-			$descrizione[$cb] = "$info2";
+			$descrizione[$ca] = "$info2";
 			
 			//variabile di controllo per l'indice dell'array
-			$cb = $cb + 1;
+			$ca = $ca + 1;
 		
 		}//fine foreach data as info K impianti	
 		
 			
-		$ca = 0;
+		$cb = 0;
 		
 		//scarico i dati dalla tabella funzionamento per confrontarlo con il codice impianto
 		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/funzionamento.json');
@@ -879,38 +879,38 @@ else{
     	 	foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
-        		$info4[$ca]=$info['Ordinarie'];
+        		$info4[$cb]=$info['Ordinarie'];
 	     
 			//salva la descrizione dell'impianto
        			$info5=$info['cod_impianto'];
 			
 			
 			//salva la descrizione dell'impianto
-       			$cod2[$ca]="$info5";
+       			$cod2[$cb]="$info5";
 			
 			
 		       	//salva i dati delle variabili dentro il array impianti
-			$ordinarie[$ca] = "$info4";
+			$ordinarie[$cb] = "$info4";
 			
 			//variabile di controllo per l'indice dell'array
-			$ca = $ca + 1;
+			$cb = $cb + 1;
 		
 		}//fine foreach ordinarie
 		
 		//azzero e inizzializo le variabili
-		$a = $b = $c = 0;
+		$cn = 0;
 		
-		foreach($cod1 as $cod){
-			foreach($cod2 as $codice){
+		for($cn = 0; $cn < $ca){
+			for($cl = 0; $cl < $cb){
 				if($cod1[$b] === $cod2[$a]){
 					//$elenco_ore[$c][$c][$c] = "$info3"."$info2"."$info4";
 					$avviso = 'funziona!!';
 					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." ".$c);
 					$c = $c + 1;
 				}
-				$a = $a + 1;
+				$cl = $cl + 1;
 			}//fine foreach codice1
-			$b = $b + 1;
+			$cn = $cn + 1;
 		}//fine foreach codice
 		
 		
