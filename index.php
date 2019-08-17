@@ -844,15 +844,18 @@ else{
         		$info1=$info['Contratto'];
 	     
 			//salva la descrizione dell'impianto
-       			$info2[$cb]=$info['Id_Descrizione'];
+       			$info2=$info['Id_Descrizione'];
        
-       			//salva il codice dell'impianto
-      	      	        $cod1[$cb]=$info['cod_impianto'];
+			//salva la descrizione dell'impianto
+       			$info3=$info['cod_impianto'];
 				
 		       	//salva i dati delle variabili dentro il array impianti
 			$impianti[$cb][$cb] = "$info3"."$info2";
 			
-			$descrizione[$cb] = $info2;
+			//salva la descrizione dell'impianto
+       			$cod1[$cb]="$info3";
+			
+			$descrizione[$cb] = "$info2";
 			
 			//variabile di controllo per l'indice dell'array
 			$cb = $cb + 1;
@@ -879,7 +882,12 @@ else{
         		$info4[$ca]=$info['Ordinarie'];
 	     
 			//salva la descrizione dell'impianto
-       			$cod2[$ca]=$info['cod_impianto'];
+       			$info5=$info['cod_impianto'];
+			
+			
+			//salva la descrizione dell'impianto
+       			$cod2[$ca]="$info5";
+			
 			
 		       	//salva i dati delle variabili dentro il array impianti
 			$ordinarie[$ca] = "$info4";
