@@ -859,8 +859,7 @@ else{
 		
 		}//fine foreach data as info K impianti	
 		
-		//inizializzo e azzero le variabili
-		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+			
 		$ca = 0;
 		
 		//scarico i dati dalla tabella funzionamento per confrontarlo con il codice impianto
@@ -877,15 +876,15 @@ else{
     	 	foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
-        		$info1=$info['Ordinarie'];
+        		$info4=$info['Ordinarie'];
 	     
 			//salva la descrizione dell'impianto
-       			$info2=$info['cod_impianto'];
+       			$info5=$info['cod_impianto'];
 			
 		       	//salva i dati delle variabili dentro il array impianti
-			$ordinarie[$ca] = "$info1";
+			$ordinarie[$ca] = "$info4";
 			
-			$codice1[$ca] = $info2;
+			$codice1[$ca] = $info5;
 			
 			//variabile di controllo per l'indice dell'array
 			$ca = $ca + 1;
@@ -897,8 +896,8 @@ else{
 		
 		foreach($codice as $cod){
 			foreach($codice1 as $cod1){
-				if($codice[$b] === $codice1[$a]){
-					$elenco_ore[$c][$c][$c] = "$impianti[$b][$b]"."$ordinarie[$a]";
+				if($info3 === $info5){
+					$elenco_ore[$c][$c][$c] = "$info3"."$info2"."$info4";
 					$avviso = 'funziona!!';
 					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." ".$c);
 					$c = $c + 1;
