@@ -902,7 +902,7 @@ else{
 		
 		for($cn = 0; $cn < $ca){
 			for($cl = 0; $cl < $cb){
-				if($cod1[$b] === $cod2[$a]){
+				if($cod1[$cn] === $cod2[$cb]){
 					//$elenco_ore[$c][$c][$c] = "$info3"."$info2"."$info4";
 					$avviso = 'funziona!!';
 					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." ".$c);
