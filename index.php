@@ -914,6 +914,8 @@ else{
 		}//fine foreach codice
 		
 		
+		/*
+		
 		$xx = 0;
 		foreach($cod1 as $sequenza){
   		
@@ -928,7 +930,6 @@ else{
   			$xx = $xx + 1;
 		}// fine foreach
 		
-		/*
 		foreach($impianti as $risparmio){
 			foreach($ordinarie as $confronto){
 				if (in_array($impianti, $ordinarie))
