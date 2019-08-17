@@ -900,8 +900,8 @@ else{
 		//azzero e inizzializo le variabili
 		$cn = 0;
 		
-		for($cn = 0; $cn < $ca){
-			for($cl = 0; $cl < $cb){
+		foreach($cod1 as $esterno){
+			for($cod2 as $interno){
 				if($cod1[$cn] === $cod2[$cb]){
 					//$elenco_ore[$c][$c][$c] = "$info3"."$info2"."$info4";
 					$avviso = 'funziona!!';
@@ -909,9 +909,9 @@ else{
 					$c = $c + 1;
 				}
 				$cl = $cl + 1;
-			}//fine foreach codice1
+			}//fine foreach interno
 			$cn = $cn + 1;
-		}//fine foreach codice
+		}//fine foreach esterno
 		
 		
 		/*
