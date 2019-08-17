@@ -915,13 +915,18 @@ else{
 		
 		
 		$xx = 0;
-		foreach($elenco_ore as $sequenza){
-  			
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." ".$elenco_ore[$xx][$xx][$xx]);
+		foreach($cod1 as $sequenza){
+  		
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." ".$cod1[$xx]);
   			$xx = $xx + 1;
-		}// fine matricola contatore con foreach
+		}// fine foreach
 		
-		
+		$xx = 0;
+		foreach($cod2 as $sequenza){
+  		
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." ".$cod2[$xx]);
+  			$xx = $xx + 1;
+		}// fine foreach
 		
 		/*
 		foreach($impianti as $risparmio){
