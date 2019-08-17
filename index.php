@@ -844,15 +844,15 @@ else{
         		$info1=$info['Contratto'];
 	     
 			//salva la descrizione dell'impianto
-       			$info2=$info['Id_Descrizione'];
+       			$info2[$cb]=$info['Id_Descrizione'];
        
        			//salva il codice dell'impianto
-      	      	        $info3=$info['cod_impianto'];
+      	      	        $cod1[$cb]=$info['cod_impianto'];
 				
 		       	//salva i dati delle variabili dentro il array impianti
 			$impianti[$cb][$cb] = "$info3"."$info2";
 			
-			$codice[$cb] = $info3;
+			$descrizione[$cb] = $info2;
 			
 			//variabile di controllo per l'indice dell'array
 			$cb = $cb + 1;
@@ -876,15 +876,13 @@ else{
     	 	foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
-        		$info4=$info['Ordinarie'];
+        		$info4[$ca]=$info['Ordinarie'];
 	     
 			//salva la descrizione dell'impianto
-       			$info5=$info['cod_impianto'];
+       			$cod2[$ca]=$info['cod_impianto'];
 			
 		       	//salva i dati delle variabili dentro il array impianti
 			$ordinarie[$ca] = "$info4";
-			
-			$codice1[$ca] = $info5;
 			
 			//variabile di controllo per l'indice dell'array
 			$ca = $ca + 1;
@@ -894,10 +892,10 @@ else{
 		//azzero e inizzializo le variabili
 		$a = $b = $c = 0;
 		
-		foreach($codice as $cod){
-			foreach($codice1 as $cod1){
-				if($info3 === $info5){
-					$elenco_ore[$c][$c][$c] = "$info3"."$info2"."$info4";
+		foreach($cod1 as $cod){
+			foreach($cod2 as $codice){
+				if($cod1[$b] === $cod2[$a]){
+					//$elenco_ore[$c][$c][$c] = "$info3"."$info2"."$info4";
 					$avviso = 'funziona!!';
 					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." ".$c);
 					$c = $c + 1;
