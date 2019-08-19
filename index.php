@@ -650,16 +650,12 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 		$avviso1 = ' /6K001     /6K002     /6K003     /6K004     /6K005     /6K006     /6K007     /6K008     /6K009     /6K010     /6K011     /6K012     /6K014';
-		
 		$avviso2 = ' /6K015     /6K016     /6K017     /6K018     /6K019     /6K020     /6K021     /6K022     /6K023     /6K024     /6K025     /6K026';
 		$avviso3 = ' /6K050     /6K051     /6K052     /6K053     /6K054     /6K055     /6K057     /6K058     /6K059     /6K060     /6K061     /6K062';
-		
 		$avviso4 = ' /6K027     /6K028     /6K029     /6K036     /6K037     /6K038     /6K039     /6K040     /6K041     /6K043     /6K046     /6K047     /6K049';
 		$avviso5 = ' /6K063     /6K065     /6K066     /6K067     /6K068     /6K069     /6K070     /6K071     /6K072     /6K073     /6K074     /6K076     /6K078';
-		
 		$avviso6 = ' /6K079     /6K081     /6K082     /6K083     /6K084     /6K085     /6K086     /6K087     /6K088     /6K089     /6K090     /6K091';
 		$avviso7 = ' /6K092     /6K093     /6K094     /6K095     /6K096     /6K097     /6K098     /6K099     /6K100     /6K101     /6K102     /6K105     /6K274';
-		
 		$avviso8 = ' /6K280     /6K284     /6K285     /6K287     /6K293     /6K301     /6K310     /6K311     /6K312     /6K313     /6K314     /6K315';
 		$avviso9 = ' /6K316     /6K317     /6K318     /6K324';
 		
@@ -822,9 +818,23 @@ else{
 
 	///7   Visualizza le ore ordinarie di funzionamento.";
 	else if($text === '/7'){
-		
-		//inizializzo e azzero le variabili
+				//inizializzo e azzero le variabili
 		$info1 = $info2 = $info3 = $info4 = $info5 =$info6 =$info7 =$info8 =$info9 =$info10 =$info11 =$info12 =$info13 =$info14 = $info15 = 0;
+		
+	   	$avviso = 'Selezionare impianto da consultare il consumo:';
+		
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
+		
+		$avviso1 = ' /7K001     /7K002     /7K003     /7K004     /7K005     /7K006     /7K007     /7K008     /7K009     /7K010     /7K011     /7K012     /7K014';
+		$avviso2 = ' /7K015     /7K016     /7K017     /7K018     /7K019     /7K020     /7K021     /7K022     /7K023     /7K024     /7K025     /7K026';
+		$avviso3 = ' /7K050     /7K051     /7K052     /7K053     /7K054     /7K055     /7K057     /7K058     /7K059     /7K060     /7K061     /7K062';
+		$avviso4 = ' /7K027     /7K028     /7K029     /7K036     /7K037     /7K038     /7K039     /7K040     /7K041     /7K043     /7K046     /7K047     /7K049';
+		$avviso5 = ' /7K063     /7K065     /7K066     /7K067     /7K068     /7K069     /7K070     /7K071     /7K072     /7K073     /7K074     /7K076     /7K078';
+		$avviso6 = ' /7K079     /7K081     /7K082     /7K083     /7K084     /7K085     /7K086     /7K087     /7K088     /7K089     /7K090     /7K091';
+		$avviso7 = ' /7K092     /7K093     /7K094     /7K095     /7K096     /7K097     /7K098     /7K099     /7K100     /7K101     /7K102     /7K105     /7K274';
+		$avviso8 = ' /7K280     /7K284     /7K285     /7K287     /7K293     /7K301     /7K310     /7K311     /7K312     /7K313     /7K314     /K315';
+		$avviso9 = ' /7K316     /7K317     /7K318     /7K324';
+		
 		$ca = 0;
 		
 		//scarico i dati dalla tabella Elenco_Impianti.json posta su altervista per strarre ID_Descrizione
