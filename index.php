@@ -920,6 +920,13 @@ else{
 				
 			}//fine if descrizione scelta
 		
+			if($info7 === $scelta){
+				$info9 = " -Ore di funzionamento dell'impianto: ".$info6;
+				
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info9);	
+				
+			}//fine if descrizione scelta
+			
 		}//fine foreach 3 funzionamento
 		
 
