@@ -920,7 +920,7 @@ else{
 				
 			}//fine if descrizione scelta
 		
-			if(!$scelta){
+			if(!$info6){
 				$avviso1 = " -Numero di ore di funzionamento non disponibile per questo impianto.";
 				
 				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso1);	
