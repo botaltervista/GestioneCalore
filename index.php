@@ -832,7 +832,7 @@ else{
 		$avviso5 = ' /7K063     /7K065     /7K066     /7K067     /7K068     /7K069     /7K070     /7K071     /7K072     /7K073     /7K074     /7K076     /7K078';
 		$avviso6 = ' /7K079     /7K081     /7K082     /7K083     /7K084     /7K085     /7K086     /7K087     /7K088     /7K089     /7K090     /7K091';
 		$avviso7 = ' /7K092     /7K093     /7K094     /7K095     /7K096     /7K097     /7K098     /7K099     /7K100     /7K101     /7K102     /7K105     /7K274';
-		$avviso8 = ' /7K280     /7K284     /7K285     /7K287     /7K293     /7K301     /7K310     /7K311     /7K312     /7K313     /7K314     /K315';
+		$avviso8 = ' /7K280     /7K284     /7K285     /7K287     /7K293     /7K301     /7K310     /7K311     /7K312     /7K313     /7K314     /7K315';
 		$avviso9 = ' /7K316     /7K317     /7K318     /7K324';
 		
 		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
@@ -860,33 +860,33 @@ else{
 		
    		$data = json_decode($response, true);
 		
-		//foreach 2
+		//foreach 1
 		foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
-        		$info5=$info['Contratto'];
+        		$info1=$info['Contratto'];
 	     
 			//salva la descrizione dell'impianto
-       			$info6=$info['Id_Descrizione'];
+       			$info2=$info['Id_Descrizione'];
        
        			//salva il codice dell'impianto
-      	      	        $info7=$info['cod_impianto'];
+      	      	        $info3=$info['cod_impianto'];
 			
-			$info11 = str_replace("/7", "", $info7);
+			$info4 = str_replace("/7", "", $info3);
 			
-			$info12 = " - ".$info6;
+			$info5 = " - ".$info2;
 			
-			if($info11 === $scelta){
+			if($info4 === $scelta){
 
-				//Salvo la denominazione del impianto in una variabile dedicata
-				$info13 = $info6;
+				//salva i dati delle variabili dentro il array impianti
+				$consumi[0][0] = "$info4"."$info5";
 				
-		       		//salva i dati delle variabili dentro il array impianti
-				$consumi[0][0] = "$info11"."$info12";
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info4.$info5);	
+				
 			}//fine if descrizione scelta	
 			
 		
-		}//fine foreach 2 data as info K impianti
+		}//fine foreach 1 data as info K impianti
 		
 			
 		$cb = 0;
@@ -906,21 +906,17 @@ else{
     	 	foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
-        		$info4[$cb]=$info['Ordinarie'];
+        		$info6 =$info['Ordinarie'];
 	     
 			//salva la descrizione dell'impianto
-       			$info5=$info['cod_impianto'];
+       			$info7=$info['cod_impianto'];	
 			
-			
-			//salva la descrizione dell'impianto
-       			$cod2[$cb]="$info5";
-			
-			
-		       	//salva i dati delle variabili dentro il array impianti
-			$ordinarie[$cb] = "$info4";
-			
-			//variabile di controllo per l'indice dell'array
-			$cb = $cb + 1;
+			if($info7 === $scelta){
+				$info9 = " -Ore di funzionamento: ".$info6;
+				
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info4.$info5);	
+				
+			}//fine if descrizione scelta
 		
 		}//fine foreach 3 funzionamento
 		
