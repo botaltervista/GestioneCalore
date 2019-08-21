@@ -911,10 +911,12 @@ else{
 			//salva la descrizione dell'impianto
        			$info7=$info['cod_impianto'];	
 			
-			if($info7 === $scelta){
-				$info9 = " -Ore di funzionamento: ".$info6;
+			$info8 = str_replace("/7", "", $info7);
+			
+			if($info8 === $scelta){
+				$info9 = " -Ore di funzionamento dell'impianto: ".$info6;
 				
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info4.$info5);	
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info9);	
 				
 			}//fine if descrizione scelta
 		
