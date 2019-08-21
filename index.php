@@ -835,8 +835,13 @@ else{
 		$avviso8 = ' /7K280     /7K284     /7K285     /7K287     /7K293     /7K301     /7K310     /7K311     /7K312     /7K313     /7K314     /K315';
 		$avviso9 = ' /7K316     /7K317     /7K318     /7K324';
 		
+		$avviso10 = $avviso1."   ".$avviso2."   ".$avviso3."   ".$avviso4."   ".$avviso5."   ".$avviso6."   ".$avviso7."   ".$avviso8."   ".$avviso9;     
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso10);
+		
 		$ca = 0;
 			
+	}//fine text /7
+		
 	//$testo = substr($text, 0, 3); // otteniamo dal primo fino al 3°)  
 	else if(($testo = substr($text, 0, 3)) === '/7K'){
 		//inizializzo e azzero le variabili
@@ -854,6 +859,8 @@ else{
     		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 		
    		$data = json_decode($response, true);
+		
+		//foreach 1
     	 	foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
@@ -876,10 +883,10 @@ else{
 			//variabile di controllo per l'indice dell'array
 			$ca = $ca + 1;
 		
-		}//fine foreach data as info K impianti	
+		}//fine foreach 1 data as info K impianti
 		
-		
-		    	 	foreach ($data as $info) { 
+		//foreach 2
+		foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
         		$info5=$info['Contratto'];
@@ -901,11 +908,10 @@ else{
 				
 		       		//salva i dati delle variabili dentro il array impianti
 				$consumi[0][0] = "$info11"."$info12";
-			}	
+			}//fine if descrizione scelta	
 			
 		
-		}//fine foreach data as info K impianti	
-		
+		}//fine foreach 2 data as info K impianti
 		
 			
 		$cb = 0;
@@ -920,7 +926,8 @@ else{
     		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 		
    		$data = json_decode($response, true);
-     
+     		
+		//foreach 3
     	 	foreach ($data as $info) { 
 	     
         		//salva il contratto dell'impianto       
@@ -940,14 +947,16 @@ else{
 			//variabile di controllo per l'indice dell'array
 			$cb = $cb + 1;
 		
-		}//fine foreach ordinarie
+		}//fine foreach 3 funzionamento
 		
-		//azzero e inizzializo le variabili
-		$cn = 0;
+
 		
 		
 		
 		/*
+		//azzero e inizzializo le variabili
+		$cn = 0;
+		
 		foreach($cod1 as $esterno){
 			for($cod2 as $interno){
 				if($cod1[$cn] === $cod2[$cb]){
@@ -1018,7 +1027,7 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 		
-		}//fine scelta /7K
+		}//fine elseif /7K
 	
 
 	
