@@ -920,10 +920,10 @@ else{
 				
 			}//fine if descrizione scelta
 		
-			if($info7 === $scelta){
-				$info9 = " -Ore di funzionamento dell'impianto: ".$info6;
+			if(!$scelta){
+				$avviso1 = " -Numero di ore di funzionamento non disponibile per questo impianto.";
 				
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info9);	
+				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso1);	
 				
 			}//fine if descrizione scelta
 			
@@ -991,12 +991,6 @@ else{
 
 
 		*/
-		
-		
-		
-		$messaggio = 'uscita /7';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio);
-		
 		
 		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
 		
