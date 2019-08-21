@@ -913,23 +913,29 @@ else{
 			
 			$info8 = str_replace("/7", "", $info7);
 			
+			//numero di controllo dell'eventuale dato vuoto delle ore
+			$numero = 0;
+			
 			if($info8 === $scelta){
+				//do il valore di uno alla variabile di controllo
+				$numero = 1;
+				
 				$info9 = " -Ore di funzionamento dell'impianto: ".$info6;
 				
 				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$info9);	
 				
 			}//fine if descrizione scelta
-		
-			else{
-				$avviso1 = " -Numero di ore di funzionamento non disponibile per questo impianto.";
-				
-				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso1);	
-				
-			}//fine if descrizione scelta
 			
 		}//fine foreach 3 funzionamento
 		
-
+		//if di controllo numero di ore presente nella banca dati
+		if($numero === 0){
+			$avviso1 = " -Numero di ore di funzionamento non disponibile per questo impianto.";
+				
+			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso1);	
+				
+		}//fine if di controllo numero
+		
 		
 		
 		
