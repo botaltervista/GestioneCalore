@@ -905,10 +905,10 @@ else{
 		//foreach 3
     	 	foreach ($data as $info) { 
 	     
-        		//salva il contratto dell'impianto       
+        		//salva le ore di funzionamento       
         		$info6 =$info['Ordinarie'];
 	     
-			//salva la descrizione dell'impianto
+			//salva il codice dell'impianto
        			$info7=$info['cod_impianto'];	
 			
 			$info8 = str_replace("/7", "", $info7);
@@ -920,7 +920,7 @@ else{
 				
 			}//fine if descrizione scelta
 		
-			if(!$info6){
+			else{
 				$avviso1 = " -Numero di ore di funzionamento non disponibile per questo impianto.";
 				
 				http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso1);	
