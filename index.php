@@ -901,7 +901,10 @@ else{
     		$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
 		
    		$data = json_decode($response, true);
-     		
+  
+		//numero di controllo dell'eventuale dato vuoto delle ore
+		$numero = 0;
+		
 		//foreach 3
     	 	foreach ($data as $info) { 
 	     
@@ -912,9 +915,6 @@ else{
        			$info7=$info['cod_impianto'];	
 			
 			$info8 = str_replace("/7", "", $info7);
-			
-			//numero di controllo dell'eventuale dato vuoto delle ore
-			$numero = 0;
 			
 			if($info8 === $scelta){
 				//do il valore di uno alla variabile di controllo
