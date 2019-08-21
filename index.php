@@ -860,31 +860,6 @@ else{
 		
    		$data = json_decode($response, true);
 		
-		//foreach 1
-    	 	foreach ($data as $info) { 
-	     
-        		//salva il contratto dell'impianto       
-        		$info1=$info['Contratto'];
-	     
-			//salva la descrizione dell'impianto
-       			$info2=$info['Id_Descrizione'];
-       
-			//salva la descrizione dell'impianto
-       			$info3=$info['cod_impianto'];
-				
-		       	//salva i dati delle variabili dentro il array impianti
-			$impianti[$ca][$ca] = "$info3"."$info2";
-			
-			//salva la descrizione dell'impianto
-       			$cod1[$ca]="$info3";
-			
-			$descrizione[$ca] = "$info2";
-			
-			//variabile di controllo per l'indice dell'array
-			$ca = $ca + 1;
-		
-		}//fine foreach 1 data as info K impianti
-		
 		//foreach 2
 		foreach ($data as $info) { 
 	     
@@ -901,7 +876,7 @@ else{
 			
 			$info12 = " - ".$info6;
 			
-			if($Descrizione === $scelta){
+			if($info11 === $scelta){
 
 				//Salvo la denominazione del impianto in una variabile dedicata
 				$info13 = $info6;
