@@ -1,6 +1,5 @@
 <?php
-// pdgt-esercitazione-heroku
-//require 'functions.php';  //inclusione delle funzioni
+
 require 'curl-lib.php';
 $cn = 0;
 $controllo7 = 0;
@@ -28,15 +27,14 @@ else{
 	$name = $message->from->first_name;
 
 	
-			//graffe, dollaro e variabile, variabili php dentro stringa
+	//graffe, dollaro e variabile, variabili php dentro stringa
 	error_log("Message ID {$message_id} from {$chat_id}: {$text}\n");  //usa php per logare errori di sistema
 	//il bot invia mess, viene decodificato e scompattato
 
-	//$token = "qui si metterebbe il token telegram ma non è sicuro";$tastiera
 	//il runtime ci da il codice token, lo otteniamo da fuori, getenv sono variabili che eseguono il nostro codice
 	$token = getenv("BOTTOKEN");
 	
-	
+	//messaggio visualizzato quando si seleziona la voce menu
 	if($text === '/menu'){
 		$messaggio1 = " /1   Visualizza il tipo di impianti e la denominazione.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
@@ -250,7 +248,7 @@ else{
 		
 
 	
-		//3   Visualizza pronto intervento su un determinato impianto.";
+		//3   Visualizza pronto intervento su un determinato impianto
 	else if($text === '/3'){
 	   	
 		//inizializzo e azzero le variabili
@@ -360,7 +358,7 @@ else{
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$datos[$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
 			//$xx variabile di controllo per il ciclo
 			$xx = $xx + 1;
-		}//fine confronto impianti con foreach$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx][$xx]);
+		}//fine foreach
   			
 
 		
@@ -457,7 +455,7 @@ else{
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
 		
-		$avviso = 'Selezionare impianto da consultare gli interventi in pronto intervento:';
+		$avviso = 'Selezionare impianto da consultare:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
 		
@@ -545,13 +543,13 @@ else{
      
     	 	foreach ($data as $info) { 
 	     
-        		//salva il codice dell'impianto        
+        		//salva la descrizione dell'impianto        
         		$info8=$info['Id_Descrizione'];
 	     
-			//salva la descrizione dell'impianto
+			//salva il codice dell'impianto
        			$info9=$info['Cod_Servizio'];
        
-       			//salva la data contratto
+       			//salva la matricola del contatore
       	      	        $info10=" ".$info['Matr_Contatore'];
 			
 			if($info8 === $info13){
@@ -581,16 +579,16 @@ else{
      
     	 	foreach ($data as $info) { 
 	     
-        		//salva il codice dell'impianto        
+        		//salva il codice di servizio dell'impianto        
         		$info1=$info['Cod_Servizio'];
 	     
-			//salva la descrizione dell'impianto
+			//salva la lettura del consumo
        			$info2=" - Lettura: ".$info['Lettura_Consumo'];
        
-       			//salva la data contratto
+       			//salva la matricola del contatore
       	      	        $info3=" - Matricola del contatore gas: ".$info['Matr_Contatore'];
 			
-			//salva i dati nella variabile
+			//salva il codice di servizio
 			$info4 =" - Codice di servizio: ".$info1;
         		
 			if($info1 === $info14){
@@ -722,13 +720,13 @@ else{
      
     	 	foreach ($data as $info) { 
 	     
-        		//salva il codice dell'impianto        
+        		//salva la descrizione dell'impianto        
         		$info8=$info['Id_Descrizione'];
 	     
-			//salva la descrizione dell'impianto
+			//salva il codice dell'impianto
        			$info9=$info['Cod_Servizio'];
        
-       			//salva la data contratto
+       			//salva la matricola del contatore
       	      	        $info10=" -Matricola contatore: ".$info['Matr_Contatore'];
 			
 			if($info8 === $info13){
@@ -756,7 +754,7 @@ else{
      
     	 	foreach ($data as $info) { 
 	     
-        		//salva il codice dell'impianto        
+        		//salva il codice di servizio        
         		$info1=$info['Cod_Servizio'];
 	     
 			//salva la data della lettura
@@ -937,67 +935,6 @@ else{
 		}//fine if di controllo numero
 		
 		
-		
-		
-		/*
-		//azzero e inizzializo le variabili
-		$cn = 0;
-		
-		foreach($cod1 as $esterno){
-			for($cod2 as $interno){
-				if($cod1[$cn] === $cod2[$cb]){
-					//$elenco_ore[$c][$c][$c] = "$info3"."$info2"."$info4";
-					$avviso = 'funziona!!';
-					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso." ".$c);
-					$c = $c + 1;
-				}
-				$cl = $cl + 1;
-			}//fine foreach interno
-			$cn = $cn + 1;
-		}//fine foreach esterno
-		
-		
-		
-		
-		$xx = 0;
-		foreach($cod1 as $sequenza){
-  		
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." ".$cod1[$xx]);
-  			$xx = $xx + 1;
-		}// fine foreach
-		
-		$xx = 0;
-		foreach($cod2 as $sequenza){
-  		
-			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." ".$cod2[$xx]);
-  			$xx = $xx + 1;
-		}// fine foreach
-		
-		foreach($impianti as $risparmio){
-			foreach($ordinarie as $confronto){
-				if (in_array($impianti, $ordinarie))
-			 	  {
-					$messaggio = 'trovato: ';
-					http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio." - ".$contatore);
-					$contatore = $contatore + 1;
-				
-			  	  }
-			}			
-		}//fine foreach esterno impianti
-		
-		
-
-		foreach ($arraySearch as $value)
-			{
-			if (in_array($value, $arrayList))
-			{
-			$arrayList[array_search($value, $arrayList)] .= '*';
-			}
-		}
-
-
-		*/
-		
 		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
 		
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$avviso);
@@ -1014,7 +951,7 @@ else{
 	
 	//stampa ora
 	elseif($text === '/ora'){
-	     	//aggiunto da controllare funzionamento
+	     	//funzione per la stampa dell'ora
 		$ora = date('H:i');
 		$giorno = date('d/m/Y');
 
