@@ -1,10 +1,10 @@
 <?php
-/* File contenente il codice sorgente del client */
+/* codice sorgente  */
 
 //includiamo file contenente le funzioni usate dal client
 require 'functions.php';
 
-$close_client = 1;    //impostiamo variabile di controllo ciclo do-while del menù
+$uscita = 1;    //impostiamo variabile di controllo ciclo do-while del menù
 
 $impianto = null;     //inizializziamo la variabile
 
@@ -38,7 +38,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa delle caldaie
     Caldaie($http_code,$response,$impianto);
     //fine scelta 1
   //----------------------------------------------
@@ -54,7 +54,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa degli interventi
     Interventi($http_code,$response,$impianto);
     //fine scelta 2
   //----------------------------------------------
@@ -70,7 +70,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa della matricola dei contatori
     Matricola_Contatore($http_code,$response,$impianto);
     //fine scelta 3
   //----------------------------------------------
@@ -86,7 +86,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa delle ore di funzionamento
     Ore_Funzionamento($http_code,$response,$impianto);
     //fine scelta 4
   //----------------------------------------------
@@ -102,7 +102,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa del tipo d'impianti
     Tipo_Impianti($http_code,$response,$impianto);
     //fine scelta 5
   //----------------------------------------------
@@ -118,7 +118,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa della ultima lettura dei contatori
     Ultima_Lettura($http_code,$response,$impianto);
     //fine scelta 6
   //----------------------------------------------
@@ -134,7 +134,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa dei consumi degli impianti
     Consumi($http_code,$response,$impianto);
     //fine scelta 7
   //----------------------------------------------
@@ -184,7 +184,7 @@ do {
     //estrazione del codice di risposta (HTTP status)
     $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
 
-    //funzione per la stampa degli impianti
+    //funzione per la stampa di un impianto a scelta
     Impianto_Scelto($http_code,$response,$impianto);    
     
     
@@ -206,13 +206,13 @@ do {
     Info_Impianti($http_code,$response,$impianto);    
     
     
-    //fine scelta 10
+    //fine scelta 11
   //----------------------------------------------
   } 
  
   
     elseif ($first_ch === 12) {
-    $close_client = 0;    //chiusura delclient
+    $uscita = 0;    //chiusura delclient
     echo "\n\nTerminazione corretta del client, arrivederci !\n\n";
     exit;    //terminazione del programma
   } 
@@ -221,7 +221,7 @@ do {
     echo "\n\nATTENZIONE --> È stato inserito un valore diverso da quelli previsti." . PHP_EOL;
   }
   
-} while ($close_client !== 0);    //end do-while
+} while ($uscita !== 0);    //end do-while
 
 //chiusura della sessione CURL
 curl_close($handle);
