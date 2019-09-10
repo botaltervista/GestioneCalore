@@ -3,69 +3,14 @@
 
 //---------------------------------------------------------------------
 
-
-/* funzione per la stampa di tutti gli impianti*/
-function Stampa_Impianti(){	
-       //$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
-       $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Elenco_Impianti.json');
-       //richiesta della risposta HTTP come stringa
-       curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-       //esecuzione della richiesta HTTP
-        $response = curl_exec($handle);
-       //estrazione del codice di risposta (HTTP status)
-       $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));		
-		
-       $data = json_decode($response, true);
-     
-       foreach ($data as $info) { 
-       //stampa il codice dell'impianto
-	     
-       //salva il codice dell'impianto        
-       $info1="/".$info['cod_impianto'];
-	     
-       //salva la descrizione dell'impianto
-       $info2=$info['Id_Descrizione'];
-       
-       //salva la data contratto
-       $info3=$info['Contratto'];
-	       
-       $datos[$controllo][$controllo][$controllo] = "$info1"." ". "$info2"." "."$info3";
-	       
-       $controllo = $controllo + 1;
-       //$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$mensaje");
-       }  //fine foreach
-       
-	$controllo = $controllo - 1;
-       $indice = 1;
-       for($xx = 0; $xx <= $controllo; $xx = $xx + 1){
-       		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$indice." - ".$datos[$xx][$xx][$xx]);
-       		$indice = $indice + 1;
-       }  //fine ciclo for
-}  //fine funzione Stampa_Impianti($impianto)
-
-
-				//$first_ch = readline();    //acquisizione scelta dell'utente
-		//commento $url 
-		//$url = "https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&text=" . urlencode("$message1 $message\nOggi mi hai scritto questo: {$text}");
-		//stringa convertita per inserire nell'url per essere compattibile
-		/*
-		error_log("URL: " . $url);
-		$handle = curl_init($url);
-		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($handle, CURLOPT_POST, true);
-		$response = curl_exec($handle);
-		error_log("sendMessage: " . $response);
-		*/
-//---------------------------------------------------------------------
-
-/* funzione per la stampa del pronto intervento*/
+/* funzione per la stampa dettagliata delle caldaie su ogni impianto */
 function Caldaie($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
      $data = json_decode($response, true);
 
      foreach ($data as $info) {
-	   echo "\n\n-------------------------------------------------------------------------------------------\n"; 
+       echo "\n\n-------------------------------------------------------------------------------------------\n"; 
        //Anno d'installazione della caldaia
        printf("Anno Installazione:  %s\n", $info['Anno_Installazione']);
        
@@ -104,8 +49,6 @@ function Caldaie($http_code, $response, $impianto) {
   }    //end if-else
 }    //end function
 
-
-
 //---------------------------------------------------------------------
 
 /* funzione per la stampa denominazione impianto*/
@@ -130,8 +73,6 @@ function Impianti($http_code, $response, $impianto) {
         }
        }
        
-		 
-     
      else{foreach ($data as $info) {
        
        //stampa il codice dell'impianto
@@ -155,8 +96,6 @@ function Impianti($http_code, $response, $impianto) {
 
 //---------------------------------------------------------------------
 
-//---------------------------------------------------------------------
-
 /* funzione per la stampa del pronto intervento*/
 function Pronto_Intervento($http_code, $response, $impianto) {
   if ($http_code == 200) {
@@ -164,7 +103,7 @@ function Pronto_Intervento($http_code, $response, $impianto) {
      $data = json_decode($response, true);
 
      foreach ($data as $info) {
-	   echo "\n\n-------------------------------------------------------------------------------------------\n"; 
+       echo "\n\n-------------------------------------------------------------------------------------------\n"; 
        // Nome Chiamante
        printf("Chiamante:  %s\n", $info['Chiamante']);
        
@@ -199,24 +138,24 @@ function Pronto_Intervento($http_code, $response, $impianto) {
 
 //---------------------------------------------------------------------
 
-/* funzione per la stampa del pronto intervento*/
+/* funzione per la stampa degli interventi negli impianti*/
 function Interventi($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
      $data = json_decode($response, true);
 
      foreach ($data as $info) {
-	   echo "\n\n-------------------------------------------------------------------------------------------\n"; 
-       // Nome Chiamante
+       echo "\n\n-------------------------------------------------------------------------------------------\n"; 
+       // cognome manutentore
        printf("Cognome Manutentore:  %s\n", $info['Cognome_Manutentore']);
        
        //Data intervento
        printf("Data dell'intervento:  %s\n", $info['Data_Intervento']);
        
-       //Descrizione chiamata
+       //Descrizione del intervento
        printf("Descrizione del'intervento:  %s\n", $info['Descrizione_Intervento']);
        
-       //Id Chiamata
+       //Nome del manutentore
        printf("Nome Manutentore:  %s\n", $info['Nome_Manutentore']);
        
        //codice dell'impianto
@@ -232,24 +171,21 @@ function Interventi($http_code, $response, $impianto) {
 
 //---------------------------------------------------------------------
 
-
-//---------------------------------------------------------------------
-
-/* funzione per la stampa del pronto intervento*/
+/* funzione per la stampa della matricola del contatore*/
 function Matricola_Contatore($http_code, $response, $impianto) {
   if ($http_code == 200) {
      //risposta HTTP ok
      $data = json_decode($response, true);
 
      foreach ($data as $info) {
-	   echo "\n\n-------------------------------------------------------------------------------------------\n"; 
-       // Nome Chiamante
+       echo "\n\n-------------------------------------------------------------------------------------------\n"; 
+       // codice di servizio
        printf("Codice di servizio:  %s\n", $info['Cod_Servizio']);
        
-       //stampa il nome dell'impianto
+       //descrizione dell'impianto
        printf("Identificativo dell'impianto:  %s\n", $info['Id_Descrizione']);
        
-       //Data intervento
+       //Matricola del contatore
        printf("Matricola del contatore gas:  %s\n", $info['Matr_Contatore']);
        
        echo "\n-------------------------------------------------------------------------------------------\n";
@@ -262,9 +198,6 @@ function Matricola_Contatore($http_code, $response, $impianto) {
 
 //---------------------------------------------------------------------
 
-
-//---------------------------------------------------------------------
-
 /* funzione per stampa delle ore ordinarie di funzionamento*/
 function Ore_Funzionamento($http_code, $response, $impianto) {
   if ($http_code == 200) {
@@ -272,8 +205,8 @@ function Ore_Funzionamento($http_code, $response, $impianto) {
      $data = json_decode($response, true);
 
      foreach ($data as $info) {
-	   echo "\n\n-------------------------------------------------------------------------------------------\n"; 
-       // Nome Chiamante
+       echo "\n\n-------------------------------------------------------------------------------------------\n"; 
+       // Ore di servizio ordinarie
        printf("Ore di servizio in orario lavorativo:  %s\n", $info['Ordinarie']);
        
        //codice dell'impianto
@@ -289,9 +222,6 @@ function Ore_Funzionamento($http_code, $response, $impianto) {
 
 //---------------------------------------------------------------------
 
-
-//---------------------------------------------------------------------
-
 /* funzione per la stampa dei tipi di impianti*/
 function Tipo_Impianti($http_code, $response, $impianto) {
   if ($http_code == 200) {
@@ -301,10 +231,10 @@ function Tipo_Impianti($http_code, $response, $impianto) {
      foreach ($data as $info) {
 	   echo "\n\n-------------------------------------------------------------------------------------------\n";
        
-       //stampa il nome dell'impianto
+       //stampa la descrizione dell'impianto
        printf("Identificativo impianto:  %s\n", $info['Id_Descrizione']);
        
-       //stampa il nome dell'impianto
+       //stampa il tipo dell'impianto
        printf("Tipo di impianto:  %s\n", $info['Tipo']);
        
        //codice dell'impianto
@@ -320,8 +250,6 @@ function Tipo_Impianti($http_code, $response, $impianto) {
 
 //---------------------------------------------------------------------
 
-//---------------------------------------------------------------------
-
 /* funzione per la stampa delle ultime letture dei cointatori*/
 function Ultima_Lettura($http_code, $response, $impianto) {
   if ($http_code == 200) {
@@ -331,13 +259,13 @@ function Ultima_Lettura($http_code, $response, $impianto) {
      foreach ($data as $info) {
 	   echo "\n\n-------------------------------------------------------------------------------------------\n";
        
-       // Nome Chiamante
+       // Codice di servizio
        printf("Codice di servizio:  %s\n", $info['Cod_Servizio']);
        
-       //stampa il nome dell'impianto
+       //lettura del consumo
        printf("Lettura instantanea del consumo:  %s\n", $info['Lettura_Consumo']);
        
-       //codice dell'impianto
+       //Matricola del contatore
        printf("Matricola del contatore gas:  %s\n", $info['Matr_Contatore']);
        
        echo "\n-------------------------------------------------------------------------------------------\n";
@@ -359,13 +287,13 @@ function Consumi($http_code, $response, $impianto) {
      foreach ($data as $info) {
 	   echo "\n\n-------------------------------------------------------------------------------------------\n";
        
-       // Nome Chiamante
+       // codice di servizio
        printf("Codice di servizio:  %s\n", $info['Cod_Servizio']);
        
-       //stampa il nome dell'impianto
+       //data dell'ultima lettura
        printf("Data della lettura instantanea:  %s\n", $info['data_lettura']);
        
-       //codice dell'impianto
+       //lettura effettuata
        printf("Lettura instantanea del contatore gas:  %s\n", $info['lettura']);
        
        echo "\n-------------------------------------------------------------------------------------------\n";
@@ -376,13 +304,11 @@ function Consumi($http_code, $response, $impianto) {
   }    //end if-else
 }    //end function
 
-//----
+//---------------------------------------------------------------------
 
 /* funzione per la stampa dell'impianto scelto*/
 function Impianto_Scelto($http_code,$response,$impianto) {
   if ($http_code == 200) {
-	  //--------------------------------------
-	  
 		
     echo "\t[10] seleziona l'impianto dall'elenco.\n";
     
@@ -393,30 +319,6 @@ function Impianto_Scelto($http_code,$response,$impianto) {
 	  
 	 //richiama la funzione passando l'impiando desiderato
      Impianti($http_code,$response,$impianto);
-     
-     /*
-	 //****************************************** 
-     //risposta HTTP ok
-     $data = json_decode($response, true);
-
-     foreach ($data as $info) {
-	   echo "\n\n-------------------------------------------------------------------------------------------\n";
-       
-       // Nome Chiamante
-       printf("Codice di servizio:  %s\n", $info['Cod_Servizio']);
-       
-       //stampa il nome dell'impianto
-       printf("Data della lettura instantanea:  %s\n", $info['data_lettura']);
-       
-       //codice dell'impianto
-       printf("Lettura instantanea del contatore gas:  %s\n", $info['lettura']);
-       
-       echo "\n-------------------------------------------------------------------------------------------\n";
-     }    //end foreach
-     
-     //*******************************************
-     
-     */
      
   } else {
       //se ritorna un codice di errore dalla richiesta HTTP
