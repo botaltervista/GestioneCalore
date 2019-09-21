@@ -98,7 +98,7 @@ do {
   } 
     elseif ($first_ch === 5) {
     
-    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Tipo_Impianti.json');
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/TipoImpianti.json');
     
     //richiesta della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
@@ -130,7 +130,7 @@ do {
   } 
     elseif ($first_ch === 7) {
 
-    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matr_Cont_Cod_Serv.json');
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Matricola.json');
     
     //richiesta della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
@@ -147,7 +147,7 @@ do {
   }
     elseif ($first_ch === 8) {
 
-    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/consumi_2000_2012.json');
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/consumi.json');
     
     //richiesta della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
@@ -166,7 +166,7 @@ do {
   
     elseif ($first_ch === 9) {
        
-    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Ore_Funzionamento.json');
+    $handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/funzionamento.json');
     
     //richiesta della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
