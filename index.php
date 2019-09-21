@@ -216,7 +216,7 @@ else{
 			
 			if($info11 == $scelta){
 		        	 //salva i dati delle variabili dentro il array
-				$datos[0][0][0][0][0][0][0][0][0][0] = "$info11"."$info13"."$info12"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9"."$scelta";
+				$datos[0][0][0][0][0][0][0][0][0][0] = "$info13"."$info1"."$info2"."$info3"."$info4"."$info5"."$info6"."$info7"."$info8"."$info9";
 			}			
 			//variabile di controllo per il numero di caldaie
 			$cn = $cn + 1;	
