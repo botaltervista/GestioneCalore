@@ -294,7 +294,7 @@ function Consumi($http_code, $response, $impianto) {
        printf("Data della lettura instantanea:  %s\n", $info['data_lettura']);
        
        //lettura effettuata
-       printf("Lettura instantanea del contatore gas:  %s\n", $info['lettura']);
+       printf("Consumi ad oggi:  %s\n", $info['lettura']);
        
        echo "\n-------------------------------------------------------------------------------------------\n";
      }    //end foreach
@@ -305,29 +305,5 @@ function Consumi($http_code, $response, $impianto) {
 }    //end function
 
 //---------------------------------------------------------------------
-
-/* funzione per la stampa dell'impianto scelto*/
-function Impianto_Scelto($http_code,$response,$impianto) {
-  if ($http_code == 200) {
-		
-    echo "\t[10] seleziona l'impianto dall'elenco.\n";
-    
-      $impianto = readline();    //caratteristica scelta dall'utente per il filtraggio
-      //$impianto = string($impianto);
-      
-	  printf("L'impianto scelto e': %s\n",$impianto);
-	  
-	 //richiama la funzione passando l'impiando desiderato
-     Impianti($http_code,$response,$impianto);
-     
-  } else {
-      //se ritorna un codice di errore dalla richiesta HTTP
-      echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
-  }    //end if-else
-}    //end function
-
-//----
-
-
 
 ?>
