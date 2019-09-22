@@ -1,10 +1,15 @@
-Script to set webhook:
+• Progetto_PDGT_Sessione_Autunnale_2018/2019
+• Pedro Antonio Basto Chacon Matricola 243735 username botaltervista.
 
-```bash
-curl -F "url=https://<DYNONAME>.herokuapp.com/hook.php" https://api.telegram.org/bot<TOKEN>/setWebhook
-```
+Descrizione:
 Estrazione dati da Altervista sia in locale come in remoto.
 Nella repository, ci sono presenti due tipi di consulta di dati sia in locale tramite i file: client.php, curl-lib.php, functions.php e la consulta di dati tramite il file index.php con l'interfacia tra Github, Heroku ed Altervista.
+
+Relazione progetto:
+
+La repository è suddivisa così:
+Estrazione dei dati in locale tramite terminal, con il menu e le risposte:
+
   Il file client contiene un menu:
   [1] stampa l'elenco degli impianti in servizio.
   [2] stampa i dettagli delle caldaie esistenti.
@@ -18,8 +23,108 @@ Nella repository, ci sono presenti due tipi di consulta di dati sia in locale tr
   [10] uscita del programma.
     Tramite un ciclo if else viene fatta una richiesta http ad una tabella in file json, posizionata su Altervista. 
     Viene stratto il codice di risposta tramite il file curl-lib.php, si effettua la chiamata ad una funzione passando come argomenti la esecuzione della richiesta, la estrazione del codice della risposta (status) ed un impianto scelto eventualmente.
-   Il file functions.php è incaricato di effettuare la stampa sul terminal dei dati estratti.
-   
+   Il file functions.php è incaricato di effettuare la stampa sul terminal dei dati estratti, un esempio delle richieste fatte sul menu e la risposta stampata:
+
+[1] stampa l'elenco degli impianti in servizio.
+1
+Codice Impianto:K001
+Nome Impianto:Palestra Carducci
+Data Contratto:2003/00101
+
+-----------------------------------------------------
+Codice Impianto:K002
+Nome Impianto:Circoscrizione  Via dei Lavoratori
+Data Contratto:2003/00101
+
+-----------------------------------------------------
+Codice Impianto:K003
+Nome Impianto:Scuola Materna Statale  Il Glicine Via Salandra
+Data Contratto:2003/00101
+
+[2] stampa i dettagli delle caldaie esistenti.
+2
+-------------------------------------------------------------------------------------------
+Anno Installazione:  2003
+Anno Targa:  1986
+Marca della Caldaia:  Ferroli
+Matricola del Bruciatore:  Caldaia Ferroli
+Matricola della Caldaia:  9948L200272
+Modello della Caldaia:  Pegasus F2102
+Potenza del Focolare:  124
+Potenza Utile della Caldaia:  102
+Numero della Caldaia:  1
+Codice dell'impianto:  K001
+
+[3] stampa gli interventi effettuati negli impianti.
+3
+-------------------------------------------------------------------------------------------
+Cognome Manutentore:  AVILA
+Data dell'intervento:  2003-10-01
+Descrizione del'intervento:  PULIZIA CALDAIE E BRUCIAT
+Nome Manutentore:   RODOLFO
+Codice dell'impianto:  K105
+
+-------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------
+Cognome Manutentore:  AVILA
+Data dell'intervento:  2003-10-07
+Descrizione del'intervento:  MANUTENZIONE ORDINARIA CA
+Nome Manutentore:   RODOLFO
+Codice dell'impianto:  K055
+
+[4] stampa pronto intervento.
+4
+-------------------------------------------------------------------------------------------
+Chiamante:  - LIUSI LINDA
+Data assegnazione:  2012-03-30
+Data dell'intervento:  2012-03-30
+Descrizione della chiamata:  TERMOSIFONI TROPPO ALTI
+Id della chiamata:  2012/00268/C
+Numero progressivo della chiamata:  316
+Tempo di risposta della chiamata:  00:50:00
+Codice dell'impianto:  K090
+
+[5] stampa il tipo di impianto e la denominazione.
+5
+Identificativo impianto:  Vecchio Palasport
+Tipo di impianto:  palestra
+Codice dell'impianto:  K047
+
+[6] stampa l'ultima lettura effettuata del contatore gas.
+6
+-------------------------------------------------------------------------------------------
+Codice di servizio:  122614134
+Lettura instantanea del consumo:  1010
+Matricola del contatore gas:  21200148
+
+[7] stampa la matricola dei contatori gas.
+7
+-------------------------------------------------------------------------------------------
+Codice di servizio:  122607060
+Identificativo dell'impianto:  Vecchio Palasport
+Matricola del contatore gas:  15173850
+
+[8] stampa i consumi degli impianti.
+8
+-------------------------------------------------------------------------------------------
+Codice di servizio:  122625147
+Data della lettura instantanea:  2002-11-26
+Consumo ad oggi:  1382
+
+[9] stampa le ore ordinarie di funzionamento.
+9
+-------------------------------------------------------------------------------------------
+Ore di servizio in orario lavorativo:  637
+Codice dell'impianto:  K076
+
+10
+[10] uscita del programma.
+Terminazione corretta del programma, invio per chiudere.
+
+
+
    Il file index.php interagisce con il bot "Gestione Calore" presente su telegram, ha bisogno del file curl-lib.php una libreria per la creazione delle richieste http incaricata di inviare le richieste provenienti da Telegram e gestite da Heroku verso Github e Altervista.
    Si legge il contenuto della richiesta, il bot invia il messaggio che viene decodificato e scompattato.
    Il messaggio e visualizzato ed approffitando del fatto che Telegram invia in ingresso del messaggio quello che è scritto dopo il simbolo backslash "/", stampo una opzione iniziale "/menu" e "/ora".
