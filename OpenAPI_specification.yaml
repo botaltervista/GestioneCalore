@@ -1,0 +1,85 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'GestioneCalore'
+  description: 'Consulta degli Impianti della Gestione Calore'
+  version: "1.0.0"
+  title: "client per la consulta degli interventi sugli impianti della gestione calore"
+  contact:
+    email: "pedrobasto56@gmail.com"
+# host: "tayrona.altervista.org"
+
+tags:
+- name: "client.php"
+  description: "interfaccia con l'utente e gestione delle richieste"
+- name: "curl_lib.php"
+  description: "Semplice libreria per le creazione di richieste HTTP"
+- name: "functions.php"
+  description: "File contenente le varie funzioni usate dal client"
+- name: "index.php"
+  description: "File contenente le chiamate al bot risiedente su Github, automatizzzato tramite Heroku con i dati da consultare su altervista"
+schemes:
+- "http"
+ 
+
+paths:
+  /botaltervista/GestioneCalore/client.php:
+    get:
+      tags:
+      - "client.php"
+      summary: "gestione delle richieste tramite il menu"
+      description: "Codice sorgente contenente il menu, le richieste http al server, conversione del codice della risposta e la chiamata alla funzione per la stampa."
+      operationId: "handle, response, http_code"
+      produces:
+      - "application/json"
+  /botaltervista/GestioneCalore/curl.php:
+    get:
+      tags:
+      - "curl.php"
+      summary: "libreria per le creazione di richieste HTTP"
+      description: "Esecuzione della richiesta, $response = contenuto della risposta testuale, Decodifica della risposta JSON"
+      operationId: "handle, response, status"
+      produces:
+      - "json_decode"
+      responses:
+        200:
+          description: "Richiesta HTTP fallita, status {$status}"
+          schema:
+            type: "string"
+  /botaltervista/GestioneCalore/functions.php:
+    get:
+      tags:
+      - "functions.php"
+      summary: "File contenente le varie funzioni usate dal client"
+      description: "stampa delle caldaie, denominazione degli impianti, pronto interventi, interventi negli impianti, matricola dei contatori, ore di funzionamento, tipo impianto, lettura dei contatori, consumo impianti"
+      operationId: "json_decode, printf"
+      produces:
+      - "json_decode"
+      responses:
+        200:
+          description: "ATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore"
+          schema:
+            type: "string"
+  /botaltervista/GestioneCalore/index.php:
+    get:
+      tags:
+      - "index.php"
+      summary: "File contenente le richieste fatte da un utente su Telegram per l'interrogazione dei dati di un'ipotetica Gestione Calore posti su Altervista, automatizzato tramite Github ed Heroku"
+      description: "interfaccia su Telegram con dati su Altervista, Github ed Heroku"
+      operationId: "json_decode, printf"
+      produces:
+      - "json_decode"
+      responses:
+        200:
+          description: "die("Nessun input")"
+          schema:
+            type: "string"
+   
+    
+# Added by API Auto Mocking Plugin
+
+
+host: virtserver.swaggerhub.com
+basePath: /PiRULO20/BotAltervista/1.0.0
+schemes:
+ - https
