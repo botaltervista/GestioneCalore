@@ -89,7 +89,7 @@ else{
        			$info2=" ".$info['Id_Descrizione'];
        
        			//salva la data contratto
-      	      	        $info3=" ".$info['Contratto'];
+      	      	        $info3=" Codice contratto: ".$info['Contratto'];
         		
 			//salva i dati delle variabili nel array
       	      	        $datos[$cn][$cn][$cn] = "$info1"." ". "$info2"." "."$info3";
@@ -287,7 +287,7 @@ else{
 		
 		//$sub3 = substr($stringa, 1, 0); // otteniamo 'niscrip' (parte dal 2° ed arriva fino al ultimo) 
 		$scelta = substr($text, 2, 4);
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
+		//http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$scelta);
 		
 		//scarico i dati dalla tabella Pronto_Intervento.json posta su altervista
     		$handle = curl_init('http://tayrona.altervista.org/prueva_database_json/database_json/Pronto_Intervento.json');
@@ -348,7 +348,7 @@ else{
 		
 		//$prontoint variabile per dicitura
 		$prontoint = 'Dettagli delle chiamate in pronto intervento del impianto: ';
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$prontoint.$info9);
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$prontoint);
 		
 		$xx = 0;
 		foreach($datos as $sequenza){
@@ -615,14 +615,14 @@ else{
   			$xx = $xx + 1;
 		}//fine lettura con foreach
 		
-		
+		/*
 		$xx = 0;
 		foreach($matricola as $sequenza){
   			
 			http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text="." - ".$matricola[$xx][$xx][$xx]);
   			$xx = $xx + 1;
 		}// fine matricola contatore con foreach		
-		
+		*/
 	
 		$avviso = 'Menu del servizio di messaggistica sulla Gestione Calore scelga una opzione:';
 		
