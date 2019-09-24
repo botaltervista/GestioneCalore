@@ -57,10 +57,9 @@ else{
   		$messaggio1 = " /7   Visualizza le ore ordinarie di funzionamento.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
 		
-		$messaggio1 = "Oppure utilizzza la forma slash (/) seguita dal numero dell'opzione precedentemente indicata ";
-		$messaggio2 = "sul menu e se sono da scegliere nella multiplicità di impianti, aggiungere il K in ";
-		$messaggio3 = "maiuscolo e poi il numero dell'impianto. Esempio: /Kxxx";
-		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1.$messaggio2.$messaggio3);
+		$messaggio1 = "Oppure utilizzza la forma slash (/) seguita dal numero dell'opzione precedentemente indicata sul menu e se sono da scegliere";
+		$messaggio2 = " nella multiplicità di impianti, aggiungere il K in maiuscolo e poi il numero dell'impianto. Esempio: /Kxxx.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1.$messaggio2);
 		
 	}
 	
