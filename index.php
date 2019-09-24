@@ -56,6 +56,12 @@ else{
 		
   		$messaggio1 = " /7   Visualizza le ore ordinarie di funzionamento.";
 		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+		
+		$messaggio1 = "oppure utilizzza la forma / seguita dal numero dell'opzione precedente e se gli impianti.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
+		
+		$messaggio1 = "sono da scegliere, aggiungere il K in maiuscolo e poi il numero dell'impianto.";
+		http_request("https://api.telegram.org/bot{$token}/sendMessage?chat_id=".$chat_id."&text=".$messaggio1);
   		
 	}
 	
